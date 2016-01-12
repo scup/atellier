@@ -8,8 +8,42 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.6/react-dom.min.js"></script>
   <script src="react-attelier.js"></script>
   <script>
+    var props = {style: {background:'red', padding: '30px', margin:'50px'}};
+    var MyComponentA = React.createClass({
+      propTypes: {
+        optionalArray: React.PropTypes.array,
+        optionalBool: React.PropTypes.bool,
+        optionalFunc: React.PropTypes.func,
+        optionalNumber: React.PropTypes.number,
+        optionalObject: React.PropTypes.object,
+        optionalString: React.PropTypes.string
+      },
+      getInitialState: function() {
+        return {data: []};
+      },
+      render: function() {
+        return React.DOM.div(props, 'MyComponentA');
+      }
+    });
+
+    var MyComponentB = React.createClass({
+      render: function() {
+        return React.DOM.div(props, 'MyComponentB');
+      }
+    });
+
+    var data = [{
+      componentName : 'MyComponent A',
+      component : MyComponentA
+    },{
+      componentName : 'MyComponent B',
+      component : MyComponentB
+    }];
+
     /* jshint undef:false */
-    ReactDOM.render(React.createElement(ReactAttelier), document.getElementById('main'));
+    ReactDOM.render(React.createElement(ReactAttelier, {
+      components: data
+    }), document.getElementById('main'));
   </script>
 </body>
 </html>

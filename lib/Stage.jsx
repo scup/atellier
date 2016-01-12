@@ -13,11 +13,9 @@ class Stage extends React.Component {
   }
 
   render() {
-    var component
-    if (this.state.component){
-      component = React.createElement(this.state.component,this.state.props,this.props.children)
-    }else{
-      component = false
+    let component;
+    if (this.props.component){
+      component = React.createElement(this.props.component, this.state.props, this.props.children)
     }
     return (<div className="stage">{component || 'Sem Componente'}</div>)
   }
