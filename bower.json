@@ -1,0 +1,19 @@
+{
+  "name": "react-attelier",
+  "version": "1.0.0",
+  "license": "MIT",
+  "author": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "spec",
+    "test",
+    "tests"
+  ],
+  "moduleType": [
+    "amd",
+    "globals"
+  ]
+}

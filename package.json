@@ -1,0 +1,45 @@
+{
+  "name": "react-attelier",
+  "version": "1.0.0",
+  "description": "react attelier",
+  "scripts": {
+    "test": "eslint lib/ spec/ && ./node_modules/karma/bin/karma start karma.conf.js",
+    "watch-test": "./node_modules/karma/bin/karma start karma.conf.js --auto-watch --no-single-run",
+    "build": "webpack -p",
+    "rename-css-bower-dependencies": "find bower_components -name '*.css' | sed -e 'p;s/.css$/.less/' | xargs -n2 mv",
+    "start": "webpack-dev-server --inline --hot",
+    "postinstall": "bower install"
+  },
+  "author": "",
+  "license": "BSD",
+  "keywords": [
+    "react",
+    "reactjs",
+    "react-component"
+  ],
+  "devDependencies": {
+    "babel-core": "~5.8.22",
+    "babel-eslint": "^4.0.10",
+    "babel-loader": "~5.3.2",
+    "css-loader": "~0.16.0",
+    "es5-shim": "~4.1.10",
+    "eslint": "^0.21.1",
+    "eslint-plugin-react": "^2.3.0",
+    "jasmine": "~2.3.2",
+    "jasmine-core": "~2.3.4",
+    "karma": "~0.13.9",
+    "karma-jasmine": "~0.3.6",
+    "karma-phantomjs-launcher": "~0.2.3",
+    "karma-sourcemap-loader": "~0.3.5",
+    "karma-webpack": "~1.7.0",
+    "less": "^2.5.3",
+    "less-loader": "^2.2.2",
+    "style-loader": "~0.12.3",
+    "webpack": "~1.11.0",
+    "webpack-dev-server": "~1.10.1"
+  },
+  "dependencies": {
+    "babel-runtime": "~5.8.20",
+    "react": "^0.13.0"
+  }
+}
