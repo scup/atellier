@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import Stage from './Stage.jsx';
 import ComponentList from './ComponentList.jsx';
+import ComponentProperties from './ComponentProperties.jsx';
 import Sidebar from './Sidebar.jsx';
 import Workspace from './Workspace.jsx';
 
@@ -16,31 +17,35 @@ class Attelier extends React.Component {
   }
 
   state = {
-    components: []
+    components: [],
+    stagedComponent: null,
+    stagedComponentProps: {}
   }
 
   constructor(){
     super()
-    this.state = {
-      component : false
-    };
-    this.controls = {
-      controls : [],
-      keys : []
-    };
   }
-
-  refresh(){
-    this.setState({
-      keys : this.controls
-    })
-  }
-
 
   render() {
+    let sidebarContent,
+        workspaceContent;
 
-    let sidebarContent = (<ComponentList components={this.props.components} onSelect={this.onSelectComponent}/>),
-        workspaceContent = (<Stage component={this.state.component} keys={this.state.keys}/>);
+    if (this.state.stagedComponent) {
+      sidebarContent = (
+        <ComponentProperties component={this.state.stagedComponent} onChangeProps={this.onChangeProps}/>
+      );
+      workspaceContent = (
+        <Stage keys={this.state.keys}
+          component={this.state.stagedComponent}
+          properties={this.state.stagedComponentProps} />
+      );
+    } else {
+      sidebarContent = (
+        <ComponentList
+          components={this.props.components}
+          onSelect={this.onSelectComponent}/>
+      );
+    }
 
     return (
       <div className="attelier flex-container">
@@ -52,31 +57,14 @@ class Attelier extends React.Component {
         </Workspace>
       </div>
     );
-    // return (
-    //   <div>
-    //     <ComponentList components={this.props.components} onSelect={this.onSelectComponent}/>
-    //     <Stage component={this.state.component} keys={this.state.keys}/>
-    //   </div>
-    // )
   }
 
   onSelectComponent = (component) => {
-    console.log(component);
-    // for(var key in component.component.propTypes){
-    //   var newInput = React.createElement('input',{
-    //     type : 'text',
-    //     key : key,
-    //     placeholder : key,
-    //     onChange : this.refresh.bind(this)
-    //   })
-    //  this.controls.controls.push(newInput);
-    //  this.controls.keys.push(key);
-    // }
+    this.setState({stagedComponent: component});
+  }
 
-    this.setState({
-      component : component.component,
-      keys : this.controls
-    })
+  onChangeProps = (properties) => {
+    this.setState({stagedComponentProps: properties});
   }
 }
 

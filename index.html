@@ -11,18 +11,33 @@
     var props = {style: {background:'red', padding: '30px', margin:'50px'}};
     var MyComponentA = React.createClass({
       propTypes: {
-        optionalArray: React.PropTypes.array,
-        optionalBool: React.PropTypes.bool,
-        optionalFunc: React.PropTypes.func,
-        optionalNumber: React.PropTypes.number,
-        optionalObject: React.PropTypes.object,
-        optionalString: React.PropTypes.string
+        propA: React.PropTypes.string,
+        propB: React.PropTypes.string,
+        propC: React.PropTypes.number,
+        propD: React.PropTypes.bool,
+        propE: React.PropTypes.bool,
+        propF: React.PropTypes.array,
+        propG: React.PropTypes.object
       },
-      getInitialState: function() {
-        return {data: []};
+      getDefaultProps: function() {
+        return {
+          propA: 'valueA',
+          propB: 'valueB',
+          propC: 1,
+          propD: true,
+          propE: false,
+        }
       },
       render: function() {
-        return React.DOM.div(props, 'MyComponentA');
+        return React.DOM.ul(props,
+          [
+            React.DOM.li({key: 1}, this.props.propA),
+            React.DOM.li({key: 2}, this.props.propB),
+            React.DOM.li({key: 3}, this.props.propC),
+            React.DOM.li({key: 4}, this.props.propD),
+            React.DOM.li({key: 5}, this.props.propE),
+          ]
+        );
       }
     });
 
