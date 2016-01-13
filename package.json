@@ -41,6 +41,7 @@
   },
   "dependencies": {
     "babel-runtime": "~5.8.20",
+    "classnames": "^2.2.3",
     "react": "^0.13.0"
   }
 }
