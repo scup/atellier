@@ -11,7 +11,7 @@ module.exports = function(config) {
       'node_modules/es5-shim/es5-shim.js',
 
       'node_modules/react/dist/react.js',
-      'node_modules/teact/dist/react-with-addons.js',
+      'node_modules/react/dist/react-with-addons.js',
 
       'spec/**/*.spec.*',
       { pattern: 'lib/**/*', watched: true, included: false }

@@ -67,7 +67,7 @@ class Properties extends React.Component {
       properties: properties
     });
     this.props.onChangeProps(properties);
-  }
+  };
 }
 
 export default Properties;
