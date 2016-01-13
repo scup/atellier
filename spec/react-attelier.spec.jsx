@@ -1,16 +1,20 @@
-import React from 'react/addons';
-import ReactAttelier from '../lib/Attelier.jsx';
+import React from 'react';
+import ReactTestUtils from 'react-addons-test-utils';
 
-describe('ReactAttelier', function() {
-  var component;
+import Attelier from '../lib/Attelier.jsx';
 
-  beforeEach(function() {
-    component = React.addons.TestUtils.renderIntoDocument(
-      <ReactAttelier/>
-    );
-  });
+describe('Attelier', () => {
 
   it('should render', function() {
-    expect(true).toEqual(true);
+
+    let attelier = ReactTestUtils.renderIntoDocument(
+      <Attelier />
+    );
+
+    var div = ReactTestUtils.findRenderedDOMComponentWithClass(
+      attelier, 'attelier flex-container'
+    );
+
+    expect(div).toBeTruthy();
   });
 });
