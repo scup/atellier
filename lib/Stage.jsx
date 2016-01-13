@@ -38,7 +38,7 @@ class Stage extends React.Component {
     this.setState({
       contrast: !this.state.contrast
     });
-  }
+  };
 }
 
 export default Stage;

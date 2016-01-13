@@ -4,7 +4,7 @@ class FieldType extends React.Component {
 
   static defaultProps = {
     onChange: PropTypes.func
-  }
+  };
 
   constructor(props) {
     super(props);
@@ -27,7 +27,7 @@ class FieldType extends React.Component {
       defaultValue: event.target.value
     });
     this.props.onChange(this.props.name, event.target.value);
-  }
+  };
 }
 
 export default FieldType;
