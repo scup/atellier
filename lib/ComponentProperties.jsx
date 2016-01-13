@@ -26,6 +26,7 @@ class Properties extends React.Component {
     let propsFields = [];
     for (let prop in this.state.properties ) {
       let defaultValue = this.state.properties[prop];
+      console.log('this._element: ', this._element.type.propTypes);
       propsFields.push(
         <FieldType
           key={prop}
