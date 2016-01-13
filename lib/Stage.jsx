@@ -1,4 +1,5 @@
 import React from 'react';
+import cx from 'classnames';
 
 import './Stage.less';
 
@@ -8,18 +9,35 @@ class Stage extends React.Component {
     super();
     this.state = {
       component : false,
-      children : null
+      children : null,
+      contrast: false
     }
   }
 
   render() {
-    var component
-    if (this.state.component){
-      component = React.createElement(this.state.component,this.state.props,this.props.children)
-    }else{
-      component = false
+    let content,
+        { component } = this.props.component;
+    if (component){
+      content = React.createElement(component, this.props.properties, this.props.children)
     }
-    return (<div className="stage">{component || 'Sem Componente'}</div>)
+
+    let classes = cx('stage', {
+      'stage-black': this.state.contrast
+    });
+
+    return (
+      <div className={classes}>
+        <div className="stage-contrast" onClick={this.handleClick}>
+          <span></span>
+        </div>
+        {content || 'Sem Componente'}
+      </div>)
+  }
+
+  handleClick = () => {
+    this.setState({
+      contrast: !this.state.contrast
+    });
   }
 }
 
