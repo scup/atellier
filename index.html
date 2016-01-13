@@ -17,7 +17,8 @@
         propD: React.PropTypes.bool,
         propE: React.PropTypes.bool,
         propF: React.PropTypes.array,
-        propG: React.PropTypes.object
+        propG: React.PropTypes.object,
+        color: React.PropTypes.string
       },
       getDefaultProps: function() {
         return {
@@ -26,12 +27,13 @@
           propC: 1,
           propD: true,
           propE: false,
+          color: 'blue'
         }
       },
       render: function() {
         return React.DOM.ul(props,
           [
-            React.DOM.li({key: 1}, this.props.propA),
+            React.DOM.li({key: 1, style: { backgroundColor: this.props.color}}, this.props.propA),
             React.DOM.li({key: 2}, this.props.propB),
             React.DOM.li({key: 3}, this.props.propC),
             React.DOM.li({key: 4}, this.props.propD),

@@ -9,6 +9,10 @@ import './Attelier.less';
 
 class Attelier extends React.Component {
 
+  static defaultProps = {
+    components: []
+  }
+
   static propTypes = {
     components: PropTypes.arrayOf(PropTypes.shape({
       component: PropTypes.func,
