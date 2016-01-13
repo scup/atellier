@@ -8,8 +8,8 @@ class ComponentList extends React.Component {
     components: []
   };
 
-  constructor(){
-    super()
+  constructor(props){
+    super(props);
     this.state = {
       selected : false
     }
@@ -25,7 +25,7 @@ class ComponentList extends React.Component {
   }
 
   selectComponent(index){
-    this.props.select(this.props.components[index]);
+    this.props.onSelect(this.props.components[index]);
     this.setState({
       selected : index
     })

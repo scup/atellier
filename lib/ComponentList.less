@@ -1,8 +1,9 @@
+@import "styles/color";
+
 .component-list{
-  background: #2C3E50;
+  margin: 0;
   width: 250px;
   height: 100%;
-  position: fixed;
   display: block;
   z-index: 2;
   li{
@@ -12,7 +13,7 @@
     padding: 10px;
     cursor: pointer;
     &.selected{
-      background-color: #00F;
+      background: @component-list-selected;
     }
   }
 }

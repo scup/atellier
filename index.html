@@ -8,8 +8,59 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.6/react-dom.min.js"></script>
   <script src="react-attelier.js"></script>
   <script>
+    var props = {style: {background:'CornflowerBlue', padding: '30px', margin:'50px'}};
+    var MyComponentA = React.createClass({
+      propTypes: {
+        propA: React.PropTypes.string,
+        propB: React.PropTypes.string,
+        propC: React.PropTypes.number,
+        propD: React.PropTypes.bool,
+        propE: React.PropTypes.bool,
+        propF: React.PropTypes.array,
+        propG: React.PropTypes.object,
+        color: React.PropTypes.string
+      },
+      getDefaultProps: function() {
+        return {
+          propA: 'valueA',
+          propB: 'valueB',
+          propC: 1,
+          propD: true,
+          propE: false,
+          color: 'blue'
+        }
+      },
+      render: function() {
+        return React.DOM.ul(props,
+          [
+            React.DOM.li({key: 1, style: { backgroundColor: this.props.color}}, this.props.propA),
+            React.DOM.li({key: 2}, this.props.propB),
+            React.DOM.li({key: 3}, this.props.propC),
+            React.DOM.li({key: 4}, this.props.propD),
+            React.DOM.li({key: 5}, this.props.propE),
+          ]
+        );
+      }
+    });
+
+    var MyComponentB = React.createClass({
+      render: function() {
+        return React.DOM.div(props, 'MyComponentB');
+      }
+    });
+
+    var data = [{
+      componentName : 'MyComponent A',
+      component : MyComponentA
+    },{
+      componentName : 'MyComponent B',
+      component : MyComponentB
+    }];
+
     /* jshint undef:false */
-    ReactDOM.render(React.createElement(ReactAttelier), document.getElementById('main'));
+    ReactDOM.render(React.createElement(ReactAttelier, {
+      components: data
+    }), document.getElementById('main'));
   </script>
 </body>
 </html>
