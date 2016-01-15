@@ -9,6 +9,7 @@
   <script src="react-attelier.js"></script>
   <script>
     var props = {style: {background:'CornflowerBlue', padding: '30px', margin:'50px'}};
+
     var MyComponentA = React.createClass({
       propTypes: {
         propA: React.PropTypes.string,
@@ -36,8 +37,11 @@
             React.DOM.li({key: 1, style: { backgroundColor: this.props.color}}, this.props.propA),
             React.DOM.li({key: 2}, this.props.propB),
             React.DOM.li({key: 3}, this.props.propC),
-            React.DOM.li({key: 4}, this.props.propD),
-            React.DOM.li({key: 5}, this.props.propE),
+            React.DOM.li({key: 4}, String(this.props.propD)),
+            React.DOM.li({key: 5}, String(this.props.propE)),
+            React.DOM.li({key: 6}, this.props.propF),
+            React.DOM.li({key: 7}, this.props.propG),
+            React.DOM.li({key: 8}, this.props.color),
           ]
         );
       }
