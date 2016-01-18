@@ -5,7 +5,7 @@ import ComponentProperties from './ComponentProperties.jsx';
 import Sidebar from './Sidebar.jsx';
 import Workspace from './Workspace.jsx';
 
-import './Attelier.less';
+import './styles/attelier.less';
 
 class Attelier extends React.Component {
 
@@ -52,11 +52,11 @@ class Attelier extends React.Component {
     }
 
     return (
-      <div className="attelier flex-container">
-        <Sidebar>
+      <div className="attelier">
+        <Sidebar className="attelier-sidebar">
           {sidebarContent}
         </Sidebar>
-        <Workspace>
+        <Workspace className="attelier-workspace">
           {workspaceContent}
         </Workspace>
       </div>
