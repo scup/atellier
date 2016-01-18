@@ -11,20 +11,20 @@ class Attelier extends React.Component {
 
   static defaultProps = {
     components: []
-  }
+  };
 
   static propTypes = {
     components: PropTypes.arrayOf(PropTypes.shape({
       component: PropTypes.func,
       componentName: PropTypes.string
     }))
-  }
+  };
 
   state = {
     components: [],
     stagedComponent: null,
     stagedComponentProps: {}
-  }
+  };
 
   constructor(){
     super()
@@ -65,11 +65,11 @@ class Attelier extends React.Component {
 
   onSelectComponent = (component) => {
     this.setState({stagedComponent: component});
-  }
+  };
 
   onChangeProps = (properties) => {
     this.setState({stagedComponentProps: properties});
-  }
+  };
 }
 
 export default Attelier;
