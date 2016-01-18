@@ -34,6 +34,8 @@
     "karma-webpack": "~1.7.0",
     "less": "^2.5.3",
     "less-loader": "^2.2.2",
+    "react-addons-test-utils": "^0.14.6",
+    "react-dom": "^0.14.6",
     "style-loader": "~0.12.3",
     "webpack": "~1.11.0",
     "webpack-dev-server": "~1.10.1"

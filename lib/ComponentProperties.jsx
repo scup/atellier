@@ -20,19 +20,31 @@ class Properties extends React.Component {
     }
   }
 
+  getPropTypePatch(propType) {
+    if (propType === React.PropTypes.string) {
+      return 'string'
+    } else if (propType === React.PropTypes.bool) {
+      return 'bool'
+    } else if (propType === React.PropTypes.array) {
+      return 'array'
+    } else if (propType === React.PropTypes.number) {
+      return 'number'
+    }
+  }
+
   render() {
     let { componentName } = this.props.component;
-
     let propsFields = [];
-    for (let prop in this.state.properties ) {
-      let defaultValue = this.state.properties[prop];
-      console.log('this._element: ', this._element.type.propTypes);
+    for (let prop in this._element.type.propTypes) {
+      this._element.type.propTypes[prop].type = this.getPropTypePatch(this._element.type.propTypes[prop])
+      let params = this._element.type.propTypes[prop];
       propsFields.push(
         <FieldType
           key={prop}
           name={prop}
-          onChange={this.handleChange}
-          defaultValue={defaultValue} />
+          type={params.type}
+          defaultValue={this.state.properties[prop]}
+          onChange={this.handleChange} />
       );
     }
 
