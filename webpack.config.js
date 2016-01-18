@@ -4,7 +4,7 @@ var path = require('path');
 
 module.exports = {
   context: path.join(__dirname),
-  entry: './lib/index.js',
+  entry: './lib/Attelier.jsx',
 
   output: {
     path: path.join(__dirname),
