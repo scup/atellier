@@ -26,13 +26,8 @@ class FieldType extends React.Component {
   }
 
   render() {
-    let props;
     const renderComponent = this.renderTypeHandlers[ this.props.type ] || this.renderText;
-
-    props = Object.assign({}, this.props);
-    props.defaultValue = this.cast(this.props.type, this.props.defaultValue);
-console.log(props);
-    return renderComponent.call(this, props);
+    return renderComponent.call(this, this.props);
   }
 
   renderText({ type, defaultValue, name }) {
@@ -73,19 +68,13 @@ console.log(props);
     //     </select>
     //   </div>
     // );
-    return null;
-  }
 
-  cast(type, value) {
-    return {
-      'string': value + '',
-      'bool': (value === 'checked'),
-      'number': parseInt(value, 10)
-    }[type] || value;
+    // TODO: implement
+    return this.renderText({ type, defaultValue, name });
   }
 
   handleChange = ( event ) => {
-    return this.props.onChange(this.props.name, this.cast(this.props.type, event.target.value));
+    return this.props.onChange(this.props.name, event.target.value);
   }
 }
 
