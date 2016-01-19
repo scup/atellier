@@ -5,8 +5,8 @@ import cx from 'classnames';
 
 class Stage extends React.Component {
 
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state = {
       component : false,
       children : null,
@@ -15,10 +15,10 @@ class Stage extends React.Component {
   }
 
   render() {
-    let content,
-        { component } = this.props.component;
-    if (component){
-      content = React.createElement(component, this.props.properties, this.props.children)
+    let content;
+    let { component } = this.props;
+    if (component && component.component){
+      content = React.createElement(component.component, this.props.properties, this.props.children)
     }
 
     let classes = cx('stage', {

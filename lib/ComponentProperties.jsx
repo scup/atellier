@@ -12,11 +12,15 @@ class Properties extends React.Component {
 
   constructor(props) {
     super(props);
-    let { component } = props.component;
-    this._element = React.createElement(component);
-
     this.state = {
-      properties: this._getPropsFromComponent()
+      properties: null
+    };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.component) {
+      this._element = React.createElement(nextProps.component.component);
+      this.setState({ properties: this._element.props });
     }
   }
 
@@ -33,6 +37,7 @@ class Properties extends React.Component {
   }
 
   render() {
+    if (!this.state.properties) { return null; }
     let { componentName } = this.props.component;
     let propsFields = [];
     for (let prop in this._element.type.propTypes) {
@@ -54,10 +59,6 @@ class Properties extends React.Component {
         {propsFields}
       </div>
     );
-  }
-
-  _getPropsFromComponent(){
-    return this._element.props;
   }
 
   handleChange = (propName, propValue) => {

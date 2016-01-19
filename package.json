@@ -29,6 +29,7 @@
     "eslint": "^0.21.1",
     "eslint-plugin-react": "^2.3.0",
     "file-loader": "^0.8.5",
+    "immutable": "^3.7.6",
     "jasmine": "~2.3.2",
     "jasmine-core": "~2.3.4",
     "karma": "~0.13.9",

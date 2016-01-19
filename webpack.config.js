@@ -27,7 +27,7 @@ module.exports = {
           'includePaths[]=' + (path.resolve(__dirname, './node_modules'))
       },
       {
-        test: /\.otf$/,
+        test: /\.(otf|ttf)$/,
         loader: 'file'
       },
       {

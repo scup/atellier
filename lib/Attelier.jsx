@@ -1,10 +1,6 @@
 import React, { PropTypes } from 'react';
-import Stage from './Stage.jsx';
-import ComponentList from './ComponentList.jsx';
-import ComponentProperties from './ComponentProperties.jsx';
 import Sidebar from './Sidebar.jsx';
 import Workspace from './Workspace.jsx';
-
 import './styles/attelier.less';
 
 class Attelier extends React.Component {
@@ -20,55 +16,25 @@ class Attelier extends React.Component {
     }))
   };
 
-  state = {
-    components: [],
-    stagedComponent: null,
-    stagedComponentProps: {}
-  };
-
-  constructor(){
-    super()
+  constructor(props) {
+    super(props);
+    this.state = {
+      components: [],
+      stagedComponent: null
+    };
   }
 
   render() {
-    let sidebarContent,
-        workspaceContent;
-
-    if (this.state.stagedComponent) {
-      sidebarContent = (
-        <ComponentProperties component={this.state.stagedComponent} onChangeProps={this.onChangeProps}/>
-      );
-      workspaceContent = (
-        <Stage keys={this.state.keys}
-          component={this.state.stagedComponent}
-          properties={this.state.stagedComponentProps} />
-      );
-    } else {
-      sidebarContent = (
-        <ComponentList
-          components={this.props.components}
-          onSelect={this.onSelectComponent}/>
-      );
-    }
-
     return (
       <div className="attelier">
-        <Sidebar className="attelier-sidebar">
-          {sidebarContent}
-        </Sidebar>
-        <Workspace className="attelier-workspace">
-          {workspaceContent}
-        </Workspace>
+        <Sidebar components={this.props.components} onSelect={this.onSelectComponent} />
+        <Workspace component={this.state.stagedComponent} />
       </div>
     );
   }
 
-  onSelectComponent = (component) => {
+  onSelectComponent = (component) => {    
     this.setState({stagedComponent: component});
-  };
-
-  onChangeProps = (properties) => {
-    this.setState({stagedComponentProps: properties});
   };
 }
 
