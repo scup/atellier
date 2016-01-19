@@ -13,48 +13,28 @@
 }
 
 .flex-item(@values) {
-  -webkit-box-flex: @values;
-  -moz-box-flex: @values;
-  -webkit-flex: @values;
-  -ms-flex: @values;
   flex: @values;
 }
 
 // ANIMATION
 
 .keyframes(@animationName, @content) {
-  @-webkit-keyframes @animationName {
-    @content();
-  }
-  @-moz-keyframes @animationName {
-    @content();
-  }
-  @-o-keyframes @animationName {
-    @content();
-  }
   @keyframes @animationName {
     @content();
   }
 }
 
 .animation(@delay, @duration, @animation) {
-  -webkit-animation-delay: @delay;
-  -webkit-animation-duration: @duration;
-  -webkit-animation-name: @animation;
-  -webkit-animation-fill-mode: forwards; /* this prevents the animation from restarting! */
-
-  -moz-animation-delay: @delay;
-  -moz-animation-duration: @duration;
-  -moz-animation-name: @animation;
-  -moz-animation-fill-mode: forwards; /* this prevents the animation from restarting! */
-
-  -o-animation-delay: @delay;
-  -o-animation-duration: @duration;
-  -o-animation-name: @animation;
-  -o-animation-fill-mode: forwards; /* this prevents the animation from restarting! */
-
   animation-delay: @delay;
   animation-duration: @duration;
   animation-name: @animation;
-  animation-fill-mode: forwards; /* this prevents the animation from restarting! */
+  animation-fill-mode: forwards;
+}
+
+// TEXT
+
+.text-overflow() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

@@ -1,0 +1,42 @@
+/* ------------------------- *\
+      COMPONENT LIST
+\* ------------------------- */
+
+.component-nav {
+  .flex-item(1 1 auto);
+  .flex-container(column);
+}
+
+.component-tools {
+  padding: 0 12px;
+  .flex-item(0 0 56px);
+}
+
+.component-filter {
+  margin: 8px 0;
+  background-image: url("../images/magnifying-glass.png");
+}
+
+.component-list {
+  border-top: 1px solid @color-border;
+  margin-top: 18px;
+  overflow: scroll;
+  display: block;
+  height: 1px;
+  .flex-item(1 1 auto);
+}
+
+.component-list-item {
+  border-bottom: 1px solid @color-dividers;
+  color: @color-text;
+  cursor: pointer;
+  display: block;
+  padding: 19px 24px;
+  .text-overflow();
+
+  &.selected {
+    background-color: @color-accent;
+    color: @color-secundary-text;
+    font-weight: bold;
+  }
+}
