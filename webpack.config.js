@@ -31,7 +31,7 @@ module.exports = {
         loader: 'autoprefixer'
       },
       {
-        test: /\.(otf|ttf)$/,
+        test: /\.(otf|ttf|png)$/,
         loader: 'file'
       },
       {

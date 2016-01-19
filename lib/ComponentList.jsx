@@ -26,7 +26,7 @@ class ComponentList extends React.Component {
     return (
       <div className="component-nav">
         <div className="component-tools">
-          <input type="text" className="component-filter attelier-form" placeholder="Search components" />
+          <input type="text" className="component-filter attelier-input attelier-input-icon" placeholder="Search components" />
         </div>
         <ul className="component-list">
           {this._renderComponentListItems()}

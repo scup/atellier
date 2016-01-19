@@ -2,7 +2,7 @@
       FORMS
 \* ------------------------- */
 
-input[type="text"].attelier-form {
+.attelier-input {
   background-color: @color-input-background;
   border-radius: 2px;
   border: 0;
@@ -10,12 +10,17 @@ input[type="text"].attelier-form {
   font-size: 16px;
   font-weight: 300;
   height: 40px;
-  margin: 8px 0;
   outline: none;
   padding: 13px;
   width: 100%;
 
-  &:placeholder-shown {
+  &::-webkit-input-placeholder {
     color: @color-placeholder;
+  }
+
+  &-icon {
+    background-repeat: no-repeat;
+    background-position: 13px;
+    padding-left: 36px;
   }
 }
