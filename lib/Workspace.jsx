@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './Workspace.less';
+// import './Workspace.less';
 
 class Workspace extends React.Component {
   render() {

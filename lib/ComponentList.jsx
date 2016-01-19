@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './ComponentList.less';
+// import './ComponentList.less';
 
 class ComponentList extends React.Component {
 

@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import FieldType from './FieldType.jsx';
 
-import './ComponentProperties.less';
+// import './ComponentProperties.less';
 
 class Properties extends React.Component {
 

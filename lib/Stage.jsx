@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 
-import './Stage.less';
+// import './Stage.less';
 
 class Stage extends React.Component {
 
