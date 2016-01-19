@@ -15,8 +15,8 @@ class Sidebar extends React.Component {
     }))
   };
 
-  render() {
-    let { components, onSelect } = this.props;
+  render() {    
+    let { components, stagedComponent, onSelect } = this.props;
     return (
       <div className="sidebar">
         <h1 className="logo">ATTELIER</h1>
