@@ -1,7 +1,11 @@
 import React, { PropTypes } from 'react';
 import FieldType from './FieldType.jsx';
+import PropTypesInterceptor from './structural/PropTypesInterceptor.jsx';
 
 import './ComponentProperties.less';
+
+PropTypes.number = PropTypesInterceptor.intercept(PropTypes.number);
+PropTypes.string = PropTypesInterceptor.intercept(PropTypes.string);
 
 class Properties extends React.Component {
 
