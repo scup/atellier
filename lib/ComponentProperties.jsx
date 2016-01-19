@@ -5,6 +5,9 @@ import FieldType from './FieldType.jsx';
 // PropTypes.number = PropTypesInterceptor.intercept(PropTypes.number);
 // PropTypes.string = PropTypesInterceptor.intercept(PropTypes.string);
 
+PropTypes.number = PropTypesInterceptor.intercept(PropTypes.number);
+PropTypes.string = PropTypesInterceptor.intercept(PropTypes.string);
+
 class Properties extends React.Component {
 
   static defaultProps = {
