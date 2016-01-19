@@ -25,7 +25,9 @@ class ComponentList extends React.Component {
   render() {
     return (
       <div className="component-nav">
-        <input type="text" className="component-filter" />
+        <div className="component-tools">
+          <input type="text" className="component-filter attelier-form" placeholder="Search components" />
+        </div>
         <ul className="component-list">
           {this._renderComponentListItems()}
         </ul>
@@ -38,7 +40,7 @@ class ComponentList extends React.Component {
       let className = classNames('component-list-item', { 'selected': index === this.state.itemSelected });
       return (
         <li key={index} className={className} onClick={this._onSelect(index)}>
-          {componentItem.componentName}
+          <label>{componentItem.componentName}</label>
         </li>
       );
     });

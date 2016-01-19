@@ -27,6 +27,10 @@ module.exports = {
           'includePaths[]=' + (path.resolve(__dirname, './node_modules'))
       },
       {
+        test: /\.less$/,
+        loader: 'autoprefixer'
+      },
+      {
         test: /\.(otf|ttf)$/,
         loader: 'file'
       },
