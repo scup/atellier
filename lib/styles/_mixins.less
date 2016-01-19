@@ -1,0 +1,60 @@
+/* ------------------------- *\
+      ANIMATIONS
+\* ------------------------- */
+
+// FLEX
+
+.flex-container(@flow: row nowrap, @justify: flex-start, @align-items: stretch, @align-content: stretch) {
+  align-content: @align-content;
+  align-items: @align-items;
+  display: flex;
+  flex-flow: @flow;
+  justify-content: @justify;
+}
+
+.flex-item(@values) {
+  -webkit-box-flex: @values;
+  -moz-box-flex: @values;
+  -webkit-flex: @values;
+  -ms-flex: @values;
+  flex: @values;
+}
+
+// ANIMATION
+
+.keyframes(@animationName, @content) {
+  @-webkit-keyframes @animationName {
+    @content();
+  }
+  @-moz-keyframes @animationName {
+    @content();
+  }
+  @-o-keyframes @animationName {
+    @content();
+  }
+  @keyframes @animationName {
+    @content();
+  }
+}
+
+.animation(@delay, @duration, @animation) {
+  -webkit-animation-delay: @delay;
+  -webkit-animation-duration: @duration;
+  -webkit-animation-name: @animation;
+  -webkit-animation-fill-mode: forwards; /* this prevents the animation from restarting! */
+
+  -moz-animation-delay: @delay;
+  -moz-animation-duration: @duration;
+  -moz-animation-name: @animation;
+  -moz-animation-fill-mode: forwards; /* this prevents the animation from restarting! */
+
+  -o-animation-delay: @delay;
+  -o-animation-duration: @duration;
+  -o-animation-name: @animation;
+  -o-animation-fill-mode: forwards; /* this prevents the animation from restarting! */
+
+  animation-delay: @delay;
+  animation-duration: @duration;
+  animation-name: @animation;
+  animation-fill-mode: forwards; /* this prevents the animation from restarting! */
+}

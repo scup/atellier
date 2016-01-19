@@ -1,11 +1,7 @@
 import React, { PropTypes } from 'react';
-import Stage from './Stage.jsx';
-import ComponentList from './ComponentList.jsx';
-import ComponentProperties from './ComponentProperties.jsx';
 import Sidebar from './Sidebar.jsx';
 import Workspace from './Workspace.jsx';
-
-import './Attelier.less';
+import './styles/attelier.less';
 
 class Attelier extends React.Component {
 
@@ -20,55 +16,27 @@ class Attelier extends React.Component {
     }))
   };
 
-  state = {
-    components: [],
-    stagedComponent: null,
-    stagedComponentProps: {}
-  };
-
-  constructor(){
-    super()
+  constructor(props) {
+    super(props);
+    this.state = {
+      components: [],
+      stagedComponent: null
+    };
   }
 
   render() {
-    let sidebarContent,
-        workspaceContent;
-
-    if (this.state.stagedComponent) {
-      sidebarContent = (
-        <ComponentProperties component={this.state.stagedComponent} onChangeProps={this.onChangeProps}/>
-      );
-      workspaceContent = (
-        <Stage keys={this.state.keys}
-          component={this.state.stagedComponent}
-          properties={this.state.stagedComponentProps} />
-      );
-    } else {
-      sidebarContent = (
-        <ComponentList
-          components={this.props.components}
-          onSelect={this.onSelectComponent}/>
-      );
-    }
-
+    let { components } = this.props;
+    let { stagedComponent } = this.state;
     return (
-      <div className="attelier flex-container">
-        <Sidebar>
-          {sidebarContent}
-        </Sidebar>
-        <Workspace>
-          {workspaceContent}
-        </Workspace>
+      <div className="attelier">
+        <Sidebar components={components} onSelect={this._onSelectComponent} />
+        <Workspace component={stagedComponent} />
       </div>
     );
   }
 
-  onSelectComponent = (component) => {
+  _onSelectComponent = (component) => {
     this.setState({stagedComponent: component});
-  };
-
-  onChangeProps = (properties) => {
-    this.setState({stagedComponentProps: properties});
   };
 }
 

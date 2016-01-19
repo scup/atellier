@@ -27,6 +27,10 @@ module.exports = {
           'includePaths[]=' + (path.resolve(__dirname, './node_modules'))
       },
       {
+        test: /\.(otf|ttf)$/,
+        loader: 'file'
+      },
+      {
         test: /(\.jsx?)$/,
         exclude: /node_modules/,
         loader: 'babel'
