@@ -1,10 +1,10 @@
 import React, { PropTypes } from 'react';
+import ContainerCloseButton from './images/x.png';
 import FieldType from './FieldType.jsx';
-import PropTypesInterceptor from './structural/PropTypesInterceptor.jsx';
-import closeButtonImage from './images/x.png';
+// import PropTypesInterceptor from './structural/PropTypesInterceptor.jsx';
 
-PropTypes.number = PropTypesInterceptor.intercept(PropTypes.number);
-PropTypes.string = PropTypesInterceptor.intercept(PropTypes.string);
+// PropTypes.number = PropTypesInterceptor.intercept(PropTypes.number);
+// PropTypes.string = PropTypesInterceptor.intercept(PropTypes.string);
 
 class Properties extends React.Component {
 
@@ -32,31 +32,6 @@ class Properties extends React.Component {
         {this._renderPropertiesContainer()}
       </div>
     );
-
-    // if (!this.state.properties) { return null; }
-    // let { componentName } = this.props.component;
-    // let propsFields = [];
-    // for (let prop in this._element.type.propTypes) {
-    //   this._element.type.propTypes[prop].type = this.getPropTypePatch(this._element.type.propTypes[prop])
-    //   let params = this._element.type.propTypes[prop];
-    //   propsFields.push(
-    //     <FieldType
-    //       key={prop}
-    //       name={prop}
-    //       type={params.type}
-    //       defaultValue={this.state.properties[prop]}
-    //       onChange={this.handleChange} />
-    //   );
-    // }
-    //
-    // return (
-    //   <div className="component-properties">
-    //     <div className="properties-form">
-    //       <h2>{componentName}</h2>
-    //       {propsFields}
-    //     </div>
-    //   </div>
-    // );
   }
 
   _renderPropertiesContainer() {
@@ -64,7 +39,7 @@ class Properties extends React.Component {
     return (
       <div className="properties-container">
         <a className="container-close-button">
-          <img src={closeButtonImage} />
+          <img src={ContainerCloseButton} />
         </a>
         <h2 className="properties-component">
           {this.props.component.componentName}
@@ -77,10 +52,26 @@ class Properties extends React.Component {
   }
 
   _renderPropertiesFields() {
-    return null;
+    let propsFields = [];
+    let propTypes = this._element.type.propTypes;
+
+    for (let prop in propTypes) {
+      propTypes[prop].type = this._getPropTypePatch(propTypes[prop])
+      let params = propTypes[prop];
+      propsFields.push(
+        <FieldType
+          key={prop}
+          name={prop}
+          type={params.type}
+          defaultValue={this._element.props[prop]}
+          onChange={this._handleChange} />
+      );
+    }
+
+    return propsFields;
   }
 
-  getPropTypePatch(propType) {
+  _getPropTypePatch(propType) {
     if (propType === React.PropTypes.string) {
       return 'string'
     } else if (propType === React.PropTypes.bool) {
@@ -92,12 +83,9 @@ class Properties extends React.Component {
     }
   }
 
-  handleChange = (propName, propValue) => {
-    let properties = Object.assign({}, this.state.properties);
+  _handleChange = (propName, propValue) => {
+    let properties = Object.assign({}, this._element.props);
     properties[propName] = propValue;
-    this.setState({
-      properties: properties
-    });
     this.props.onChangeProps(properties);
   };
 }
