@@ -1,0 +1,28 @@
+/* ------------------------- *\
+      FIELD TYPE
+\* ------------------------- */
+
+.properties-field {
+  padding: 21px 0;
+  border-top: 1px solid @color-dividers;
+
+  &:first-child {
+    border-top: none;
+  }
+
+  label {
+    color: @color-secundary-text;
+    display: inline-block;
+    font-weight: 400;
+    margin-bottom: 11px;
+  }
+
+  .attelier-toggle {
+    float: right;
+
+    & + label {
+      margin-bottom: 0;
+      line-height: 25px;
+    }
+  }
+}

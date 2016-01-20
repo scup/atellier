@@ -35,12 +35,12 @@ class ComponentList extends React.Component {
     );
   }
 
-  _renderComponentListItems(){
+  _renderComponentListItems() {
     return this.props.components.map((componentItem, index)=>{
       let className = classNames('component-list-item', { 'selected': index === this.state.itemSelected });
       return (
         <li key={index} className={className} onClick={this._onSelect(index)}>
-          <label>{componentItem.componentName}</label>
+          {componentItem.componentName}
         </li>
       );
     });
