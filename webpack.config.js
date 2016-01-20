@@ -4,7 +4,7 @@ var path = require('path');
 
 module.exports = {
   context: path.join(__dirname),
-  entry: './lib/index.js',
+  entry: './lib/Attelier.jsx',
 
   output: {
     path: path.join(__dirname),
@@ -27,13 +27,17 @@ module.exports = {
           'includePaths[]=' + (path.resolve(__dirname, './node_modules'))
       },
       {
-        test: /(\.js)|(\.jsx)$/,
+        test: /\.less$/,
+        loader: 'autoprefixer'
+      },
+      {
+        test: /\.(otf|ttf|png)$/,
+        loader: 'file'
+      },
+      {
+        test: /(\.jsx?)$/,
         exclude: /node_modules/,
-        loader: 'babel-loader',
-        query: {
-          //optional: ['runtime'],
-          stage: 0
-        }
+        loader: 'babel'
       }
     ]
   }
