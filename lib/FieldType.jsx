@@ -20,19 +20,20 @@ class FieldType extends React.Component {
   constructor(props) {
     super(props);
     this._renderTypeHandlers = {
-      string: this._renderText,
-      number: this._renderNumber,
-      bool: this._renderToggle,
-      array: this._renderSelect
+      string: this._renderStringInput,
+      number: this._renderNumberInput,
+      bool: this._renderBoolInput,
+      array: this._renderArrayInput,
+      object: this._renderObjectInput
     };
   }
 
-  render() {    
+  render() {
     let renderComponent = this._renderTypeHandlers[ this.props.type ] || this._renderText;
     return renderComponent.call(this, this.props);
   }
 
-  _renderText({ type, defaultValue, name }) {
+  _renderStringInput({ type, defaultValue, name }) {
     return (
       <div className="properties-field">
         <label>{name}</label>
@@ -41,7 +42,7 @@ class FieldType extends React.Component {
     );
   }
 
-  _renderNumber({ type, defaultValue, name }) {
+  _renderNumberInput({ type, defaultValue, name }) {
     return (
       <div className="properties-field">
         <label>{name}</label>
@@ -50,7 +51,7 @@ class FieldType extends React.Component {
     );
   }
 
-  _renderToggle({ type, defaultValue, name }) {
+  _renderBoolInput({ type, defaultValue, name }) {
     return (
       <div className="properties-field">
         <Toggle defaultValue={defaultValue} onChange={this._handleChange} />
@@ -59,7 +60,7 @@ class FieldType extends React.Component {
     );
   }
 
-  _renderSelect({ type, defaultValue, name }) {
+  _renderArrayInput({ type, defaultValue, name }) {
     // let options = (this.state.defaultValue || []).map((value, index) => {
     //   return <option key={index} value={value} selected={this.state.defaultValue === value}>{value}</option>;
     // });
@@ -75,6 +76,10 @@ class FieldType extends React.Component {
 
     // TODO: implement
     // return this._renderText({ type, defaultValue, name });
+    return null;
+  }
+
+  _renderObjectInput({ type, defaultValue, name }) {    
     return null;
   }
 
