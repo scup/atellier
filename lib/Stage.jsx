@@ -1,8 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
 
-// import './Stage.less';
-
 class Stage extends React.Component {
 
   constructor(props){
@@ -15,23 +13,26 @@ class Stage extends React.Component {
   }
 
   render() {
-    let content;
-    let { component } = this.props;
-    if (component && component.component){
-      content = React.createElement(component.component, this.props.properties, this.props.children)
-    }
-
-    let classes = cx('stage', {
-      'stage-black': this.state.contrast
-    });
-
     return (
-      <div className={classes}>
-        <div className="stage-contrast" onClick={this.handleClick}>
-          <span></span>
-        </div>
-        {content || 'Sem Componente'}
-      </div>)
+      <div className="stage"></div>
+    );
+    // let content;
+    // let { component } = this.props;
+    // if (component && component.component){
+    //   content = React.createElement(component.component, this.props.properties, this.props.children)
+    // }
+    //
+    // let classes = cx('stage', {
+    //   'stage-black': this.state.contrast
+    // });
+    //
+    // return (
+    //   <div className={classes}>
+    //     <div className="stage-contrast" onClick={this.handleClick}>
+    //       <span></span>
+    //     </div>
+    //     {content || 'Sem Componente'}
+    //   </div>)
   }
 
   handleClick = () => {
