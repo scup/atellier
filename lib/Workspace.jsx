@@ -5,7 +5,7 @@ import Stage from './Stage.jsx';
 class Workspace extends React.Component {
 
   static defaultProps = {
-    component: []
+    component: {}
   };
 
   static propTypes = {
@@ -27,13 +27,13 @@ class Workspace extends React.Component {
     let { componentProps } = this.state;
     return (
       <div className="workspace">
-        <ComponentProperties component={component} onChangeProps={this.onChangeProps} />
+        <ComponentProperties component={component} onChangeProps={this._onChangeProps} />
         <Stage component={component} properties={componentProps} />
       </div>
     );
   }
 
-  onChangeProps = (properties) => {
+  _onChangeProps = (properties) => {
     this.setState({componentProps: properties});
   };
 }
