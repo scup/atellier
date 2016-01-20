@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import FieldType from './FieldType.jsx';
 import PropTypesInterceptor from './structural/PropTypesInterceptor.jsx';
+import closeButtonImage from './images/x.png';
 
 PropTypes.number = PropTypesInterceptor.intercept(PropTypes.number);
 PropTypes.string = PropTypesInterceptor.intercept(PropTypes.string);
@@ -62,6 +63,9 @@ class Properties extends React.Component {
     if (!this._element) { return null; }
     return (
       <div className="properties-container">
+        <a className="container-close-button">
+          <img src={closeButtonImage} />
+        </a>
         <h2 className="properties-component">
           {this.props.component.componentName}
         </h2>
