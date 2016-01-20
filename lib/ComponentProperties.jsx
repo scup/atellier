@@ -54,21 +54,24 @@ class Properties extends React.Component {
   _renderPropertiesFields() {
     let propsFields = [];
     let propTypes = this._element.type.propTypes;
-
     for (let prop in propTypes) {
       propTypes[prop].type = this._getPropTypePatch(propTypes[prop])
-      let params = propTypes[prop];
       propsFields.push(
         <FieldType
           key={prop}
           name={prop}
-          type={params.type}
+          type={propTypes[prop].type}
           defaultValue={this._element.props[prop]}
           onChange={this._handleChange} />
       );
     }
+    return propsFields.length && propsFields || this._renderNoProperties();
+  }
 
-    return propsFields;
+  _renderNoProperties() {
+    return (
+      <p className="no-properties">No properties</p>
+    );
   }
 
   _getPropTypePatch(propType) {
