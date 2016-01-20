@@ -76,13 +76,15 @@ class Properties extends React.Component {
 
   _getPropTypePatch(propType) {
     if (propType === React.PropTypes.string) {
-      return 'string'
+      return 'string';
     } else if (propType === React.PropTypes.bool) {
-      return 'bool'
+      return 'bool';
     } else if (propType === React.PropTypes.array) {
-      return 'array'
+      return 'array';
     } else if (propType === React.PropTypes.number) {
-      return 'number'
+      return 'number';
+    } else if (propType === React.PropTypes.object) {
+      return 'object';
     }
   }
 
