@@ -4,10 +4,10 @@ import Toggle from './Toggle.jsx';
 class FieldType extends React.Component {
 
   static propTypes = {
-    name: PropTypes.string,
-    type: PropTypes.string,
     defaultValue: PropTypes.any,
+    name: PropTypes.string,
     onChange: PropTypes.func,
+    type: PropTypes.string.isRequired
   };
 
   static defaultProps = {
@@ -61,25 +61,30 @@ class FieldType extends React.Component {
   }
 
   _renderArrayInput({ type, defaultValue, name }) {
-    // let options = (this.state.defaultValue || []).map((value, index) => {
-    //   return <option key={index} value={value} selected={this.state.defaultValue === value}>{value}</option>;
+    // let options = (this.props.values || []).map((option, index) => {
+    //   console.log(option);
+    //   return <option key={index} value={option.value} selected={option.value}>{option.value}</option>;
     // });
-    //
+    // console.log(options);
+
+    for (var x in this.props.values) {
+      console.log(x)
+    }
+
     // return (
-    //   <div className="fieldtype">
-    //     <label>{this.state.name}</label>
-    //     <select onChange={this.handleChange}>
+    //   <div className="properties-field">
+    //     <label>{this.props.name}</label>
+    //     <select className="attelier-input" value={defaultValue} onChange={this.handleChange}>
     //       {options}
     //     </select>
     //   </div>
     // );
 
-    // TODO: implement
     // return this._renderText({ type, defaultValue, name });
     return null;
   }
 
-  _renderObjectInput({ type, defaultValue, name }) {    
+  _renderObjectInput({ type, defaultValue, name }) {
     return null;
   }
 

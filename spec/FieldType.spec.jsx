@@ -31,10 +31,10 @@ describe('FieldType', function () {
     expect(input.nodeName).toEqual('INPUT');
   });
 
-  // TODO: Implement SELECT
-  xit('should render input type select for `array`', function () {
+  it('should render input type select for `array`', function () {
     let domNode = renderFieldType({ type: 'array', name: 'StringField', defaultValue: ['a', 'b', 'c'] });
     let input = domNode.querySelector('select');
+    console.log(input.nodeName)
     expect(input.nodeName).toEqual('SELECT');
   });
 });
