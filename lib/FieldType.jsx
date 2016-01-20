@@ -75,7 +75,7 @@ class FieldType extends React.Component {
 
   handleChange = ( event ) => {
     return this.props.onChange(this.props.name, event.target.value);
-  }
+  };
 }
 
 export default FieldType;

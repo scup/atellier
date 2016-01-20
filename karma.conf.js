@@ -10,17 +10,16 @@ module.exports = function(config) {
       // see: https://github.com/ariya/phantomjs/issues/10522
       'node_modules/es5-shim/es5-shim.js',
 
-      // React is an external dependency of the component
+      'node_modules/react/dist/react.js',
       'node_modules/react/dist/react-with-addons.js',
 
-      'spec/spec-helper.js',
       'spec/**/*.spec.*',
       { pattern: 'lib/**/*', watched: true, included: false }
     ],
 
     preprocessors: {
       // add webpack as preprocessor
-      'spec/**/*.spec.*': ['webpack', 'sourcemap']
+      'spec/**/*.spec.*': ['webpack', 'sourcemap', 'eslint']
     },
 
     webpack: loadWebpackConfig(),
@@ -29,7 +28,13 @@ module.exports = function(config) {
       noInfo: true
     },
 
+    eslint: {
+      stopOnError: false,
+      stopOnWarning: true
+    },
+
     singleRun: true
+
   });
 };
 

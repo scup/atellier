@@ -1,7 +1,11 @@
 import React, { PropTypes } from 'react';
 import FieldType from './FieldType.jsx';
+import PropTypesInterceptor from './structural/PropTypesInterceptor.jsx';
 
-import './ComponentProperties.less';
+// import './ComponentProperties.less';
+
+PropTypes.number = PropTypesInterceptor.intercept(PropTypes.number);
+PropTypes.string = PropTypesInterceptor.intercept(PropTypes.string);
 
 class Properties extends React.Component {
 
@@ -12,11 +16,15 @@ class Properties extends React.Component {
 
   constructor(props) {
     super(props);
-    let { component } = props.component;
-    this._element = React.createElement(component);
-
     this.state = {
-      properties: this._getPropsFromComponent()
+      properties: null
+    };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.component) {
+      this._element = React.createElement(nextProps.component.component);
+      this.setState({ properties: this._element.props });
     }
   }
 
@@ -33,6 +41,7 @@ class Properties extends React.Component {
   }
 
   render() {
+    if (!this.state.properties) { return null; }
     let { componentName } = this.props.component;
     let propsFields = [];
     for (let prop in this._element.type.propTypes) {
@@ -56,10 +65,6 @@ class Properties extends React.Component {
     );
   }
 
-  _getPropsFromComponent(){
-    return this._element.props;
-  }
-
   handleChange = (propName, propValue) => {
     let properties = Object.assign({}, this.state.properties);
     properties[propName] = propValue;
@@ -67,7 +72,7 @@ class Properties extends React.Component {
       properties: properties
     });
     this.props.onChangeProps(properties);
-  }
+  };
 }
 
 export default Properties;

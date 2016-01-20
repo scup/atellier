@@ -1,6 +1,5 @@
-import React from 'react';
-
-import './ComponentList.less';
+import React, { PropTypes } from 'react';
+import classNames from 'classnames';
 
 class ComponentList extends React.Component {
 
@@ -8,33 +7,52 @@ class ComponentList extends React.Component {
     components: []
   };
 
+  static propTypes = {
+    onSelect: PropTypes.func,
+    components: PropTypes.arrayOf(PropTypes.shape({
+      component: PropTypes.func,
+      componentName: PropTypes.string
+    }))
+  };
+
   constructor(props){
     super(props);
     this.state = {
-      selected : false
-    }
-  }
-  getComponets(){
-    this.components = this.props.components.map((item,i)=>{
-      let myClass = false;
-      if (i === this.state.selected){
-        let myClass = 'selected'
-      };
-      return (<li className={myClass} onClick={this.selectComponent.bind(this,i)} key={i}>{item.componentName}</li>)
-    })
-  }
-
-  selectComponent(index){
-    this.props.onSelect(this.props.components[index]);
-    this.setState({
-      selected : index
-    })
+      itemSelected: undefined
+    };
   }
 
   render() {
-    this.getComponets()
-    return (<ul className="component-list">{this.components}</ul>)
+    return (
+      <div className="component-nav">
+        <div className="component-tools">
+          <input type="text" className="component-filter attelier-input attelier-input-icon" placeholder="Search components" />
+        </div>
+        <ul className="component-list">
+          {this._renderComponentListItems()}
+        </ul>
+      </div>
+    );
   }
+
+  _renderComponentListItems(){
+    return this.props.components.map((componentItem, index)=>{
+      let className = classNames('component-list-item', { 'selected': index === this.state.itemSelected });
+      return (
+        <li key={index} className={className} onClick={this._onSelect(index)}>
+          <label>{componentItem.componentName}</label>
+        </li>
+      );
+    });
+  }
+
+  _onSelect = (index) => {
+    return () => {
+      this.props.onSelect(this.props.components[index]);
+      this.setState({ itemSelected: index });
+    };
+  };
+
 }
 
 export default ComponentList;
