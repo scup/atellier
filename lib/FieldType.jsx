@@ -79,22 +79,7 @@ class FieldType extends React.Component {
     return null;
   }
 
-  _renderObjectInput({ type, defaultValue, name }) {
-    // let options = (this.state.defaultValue || []).map((value, index) => {
-    //   return <option key={index} value={value} selected={this.state.defaultValue === value}>{value}</option>;
-    // });
-    //
-    // return (
-    //   <div className="fieldtype">
-    //     <label>{this.state.name}</label>
-    //     <select onChange={this.handleChange}>
-    //       {options}
-    //     </select>
-    //   </div>
-    // );
-
-    // TODO: implement
-    // return this._renderText({ type, defaultValue, name });
+  _renderObjectInput({ type, defaultValue, name }) {    
     return null;
   }
 

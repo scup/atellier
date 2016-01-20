@@ -14,7 +14,10 @@ class Stage extends React.Component {
 
   render() {
     return (
-      <div className="stage"></div>
+      <div className="stage">
+        <div className="stage-board"></div>
+        <div className="stage-tools"></div>
+      </div>
     );
     // let content;
     // let { component } = this.props;

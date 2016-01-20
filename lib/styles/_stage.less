@@ -2,8 +2,22 @@
       STAGE
 \* ------------------------- */
 
-.stage {  
+.stage {
+  padding: 25px;
+  position: relative;
   .flex-item(1 1 auto);
+  .flex-container(column);
+}
+
+.stage-board {
+  border-radius: @border-radius;
+  background-color: @color-stage-board-light;
+  position: relative;
+  .flex-item(1 1 auto);
+}
+
+.stage-tools {
+  .flex-item(0 0 54px);
 }
 
 /*
