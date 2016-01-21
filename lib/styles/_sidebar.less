@@ -20,24 +20,34 @@
     .sidebar-toggle-button {
       background-color: @color-primary;
       right: -51px;
+
+      img {
+        transform: rotate(0deg);
+      }
     }
   }
 }
 
 .sidebar-toggle-button {
-  display: block;
   background-color: @color-sidebar-toggle-button;
+  color: @color-sidebar-toggle-button-arrow;
+  cursor: pointer;
+  display: block;
+  font-weight: 400;
   height: 25px;
   line-height: 25px;
   position: absolute;
-  text-align: center;
-  width: 25px;
   right: 12px;
+  text-align: center;
   top: 25px;
-  color: @color-sidebar-toggle-button-arrow;
-  font-weight: 400;
-  cursor: pointer;
   transition: right 0.5s, color 0.5s;
+  width: 25px;
+
+  img {
+    padding: 8px 0;
+    transform: rotate(180deg);
+    transition: transform 0.5s;
+  }
 }
 
 .logo {

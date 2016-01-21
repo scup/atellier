@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import classNames from 'classnames';
+import immutable from 'immutable';
 
 class ComponentList extends React.Component {
 
@@ -18,7 +19,9 @@ class ComponentList extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      itemSelected: undefined
+      filter: '',
+      itemSelected: undefined,
+      components: immutable.List(props.components)
     };
   }
 
@@ -26,7 +29,10 @@ class ComponentList extends React.Component {
     return (
       <div className="component-nav">
         <div className="component-tools">
-          <input type="text" className="component-filter attelier-input attelier-input-icon" placeholder="Search components" />
+          <input type="text"
+            className="component-filter attelier-input attelier-input-icon"
+            placeholder="Search components"
+            onChange={this._handleFilterComponents} />
         </div>
         <ul className="component-list">
           {this._renderComponentListItems()}
@@ -36,23 +42,33 @@ class ComponentList extends React.Component {
   }
 
   _renderComponentListItems() {
-    return this.props.components.map((componentItem, index)=>{
-      let className = classNames('component-list-item', {
-        'component-list-item-selected': index === this.state.itemSelected
+    return this.state.components
+      .filter(({componentName}) => {
+        return componentName.toLowerCase().includes(this.state.filter.toLowerCase());
+      })
+      .map(({componentName, index}) => {
+        let className = classNames('component-list-item', {
+          'component-list-item-selected': componentName === this.state.itemSelected
+        });
+        return (
+          <li key={`${index}:${componentName}`} className={className} onClick={this._handleSelectComponentItem(componentName)}>
+            {componentName}
+          </li>
+        );
       });
-      return (
-        <li key={index} className={className} onClick={this._onSelect(index)}>
-          {componentItem.componentName}
-        </li>
-      );
-    });
   }
 
-  _onSelect = (index) => {
+  _handleSelectComponentItem = (componentName) => {
     return () => {
-      this.props.onSelect(this.props.components[index]);
-      this.setState({ itemSelected: index });
+      console.log(componentName);      
+      // console.log(this.state.components.get(0);
+      // this.props.onSelect(this.props.components[index]);
+      // this.setState({ itemSelected: index });
     };
+  };
+
+  _handleFilterComponents = (event) => {
+    this.setState({filter: event.target.value});
   };
 
 }
