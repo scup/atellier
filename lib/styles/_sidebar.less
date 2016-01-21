@@ -6,8 +6,38 @@
   background-color: @color-primary;
   border-right: 1px solid @color-border;
   height: 100%;
+  position: relative;
+  margin-left: 0;
+  margin-right: 0;
+  transition: margin-left 0.5s, margin-right 0.5s;
   .flex-item(0 0 315px);
   .flex-container(column);
+
+  &-close {
+    margin-left: -315px;
+    margin-right: 50px;
+
+    .sidebar-toggle-button {
+      background-color: @color-primary;
+      right: -51px;
+    }
+  }
+}
+
+.sidebar-toggle-button {
+  display: block;
+  background-color: @color-sidebar-toggle-button;
+  height: 25px;
+  line-height: 25px;
+  position: absolute;
+  text-align: center;
+  width: 25px;
+  right: 12px;
+  top: 25px;
+  color: @color-sidebar-toggle-button-arrow;
+  font-weight: 400;
+  cursor: pointer;
+  transition: right 0.5s, color 0.5s;
 }
 
 .logo {
