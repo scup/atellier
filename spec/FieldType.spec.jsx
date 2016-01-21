@@ -15,8 +15,8 @@ describe('FieldType', function () {
 
   it('should render input type text for `string`', function () {
     let domNode = renderFieldType({ type: 'string', name: 'StringField', defaultValue: 'My string' });
-    let input = domNode.querySelector('[type="text"]');
-    expect(input.nodeName).toEqual('INPUT');
+    let element = domNode.querySelector('textarea');
+    expect(element.nodeName).toEqual('TEXTAREA');
   });
 
   it('should render input type number for `number`', function () {
@@ -27,8 +27,8 @@ describe('FieldType', function () {
 
   it('should render input type checkbox for `bool`', function () {
     let domNode = renderFieldType({ type: 'bool', name: 'StringField', defaultValue: true });
-    let input = domNode.querySelector('[type="checkbox"]');
-    expect(input.nodeName).toEqual('INPUT');
+    let input = domNode.querySelector('.attelier-toggle');
+    expect(input.nodeName).toEqual('DIV');
   });
 
   // TODO: Implement SELECT
