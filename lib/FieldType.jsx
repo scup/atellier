@@ -33,7 +33,7 @@ class FieldType extends React.Component {
     return renderComponent.call(this, this.props);
   }
 
-  _renderStringInput({ type, defaultValue, name }) {
+  _renderStringInput({ name, type, defaultValue }) {
     return (
       <div className="properties-field">
         <label>{name}</label>
@@ -42,7 +42,7 @@ class FieldType extends React.Component {
     );
   }
 
-  _renderNumberInput({ type, defaultValue, name }) {
+  _renderNumberInput({ name, type, defaultValue }) {
     return (
       <div className="properties-field">
         <label>{name}</label>
@@ -51,7 +51,7 @@ class FieldType extends React.Component {
     );
   }
 
-  _renderBoolInput({ type, defaultValue, name }) {
+  _renderBoolInput({ name, type, defaultValue }) {
     return (
       <div className="properties-field">
         <Toggle defaultValue={defaultValue} onChange={this._handleChange} />

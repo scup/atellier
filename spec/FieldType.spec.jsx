@@ -1,12 +1,77 @@
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
-// import FieldType from '../lib/FieldType.jsx';
+import FieldType from '../lib/FieldType.jsx';
 
 describe('FieldType', () => {
 
-  it('should equal true', () => {
-    expect(true).toBeTruthy();
+  let handleChange = () => {
+    return null;
+  };
+
+  let renderFieldType = ({ name, type, defaultValue='', onChange=handleChange }) => {
+    return TestUtils.renderIntoDocument(
+      <FieldType name={name} type={type} defaultValue={defaultValue} onChange={onChange}/>
+    );
+  };
+
+  it('should render string input', () => {
+
+    let FieldType = renderFieldType({
+      name: 'string',
+      type: 'string'
+    });
+
+    var div = TestUtils.findRenderedDOMComponentWithTag(
+      FieldType, 'textarea'
+    );
+
+    expect(div).toBeTruthy();
   });
+
+  it('should render number input', () => {
+
+    let FieldType = renderFieldType({
+      name: 'number',
+      type: 'number'
+    });
+
+    var div = TestUtils.findRenderedDOMComponentWithTag(
+      FieldType, 'input'
+    );
+
+    expect(div).toBeTruthy();
+  });
+
+  it('should render bool input', () => {
+
+    let FieldType = renderFieldType({
+      name: 'bool',
+      type: 'bool',
+      defaultValue: false
+    });
+
+    var div = TestUtils.findRenderedDOMComponentWithClass(
+      FieldType, 'attelier-toggle'
+    );
+
+    expect(div).toBeTruthy();
+  });
+
+  it('should render array input', () => {
+
+    let FieldType = renderFieldType({
+      name: 'array',
+      type: 'array'
+    });
+
+    // var div = TestUtils.findRenderedDOMComponentWithClass(
+    //   FieldType, 'properties-field'
+    // );
+
+    console.log(FieldType);
+    // expect(div).toBeFalsy();
+  });
+
   // const renderFieldType = function ({ name, type, value, defaultValue, handleChange }) {
   //   return ReactDOM.findDOMNode(TestUtils.renderIntoDocument(<FieldType
   //     key={Date.now()}
