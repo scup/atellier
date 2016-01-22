@@ -29,13 +29,13 @@ class Attelier extends React.Component {
     let { components, stagedComponent } = this.state;
     return (
       <div className="attelier">
-        <Sidebar components={components} stagedComponent={stagedComponent} onSelect={this._onSelectComponent} />
-        <Workspace component={stagedComponent} />
+        <Sidebar components={components} stagedComponent={stagedComponent} onSelect={this._handleSelectComponent} />
+        <Workspace component={stagedComponent} onCloseProperties={this._handleSelectComponent} />
       </div>
     );
   }
 
-  _onSelectComponent = (component) => {
+  _handleSelectComponent = (component) => {
     this.setState({stagedComponent: component});
   };
 }

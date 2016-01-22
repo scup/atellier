@@ -8,11 +8,14 @@ import FieldType from './FieldType.jsx';
 class Properties extends React.Component {
 
   static defaultProps = {
+    onChangeProps: PropTypes.func,
+    onCloseProperties: PropTypes.func,
     component: {}
   };
 
   static propTypes = {
     onChangeProps: PropTypes.func,
+    onCloseProperties: PropTypes.func,
     component: PropTypes.shape({
       component: PropTypes.func,
       componentName: PropTypes.string
@@ -20,9 +23,8 @@ class Properties extends React.Component {
   };
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.component) {
-      this._element = React.createElement(nextProps.component.component);
-    }
+    let { component } = nextProps;
+    this._element = (component && component.component) && React.createElement(component.component) || null;
   }
 
   render() {
@@ -37,7 +39,7 @@ class Properties extends React.Component {
     if (!this._element) { return null; }
     return (
       <div className="properties-container">
-        <a className="container-close-button">+</a>
+        <a className="container-close-button" onClick={this._handleCloseProperties}>+</a>
         <h2 className="properties-component">
           {this.props.component.componentName}
         </h2>
@@ -90,6 +92,11 @@ class Properties extends React.Component {
     properties[propName] = propValue;
     this.props.onChangeProps(properties);
   };
+
+  _handleCloseProperties = () => {
+    this.props.onCloseProperties({});
+  };
+
 }
 
 export default Properties;

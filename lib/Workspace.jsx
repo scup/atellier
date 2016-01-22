@@ -5,10 +5,12 @@ import Stage from './Stage.jsx';
 class Workspace extends React.Component {
 
   static defaultProps = {
+    onCloseProperties: PropTypes.func,
     component: {}
   };
 
   static propTypes = {
+    onCloseProperties: PropTypes.func,
     component: PropTypes.shape({
       component: PropTypes.func,
       componentName: PropTypes.string
@@ -23,11 +25,11 @@ class Workspace extends React.Component {
   }
 
   render() {
-    let { component } = this.props;
+    let { component, onCloseProperties } = this.props;
     let { componentProps } = this.state;
     return (
       <div className="workspace">
-        <ComponentProperties component={component} onChangeProps={this._onChangeProps} />
+        <ComponentProperties component={component} onChangeProps={this._onChangeProps} onCloseProperties={onCloseProperties} />
         <Stage component={component} properties={componentProps} />
       </div>
     );

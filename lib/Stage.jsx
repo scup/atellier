@@ -26,9 +26,7 @@ class Stage extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     let { component, properties } = nextProps;
-    if (component) {
-      this._element = React.createElement(component.component, properties);
-    }
+    this._element = (component && component.component) && React.createElement(component.component, properties) || null;
   }
 
   render() {
@@ -61,7 +59,7 @@ class Stage extends React.Component {
     );
   }
 
-  _handleChangeConstrast = (event) => {    
+  _handleChangeConstrast = (event) => {
     this.setState({
       constrast: event.target.value === 'true'
     });
