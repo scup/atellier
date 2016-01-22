@@ -19,11 +19,6 @@ class Stage extends React.Component {
 
   constructor(props){
     super(props);
-    // this.state = {
-    //   component : false,
-    //   children : null,
-    //   contrast: false
-    // }
     this.state = {
       constrast: false
     };
@@ -31,9 +26,7 @@ class Stage extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     let { component, properties } = nextProps;
-    if (component) {
-      this._element = React.createElement(component.component, properties);
-    }
+    this._element = (component && component.component) && React.createElement(component.component, properties) || null;
   }
 
   render() {
@@ -42,7 +35,7 @@ class Stage extends React.Component {
         {this._renderStageBoard()}
         {this._renderStageTools()}
       </div>
-    );    
+    );
   }
 
   _renderStageBoard() {
@@ -56,13 +49,19 @@ class Stage extends React.Component {
 
   _renderStageTools() {
     return (
-      <div className="stage-tools"></div>
+      <div className="stage-tools">
+        <label>Stage color</label>
+        <select onChange={this._handleChangeConstrast}>
+          <option value="false">Light</option>
+          <option value="true">Dark</option>
+        </select>
+      </div>
     );
   }
 
-  handleClick = () => {
+  _handleChangeConstrast = (event) => {
     this.setState({
-      contrast: !this.state.contrast
+      constrast: event.target.value === 'true'
     });
   };
 }

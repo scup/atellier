@@ -20,10 +20,13 @@
 
 .component-list {
   border-top: 1px solid @color-border;
-  margin-top: 18px;
-  overflow: scroll;
   display: block;
   height: 1px;
+  list-style: none;
+  margin-top: 18px;
+  margin: 0;
+  overflow: scroll;
+  padding: 0;
   .flex-item(1 1 auto);
 }
 
@@ -33,7 +36,7 @@
   cursor: pointer;
   display: block;
   padding: 19px 24px;
-  line-height: @line-height;
+  line-height: @line-height;  
   .text-overflow();
 
   &-selected {

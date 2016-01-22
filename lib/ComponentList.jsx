@@ -1,24 +1,28 @@
 import React, { PropTypes } from 'react';
 import classNames from 'classnames';
+import Immutable from 'immutable';
 
 class ComponentList extends React.Component {
 
   static defaultProps = {
-    components: []
+    onSelect: PropTypes.func,
+    components: [],
+    stagedComponent: {}
   };
 
   static propTypes = {
     onSelect: PropTypes.func,
-    components: PropTypes.arrayOf(PropTypes.shape({
+    components: PropTypes.instanceOf(Immutable.List),
+    stagedComponent: PropTypes.shape({
       component: PropTypes.func,
       componentName: PropTypes.string
-    }))
+    }),
   };
 
   constructor(props){
     super(props);
     this.state = {
-      itemSelected: undefined
+      filter: ''
     };
   }
 
@@ -26,7 +30,10 @@ class ComponentList extends React.Component {
     return (
       <div className="component-nav">
         <div className="component-tools">
-          <input type="text" className="component-filter attelier-input attelier-input-icon" placeholder="Search components" />
+          <input type="text"
+            className="component-filter attelier-input attelier-input-icon"
+            placeholder="Search components"
+            onChange={this._handleFilterComponents} />
         </div>
         <ul className="component-list">
           {this._renderComponentListItems()}
@@ -36,23 +43,30 @@ class ComponentList extends React.Component {
   }
 
   _renderComponentListItems() {
-    return this.props.components.map((componentItem, index)=>{
-      let className = classNames('component-list-item', {
-        'component-list-item-selected': index === this.state.itemSelected
+    return this.props.components
+      .filter(({componentName}) => {
+        return componentName.toLowerCase().includes(this.state.filter.toLowerCase());
+      })
+      .map((component, key) => {
+        let className = classNames('component-list-item', {
+          'component-list-item-selected': Immutable.is(component, this.props.stagedComponent)
+        });
+        return (
+          <li key={key} className={className} onClick={this._handleSelectComponentItem(component)}>
+            {component.componentName}
+          </li>
+        );
       });
-      return (
-        <li key={index} className={className} onClick={this._onSelect(index)}>
-          {componentItem.componentName}
-        </li>
-      );
-    });
   }
 
-  _onSelect = (index) => {
+  _handleSelectComponentItem = (component) => {
     return () => {
-      this.props.onSelect(this.props.components[index]);
-      this.setState({ itemSelected: index });
+      this.props.onSelect(component);
     };
+  };
+
+  _handleFilterComponents = (event) => {
+    this.setState({filter: event.target.value});
   };
 
 }
