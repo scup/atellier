@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import Immutable from 'immutable';
 import classNames from 'classnames';
 import ComponentList from './ComponentList.jsx';
 import toggleButtonImage from './images/arrow.png';
@@ -6,14 +7,18 @@ import toggleButtonImage from './images/arrow.png';
 class Sidebar extends React.Component {
 
   static defaultProps = {
-    components: []
+    onSelect: PropTypes.func,
+    components: [],
+    stagedComponent: {}
   };
 
   static propTypes = {
-    components: PropTypes.arrayOf(PropTypes.shape({
+    onSelect: PropTypes.func,
+    components: PropTypes.instanceOf(Immutable.List),
+    stagedComponent: PropTypes.shape({
       component: PropTypes.func,
       componentName: PropTypes.string
-    }))
+    }),
   };
 
   constructor(props) {
@@ -22,14 +27,6 @@ class Sidebar extends React.Component {
       close: false
     };
   }
-
-  static propTypes = {
-    onSelect: PropTypes.func,
-    components: PropTypes.arrayOf(PropTypes.shape({
-      component: PropTypes.func,
-      componentName: PropTypes.string
-    }))
-  };
 
   render() {
     let { components, stagedComponent, onSelect } = this.props;
@@ -40,7 +37,7 @@ class Sidebar extends React.Component {
         <span className="sidebar-toggle-button" onClick={this._handleToggleSidebar}>
           <img src={toggleButtonImage} />
         </span>
-        <ComponentList components={components} onSelect={onSelect} />
+        <ComponentList components={components} stagedComponent={stagedComponent} onSelect={onSelect} />
       </div>
     );
   }

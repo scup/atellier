@@ -1,27 +1,28 @@
 import React, { PropTypes } from 'react';
 import classNames from 'classnames';
-import immutable from 'immutable';
+import Immutable from 'immutable';
 
 class ComponentList extends React.Component {
 
   static defaultProps = {
-    components: []
+    onSelect: PropTypes.func,
+    components: [],
+    stagedComponent: {}
   };
 
   static propTypes = {
     onSelect: PropTypes.func,
-    components: PropTypes.arrayOf(PropTypes.shape({
+    components: PropTypes.instanceOf(Immutable.List),
+    stagedComponent: PropTypes.shape({
       component: PropTypes.func,
       componentName: PropTypes.string
-    }))
+    }),
   };
 
   constructor(props){
     super(props);
     this.state = {
-      filter: '',
-      itemSelected: undefined,
-      components: immutable.List(props.components)
+      filter: ''
     };
   }
 
@@ -42,28 +43,25 @@ class ComponentList extends React.Component {
   }
 
   _renderComponentListItems() {
-    return this.state.components
+    return this.props.components
       .filter(({componentName}) => {
         return componentName.toLowerCase().includes(this.state.filter.toLowerCase());
       })
-      .map(({componentName, index}) => {
+      .map((component, key) => {
         let className = classNames('component-list-item', {
-          'component-list-item-selected': componentName === this.state.itemSelected
+          'component-list-item-selected': Immutable.is(component, this.props.stagedComponent)
         });
         return (
-          <li key={`${index}:${componentName}`} className={className} onClick={this._handleSelectComponentItem(componentName)}>
-            {componentName}
+          <li key={key} className={className} onClick={this._handleSelectComponentItem(component)}>
+            {component.componentName}
           </li>
         );
       });
   }
 
-  _handleSelectComponentItem = (componentName) => {
+  _handleSelectComponentItem = (component) => {
     return () => {
-      console.log(componentName);      
-      // console.log(this.state.components.get(0);
-      // this.props.onSelect(this.props.components[index]);
-      // this.setState({ itemSelected: index });
+      this.props.onSelect(component);
     };
   };
 
