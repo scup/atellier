@@ -1,0 +1,32 @@
+/* ------------------------- *\
+      FORMS
+\* ------------------------- */
+
+.attelier-input {
+  background-color: @color-input-background;
+  border-radius: @border-radius;
+  border: 0;
+  color: @color-text;
+  font-size: 16px;
+  font-weight: 300;
+  outline: none;
+  padding: 13px;
+  width: 100%;
+  resize: none;
+
+  &::-webkit-input-placeholder {
+    color: @color-placeholder;
+  }
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  &-icon {
+    background-repeat: no-repeat;
+    background-position: 13px;
+    padding-left: 36px;
+  }
+}

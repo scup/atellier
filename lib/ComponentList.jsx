@@ -1,40 +1,74 @@
-import React from 'react';
-
-import './ComponentList.less';
+import React, { PropTypes } from 'react';
+import classNames from 'classnames';
+import Immutable from 'immutable';
 
 class ComponentList extends React.Component {
 
   static defaultProps = {
-    components: []
+    onSelect: PropTypes.func,
+    components: [],
+    stagedComponent: {}
+  };
+
+  static propTypes = {
+    onSelect: PropTypes.func,
+    components: PropTypes.instanceOf(Immutable.List),
+    stagedComponent: PropTypes.shape({
+      component: PropTypes.func,
+      componentName: PropTypes.string
+    }),
   };
 
   constructor(props){
     super(props);
     this.state = {
-      selected : false
-    }
-  }
-  getComponets(){
-    this.components = this.props.components.map((item,i)=>{
-      let myClass = false;
-      if (i === this.state.selected){
-        let myClass = 'selected'
-      };
-      return (<li className={myClass} onClick={this.selectComponent.bind(this,i)} key={i}>{item.componentName}</li>)
-    })
-  }
-
-  selectComponent(index){
-    this.props.onSelect(this.props.components[index]);
-    this.setState({
-      selected : index
-    })
+      filter: ''
+    };
   }
 
   render() {
-    this.getComponets()
-    return (<ul className="component-list">{this.components}</ul>)
+    return (
+      <div className="component-nav">
+        <div className="component-tools">
+          <input type="text"
+            className="component-filter attelier-input attelier-input-icon"
+            placeholder="Search components"
+            onChange={this._handleFilterComponents} />
+        </div>
+        <ul className="component-list">
+          {this._renderComponentListItems()}
+        </ul>
+      </div>
+    );
   }
+
+  _renderComponentListItems() {
+    return this.props.components
+      .filter(({componentName}) => {
+        return componentName.toLowerCase().includes(this.state.filter.toLowerCase());
+      })
+      .map((component, key) => {
+        let className = classNames('component-list-item', {
+          'component-list-item-selected': Immutable.is(component, this.props.stagedComponent)
+        });
+        return (
+          <li key={key} className={className} onClick={this._handleSelectComponentItem(component)}>
+            {component.componentName}
+          </li>
+        );
+      });
+  }
+
+  _handleSelectComponentItem = (component) => {
+    return () => {
+      this.props.onSelect(component);
+    };
+  };
+
+  _handleFilterComponents = (event) => {
+    this.setState({filter: event.target.value});
+  };
+
 }
 
 export default ComponentList;

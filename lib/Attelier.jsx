@@ -1,75 +1,43 @@
 import React, { PropTypes } from 'react';
-import Stage from './Stage.jsx';
-import ComponentList from './ComponentList.jsx';
-import ComponentProperties from './ComponentProperties.jsx';
+import Immutable from 'immutable';
 import Sidebar from './Sidebar.jsx';
 import Workspace from './Workspace.jsx';
-
-import './Attelier.less';
+import './styles/attelier.less';
 
 class Attelier extends React.Component {
 
   static defaultProps = {
     components: []
-  }
+  };
 
   static propTypes = {
     components: PropTypes.arrayOf(PropTypes.shape({
       component: PropTypes.func,
       componentName: PropTypes.string
     }))
-  }
+  };
 
-  state = {
-    components: [],
-    stagedComponent: null,
-    stagedComponentProps: {}
-  }
-
-  constructor(){
-    super()
+  constructor(props) {
+    super(props);
+    this.state = {
+      components: Immutable.List(props.components),
+      stagedComponent: {}
+    };
   }
 
   render() {
-    let sidebarContent,
-        workspaceContent;
-
-    if (this.state.stagedComponent) {
-      sidebarContent = (
-        <ComponentProperties component={this.state.stagedComponent} onChangeProps={this.onChangeProps}/>
-      );
-      workspaceContent = (
-        <Stage keys={this.state.keys}
-          component={this.state.stagedComponent}
-          properties={this.state.stagedComponentProps} />
-      );
-    } else {
-      sidebarContent = (
-        <ComponentList
-          components={this.props.components}
-          onSelect={this.onSelectComponent}/>
-      );
-    }
-
+    let { components, stagedComponent } = this.state;
     return (
-      <div className="attelier flex-container">
-        <Sidebar>
-          {sidebarContent}
-        </Sidebar>
-        <Workspace>
-          {workspaceContent}
-        </Workspace>
+      <div className="attelier">
+        <Sidebar components={components} stagedComponent={stagedComponent} onSelect={this._handleSelectComponent} />
+        <Workspace component={stagedComponent} onCloseProperties={this._handleSelectComponent} />
       </div>
     );
   }
 
-  onSelectComponent = (component) => {
+  _handleSelectComponent = (component) => {
     this.setState({stagedComponent: component});
-  }
-
-  onChangeProps = (properties) => {
-    this.setState({stagedComponentProps: properties});
-  }
+  };
 }
 
 export default Attelier;
