@@ -17,7 +17,7 @@
         propC: React.PropTypes.number,
         propD: React.PropTypes.bool,
         propE: React.PropTypes.bool,
-        propF: React.PropTypes.array,
+        // propF: React.PropTypes.array,
         propG: React.PropTypes.object,
         color: React.PropTypes.string
       },
@@ -28,7 +28,7 @@
           propC: 1,
           propD: true,
           propE: false,
-          propF: [{ 1: 'lululu' }, { 2: 'lalala', selected: true }, { 3: 'lololo' }],
+          // propF: [{ 1: 'lululu' }, { 2: 'lalala', selected: true }, { 3: 'lololo' }],
           color: 'blue'
         }
       },
@@ -40,7 +40,7 @@
             React.DOM.li({key: 3}, this.props.propC),
             React.DOM.li({key: 4}, String(this.props.propD)),
             React.DOM.li({key: 5}, String(this.props.propE)),
-            React.DOM.li({key: 6}, this.props.propF),
+            // React.DOM.li({key: 6}, this.props.propF),
             React.DOM.li({key: 7}, this.props.propG),
             React.DOM.li({key: 8}, this.props.color),
           ]

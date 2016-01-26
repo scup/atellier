@@ -35,7 +35,7 @@ class Attelier extends React.Component {
     );
   }
 
-  _handleSelectComponent = (component) => {
+  _handleSelectComponent = (component) => {    
     this.setState({stagedComponent: component});
   };
 }
