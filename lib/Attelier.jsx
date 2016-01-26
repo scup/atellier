@@ -21,7 +21,7 @@ class Attelier extends React.Component {
     super(props);
     this.state = {
       components: Immutable.List(props.components),
-      stagedComponent: {}
+      stagedComponent: null
     };
   }
 
@@ -35,7 +35,7 @@ class Attelier extends React.Component {
     );
   }
 
-  _handleSelectComponent = (component) => {
+  _handleSelectComponent = (component) => {    
     this.setState({stagedComponent: component});
   };
 }

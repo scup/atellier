@@ -10,7 +10,8 @@ class Properties extends React.Component {
   static defaultProps = {
     onChangeProps: PropTypes.func,
     onCloseProperties: PropTypes.func,
-    component: {}
+    component: {},
+    componentProps: {}
   };
 
   static propTypes = {
@@ -19,12 +20,18 @@ class Properties extends React.Component {
     component: PropTypes.shape({
       component: PropTypes.func,
       componentName: PropTypes.string
-    })
+    }),
+    componentProps: PropTypes.object
   };
 
+  constructor(props) {
+    super(props);
+    this._properties = {};
+    this._defineElement(props);
+  }
+
   componentWillReceiveProps(nextProps) {
-    let { component } = nextProps;
-    this._element = (component && component.component) && React.createElement(component.component) || null;
+    this._defineElement(nextProps);
   }
 
   render() {
@@ -54,13 +61,13 @@ class Properties extends React.Component {
     let propsFields = [];
     let propTypes = this._element.type.propTypes;
     for (let prop in propTypes) {
-      propTypes[prop].type = this._getPropTypePatch(propTypes[prop])
+      propTypes[prop].type = this._getPropTypePatch(propTypes[prop]);
       propsFields.push(
         <FieldType
           key={prop}
           name={prop}
           type={propTypes[prop].type}
-          defaultValue={this._element.props[prop]}
+          defaultValue={this._properties[prop]}
           onChange={this._handleChange} />
       );
     }
@@ -88,13 +95,19 @@ class Properties extends React.Component {
   }
 
   _handleChange = (propName, propValue) => {
-    let properties = Object.assign({}, this._element.props);
-    properties[propName] = propValue;
-    this.props.onChangeProps(properties);
+    this._properties[propName] = propValue;
+    this.props.onChangeProps(this._properties);
   };
 
   _handleCloseProperties = () => {
-    this.props.onCloseProperties({});
+    this.props.onCloseProperties(null);
+  };
+
+  _defineElement = (props) => {
+    if (props.component && props.component.component) {
+      this._element = React.createElement(props.component.component);
+      this._properties = Object.assign({}, this._element.props, props.componentProps);
+    }
   };
 
 }

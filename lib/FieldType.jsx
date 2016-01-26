@@ -28,12 +28,12 @@ class FieldType extends React.Component {
     };
   }
 
-  render() {
+  render() {    
     let renderComponent = this._renderTypeHandlers[ this.props.type ] || this._renderText;
     return renderComponent.call(this, this.props);
   }
 
-  _renderStringInput({ type, defaultValue, name }) {
+  _renderStringInput({ name, type, defaultValue }) {
     return (
       <div className="properties-field">
         <label>{name}</label>
@@ -42,7 +42,7 @@ class FieldType extends React.Component {
     );
   }
 
-  _renderNumberInput({ type, defaultValue, name }) {
+  _renderNumberInput({ name, type, defaultValue }) {
     return (
       <div className="properties-field">
         <label>{name}</label>
@@ -51,7 +51,7 @@ class FieldType extends React.Component {
     );
   }
 
-  _renderBoolInput({ type, defaultValue, name }) {
+  _renderBoolInput({ name, type, defaultValue }) {
     return (
       <div className="properties-field">
         <Toggle defaultValue={defaultValue} onChange={this._handleChange} />
@@ -60,36 +60,23 @@ class FieldType extends React.Component {
     );
   }
 
-  _renderArrayInput({ type, defaultValue, name }) {
-    // let options = (this.props.values || []).map((option, index) => {
-    //   console.log(option);
-    //   return <option key={index} value={option.value} selected={option.value}>{option.value}</option>;
-    // });
-    // console.log(options);
-
-    for (var x in this.props.values) {
-      console.log(x)
-    }
-
-    // return (
-    //   <div className="properties-field">
-    //     <label>{this.props.name}</label>
-    //     <select className="attelier-input" value={defaultValue} onChange={this.handleChange}>
-    //       {options}
-    //     </select>
-    //   </div>
-    // );
-
-    // return this._renderText({ type, defaultValue, name });
-    return null;
+  _renderArrayInput({ name, type, defaultValue }) {
+    return (
+      <div className="properties-field"></div>
+    );
   }
 
-  _renderObjectInput({ type, defaultValue, name }) {
-    return null;
+  _renderObjectInput({ name, type, defaultValue }) {
+    return (
+      <div className="properties-field"></div>
+    );
   }
 
   _handleChange = ( response ) => {
-    let value = response.target && response.target.value || response;
+    let value = response;
+    if (response.target) {
+      value = response.target.type === 'number' && +response.target.value || response.target.value;
+    }
     this.props.onChange(this.props.name, value);
   };
 
