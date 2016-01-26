@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import Immutable from 'immutable';
 import Sidebar from './Sidebar.jsx';
 import Workspace from './Workspace.jsx';
 import './styles/attelier.less';
@@ -19,23 +20,22 @@ class Attelier extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      components: [],
-      stagedComponent: null
+      components: Immutable.List(props.components),
+      stagedComponent: {}
     };
   }
 
   render() {
-    let { components } = this.props;
-    let { stagedComponent } = this.state;
+    let { components, stagedComponent } = this.state;
     return (
       <div className="attelier">
-        <Sidebar components={components} onSelect={this._onSelectComponent} />
-        <Workspace component={stagedComponent} />
+        <Sidebar components={components} stagedComponent={stagedComponent} onSelect={this._handleSelectComponent} />
+        <Workspace component={stagedComponent} onCloseProperties={this._handleSelectComponent} />
       </div>
     );
   }
 
-  _onSelectComponent = (component) => {
+  _handleSelectComponent = (component) => {
     this.setState({stagedComponent: component});
   };
 }

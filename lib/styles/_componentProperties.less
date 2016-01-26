@@ -6,6 +6,7 @@
   padding: 25px;
   position: relative;
   overflow: scroll;
+  border-right: 1px solid @color-border;
   .flex-item(0 0 362px);
 }
 
@@ -18,9 +19,14 @@
 }
 
 .container-close-button {
+  color: @color-border;
+  cursor: pointer;
+  cursor: pointer;
+  font-size: 35px;
   position: absolute;
-  top: 14px;
-  right: 24px
+  right: 23px;
+  top: 7px;
+  transform: rotate(45deg);
 }
 
 .properties-component {
@@ -28,7 +34,6 @@
   color: @color-secundary-text;
   font-size: 18.67px;
   font-weight: 400;
-  line-height: 18.67px;
   margin: 0;
   padding: 14px 24px;
 }
@@ -39,5 +44,5 @@
 }
 
 .no-properties {
-  margin: 22px 0;  
+  margin: 22px 0;
 }

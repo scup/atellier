@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react';
-import ContainerCloseButton from './images/x.png';
 import FieldType from './FieldType.jsx';
 // import PropTypesInterceptor from './structural/PropTypesInterceptor.jsx';
 
@@ -9,11 +8,14 @@ import FieldType from './FieldType.jsx';
 class Properties extends React.Component {
 
   static defaultProps = {
+    onChangeProps: PropTypes.func,
+    onCloseProperties: PropTypes.func,
     component: {}
   };
 
   static propTypes = {
     onChangeProps: PropTypes.func,
+    onCloseProperties: PropTypes.func,
     component: PropTypes.shape({
       component: PropTypes.func,
       componentName: PropTypes.string
@@ -21,9 +23,8 @@ class Properties extends React.Component {
   };
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.component) {
-      this._element = React.createElement(nextProps.component.component);
-    }
+    let { component } = nextProps;
+    this._element = (component && component.component) && React.createElement(component.component) || null;
   }
 
   render() {
@@ -38,9 +39,7 @@ class Properties extends React.Component {
     if (!this._element) { return null; }
     return (
       <div className="properties-container">
-        <a className="container-close-button">
-          <img src={ContainerCloseButton} />
-        </a>
+        <a className="container-close-button" onClick={this._handleCloseProperties}>+</a>
         <h2 className="properties-component">
           {this.props.component.componentName}
         </h2>
@@ -76,13 +75,15 @@ class Properties extends React.Component {
 
   _getPropTypePatch(propType) {
     if (propType === React.PropTypes.string) {
-      return 'string'
+      return 'string';
     } else if (propType === React.PropTypes.bool) {
-      return 'bool'
+      return 'bool';
     } else if (propType === React.PropTypes.array) {
-      return 'array'
+      return 'array';
     } else if (propType === React.PropTypes.number) {
-      return 'number'
+      return 'number';
+    } else if (propType === React.PropTypes.object) {
+      return 'object';
     }
   }
 
@@ -91,6 +92,11 @@ class Properties extends React.Component {
     properties[propName] = propValue;
     this.props.onChangeProps(properties);
   };
+
+  _handleCloseProperties = () => {
+    this.props.onCloseProperties({});
+  };
+
 }
 
 export default Properties;
