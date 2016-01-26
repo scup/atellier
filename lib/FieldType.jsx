@@ -28,7 +28,7 @@ class FieldType extends React.Component {
     };
   }
 
-  render() {
+  render() {    
     let renderComponent = this._renderTypeHandlers[ this.props.type ] || this._renderText;
     return renderComponent.call(this, this.props);
   }
@@ -73,7 +73,10 @@ class FieldType extends React.Component {
   }
 
   _handleChange = ( response ) => {
-    let value = response.target && response.target.value || response;
+    let value = response;
+    if (response.target) {
+      value = response.target.type === 'number' && +response.target.value || response.target.value;
+    }
     this.props.onChange(this.props.name, value);
   };
 
