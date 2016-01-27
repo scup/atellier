@@ -119,7 +119,7 @@ class FieldType extends React.Component {
               theme="twilight"
               value={defaultValue}
               showGutter={false}
-              onChange={this._handleObjectChange}
+              onChange={this._handleComponentRaw}
               name={(Date.now()*Math.random()/Math.random()).toString() }
               editorProps={{
                 $blockScrolling: true,
@@ -130,13 +130,15 @@ class FieldType extends React.Component {
     return (
       <div className="properties-field">
       <label>{name}</label>
-      <textarea className="attelier-input" defaultValue={defaultValue} onChange={this._handleObjectChange} />
-
+      {codeEditor}
       </div>
     );
-  }
+  };
 
 
+  _handleComponentRaw = (response)=>{
+    this.props.onChange(this.props.name, JSON.parse(response));
+  };
 
   _handleComponentChange = (response)=>{
     var component = this.props.components.get(response.target.selectedIndex).component
@@ -145,8 +147,8 @@ class FieldType extends React.Component {
     this.props.onChange(this.props.name, component);
   };
 
-  _handleObjectChange = ( response ) => {
-    this.props.onChange(this.props.name, JSON.parse(response.target.value));
+  _handleObjectChange = (response) => {
+    this.refs.rawjs.value = response;
   };
 
   _handleFunctionChange = ( response ) => {
@@ -161,6 +163,10 @@ class FieldType extends React.Component {
     this.props.onChange(this.props.name, value);
   };
 
+}
+
+function _onChange(newValue) {
+  console.log('change', newValue)
 }
 
 export default FieldType;
