@@ -111,7 +111,7 @@ class FieldType extends React.Component {
 
   _renderObjectInput({ name, type, defaultValue }) {
     if (typeof defaultValue === 'object'){
-      defaultValue = JSON.stringify(defaultValue,null,2 )
+      defaultValue = JSON.stringify(defaultValue, null, 2);
     }
     let codeEditor = (<AceEditor
               className="code-editor"
@@ -136,8 +136,13 @@ class FieldType extends React.Component {
   };
 
 
-  _handleComponentRaw = (response)=>{
-    this.props.onChange(this.props.name, JSON.parse(response));
+  _handleComponentRaw = (response) => {
+    try {
+      this.props.onChange(this.props.name, JSON.parse(response));
+    } catch(e) {
+      this.props.onChange(this.props.name, response);
+    }
+
   };
 
   _handleComponentChange = (response)=>{
