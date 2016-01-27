@@ -28,43 +28,59 @@ class Properties extends React.Component {
     super(props);
     this._properties = {};
     this._defineElement(props);
+    this.propsContainer = [];
   }
 
   componentWillReceiveProps(nextProps) {
     this._defineElement(nextProps);
   }
 
+  recursiva(element){
+    if (element.props)
+    if (element.props.children){
+      console.log(element.props.children,'<<<<<');
+        return this.recursiva(element.props.children)
+    }
+  }
+
   render() {
+
+    // this.recursiva();
+    this.propsContainer = [];
+    this._renderPropertiesContainer(this._element)
+    this.propsContainer.reverse()
     return (
       <div className="component-properties">
-        {this._renderPropertiesContainer()}
+        {this.propsContainer}
       </div>
     );
   }
 
-  _renderPropertiesContainer() {
-    if (!this._element) { return null; }
-    return (
+  _renderPropertiesContainer(element) {    
+    if (!element) { return null; }
+    this.propsContainer.push(
       <div>
       <div className="properties-container">
         <a className="container-close-button" onClick={this._handleCloseProperties}>+</a>
         <h2 className="properties-component">
-          {this.props.component.componentName}
+          {element.type.displayName || element.type}
         </h2>
         <div className="properties-form">
-          {this._renderPropertiesFields()}
+          {this._renderPropertiesFields(element)}
         </div>
       </div>
       </div>
     );
+
   }
 
-  _renderPropertiesFields() {
+  _renderPropertiesFields(element) {
     let propsFields = [];
-    let propTypes = this._element.type.propTypes;
+    let propTypes = element.type.propTypes;
 
     for (let prop in propTypes) {
       propTypes[prop].type = PropTypesInterceptor.getPropTypePatch(propTypes[prop]);
+
 
 
       let options = [];
@@ -82,7 +98,14 @@ class Properties extends React.Component {
           options={options}
           onChange={this._handleChange} />
       );
+
+      if (propTypes[prop].type === 'element'){
+        console.log(element.type.displayName)
+        this._renderPropertiesContainer(element.props[prop])
+      }
+
     }
+
 
 
     return propsFields.length && propsFields || this._renderNoProperties();

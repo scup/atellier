@@ -4,8 +4,6 @@
 </head>
 <body>
   <div id="main"></div>
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.6/react.js"></script> -->
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.6/react-dom.min.js"></script> -->
 
   <script src="node_modules/react/dist/react.js"></script>
   <script src="node_modules/react-dom/dist/react-dom.min.js"></script>
@@ -14,6 +12,7 @@
     var props = {style: {background:'CornflowerBlue', padding: '30px', margin:'50px'}};
 
     var MyComponentA = React.createClass({
+      displayName : 'MyComponentA',
       propTypes: {
         propA: React.PropTypes.string,
         propB: React.PropTypes.string,
@@ -62,12 +61,13 @@
     });
 
     var MyComponentB = React.createClass({
+      displayName : 'Pink Shadow',
       propTypes: {
         children: React.PropTypes.element
       },
       getDefaultProps : function(){
         return {
-            children : 'teste',
+            children : React.createElement(MyComponentA,{},'teste'),
             style : {
               boxShadow : '10px 10px 10px #FF00FF',
               textShadow : '1px 1px 0px #FF0000'
@@ -75,7 +75,7 @@
         }
       },
       render: function() {
-        return React.createElement('p',this.props,this.props.children);
+        return React.createElement('div',this.props,this.props.children);
       }
     });
 

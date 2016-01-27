@@ -130,7 +130,6 @@ class FieldType extends React.Component {
     return (
       <div className="properties-field">
       <label>{name}</label>
-      {codeEditor}
       <textarea className="attelier-input" defaultValue={defaultValue} onChange={this._handleObjectChange} />
 
       </div>
