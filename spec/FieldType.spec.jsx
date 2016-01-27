@@ -97,4 +97,6 @@ describe('FieldType', () => {
     );
 
     TestUtils.Simulate.change(textarea);
+
+  });
 });
