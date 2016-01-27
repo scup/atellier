@@ -1,9 +1,6 @@
 import React, { PropTypes } from 'react';
-import FieldType from './FieldType.jsx';
-import PropTypesInterceptor from './structural/PropTypesInterceptor.jsx';
-
-PropTypesInterceptor.intercept(PropTypes.oneOf)
-
+import Immutable from 'immutable';
+import PropertiesContainer from './PropertiesContainer.jsx';
 
 class Properties extends React.Component {
 
@@ -26,13 +23,9 @@ class Properties extends React.Component {
 
   constructor(props) {
     super(props);
-    this._properties = {};
-    this._defineElement(props);
-    this.propsContainer = [];
-  }
-
-  componentWillReceiveProps(nextProps) {
-    this._defineElement(nextProps);
+    this.state = {
+      childElements: []
+    }
   }
 
   recursiva(element){
@@ -51,86 +44,38 @@ class Properties extends React.Component {
     this.propsContainer.reverse()
     return (
       <div className="component-properties">
-        {this.propsContainer}
-      </div>
-    );
-  }
-
-  _renderPropertiesContainer(element) {    
-    if (!element) { return null; }
-    this.propsContainer.push(
-      <div>
-      <div className="properties-container">
-        <a className="container-close-button" onClick={this._handleCloseProperties}>+</a>
-        <h2 className="properties-component">
-          {element.type.displayName || element.type}
-        </h2>
-        <div className="properties-form">
-          {this._renderPropertiesFields(element)}
-        </div>
-      </div>
-      </div>
-    );
-
-  }
-
-  _renderPropertiesFields(element) {
-    let propsFields = [];
-    let propTypes = element.type.propTypes;
-
-    for (let prop in propTypes) {
-      propTypes[prop].type = PropTypesInterceptor.getPropTypePatch(propTypes[prop]);
-
-
-
-      let options = [];
-      if (propTypes[prop].options)
-        if (propTypes[prop].options[prop])
-          options = propTypes[prop].options[prop];
-
-      propsFields.push(
-        <FieldType
-          key={prop}
-          name={prop}
+        <PropertiesContainer
           components={this.props.components}
-          type={propTypes[prop].type}
-          defaultValue={this._properties[prop]}
-          options={options}
-          onChange={this._handleChange} />
-      );
-
-      if (propTypes[prop].type === 'element'){
-        console.log(element.type.displayName)
-        this._renderPropertiesContainer(element.props[prop])
-      }
-
-    }
-
-
-
-    return propsFields.length && propsFields || this._renderNoProperties();
-  }
-
-  _renderNoProperties() {
-    return (
-      <p className="no-properties">No properties</p>
+          component={this.props.component}
+          componentProps={this.props.componentProps}
+          onChangeProps={this.props.onChangeProps}
+          onAddChildElement={this._handleAddChildElement}
+          onCloseProperties={this.props.onCloseProperties} />
+        {this._renderChildElementsProperties()}
+      </div>
     );
+
   }
 
-  _handleChange = (propName, propValue) => {
-    this._properties[propName] = propValue;
-    this.props.onChangeProps(this._properties);
-  };
+  _renderChildElementsProperties() {
+    return this.state.childElements.map((element, index) => {
+      return (
+        <PropertiesContainer
+          key={index}
+          components={this.props.components}
+          component={element}
+          componentProps={this.props.componentProps}
+          onChangeProps={this.props.onChangeProps}
+          onAddChildElement={this._handleAddChildElement}
+          onCloseProperties={this.props.onCloseProperties} />
+      );
+    });
+  }
 
-  _handleCloseProperties = () => {
-    this.props.onCloseProperties(null);
-  };
-
-  _defineElement = (props) => {
-    if (props.component && props.component.component) {
-      this._element = React.createElement(props.component.component);
-      this._properties = Object.assign({}, this._element.props, props.componentProps);
-    }
+  _handleAddChildElement = (name, element) => {
+    let properties = Object.assign({}, this.props.componentProps);
+    properties[name] = React.createElement(element.component);
+    this.props.onChangeProps(properties);
   };
 
 }

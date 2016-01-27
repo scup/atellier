@@ -67,7 +67,7 @@
       },
       getDefaultProps : function(){
         return {
-            children : React.createElement(MyComponentA,{},'teste'),
+            children : React.createElement('p', {}, 'teste'),
             style : {
               boxShadow : '10px 10px 10px #FF00FF',
               textShadow : '1px 1px 0px #FF0000'
@@ -75,7 +75,7 @@
         }
       },
       render: function() {
-        return React.createElement('div',this.props,this.props.children);
+        return React.createElement('div', this.props);
       }
     });
 

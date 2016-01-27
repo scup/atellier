@@ -76,15 +76,16 @@ class FieldType extends React.Component {
     );
   }
 
-  _renderElement({ name, type, defaultValue }) {
+  _renderElement({ name, type, defaultValue, components }) {
 
-    let selectComponents = this.props.components.map(function(item,index){
-      return <option key={index} value={item.component}>{item.componentName}</option>
-    })
+    let selectComponents = components.map((item, index) => {
+      return <option key={index} value={index}>{item.componentName}</option>
+    });
+
     return (
       <div className="properties-field">
         <label>{name}</label>
-        <select className="attelier-input" onChange={this._handleComponentChange} >
+        <select className="attelier-input" onChange={this._handleElementChange} >
           {selectComponents}
         </select>
       </div>
@@ -135,7 +136,6 @@ class FieldType extends React.Component {
     );
   };
 
-
   _handleComponentRaw = (response) => {
     try {
       this.props.onChange(this.props.name, JSON.parse(response));
@@ -145,11 +145,9 @@ class FieldType extends React.Component {
 
   };
 
-  _handleComponentChange = (response)=>{
-    var component = this.props.components.get(response.target.selectedIndex).component
-    component = React.createElement(component)
-
-    this.props.onChange(this.props.name, component);
+  _handleElementChange = (response) => {
+    let element = this.props.components.get(response.target.value);
+    this.props.onAddChildElement(this.props.name, element);
   };
 
   _handleObjectChange = (response) => {

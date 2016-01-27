@@ -25,24 +25,26 @@ class Workspace extends React.Component {
   }
 
   render() {
-
-    let { component, onCloseProperties } = this.props;
-    let { componentProps } = this.state;
-
+    let { components, component, onCloseProperties } = this.props;
+    let { componentProps, childElements } = this.state;
     return !!component && (
       <div className="workspace">
         <ComponentProperties
-        components={this.props.components}
-        component={component}
-        componentProps={componentProps}
-        onChangeProps={this._onChangeProps}
-        onCloseProperties={onCloseProperties} />
-        <Stage component={component} properties={componentProps} />
+          components={components}
+          component={component}
+          componentProps={componentProps}
+          childElements={childElements}
+          onChangeProps={this._handleChangeProps}
+          onAddChildElement={this._handleAddChildElement}
+          onCloseProperties={onCloseProperties} />
+        <Stage
+          component={component}
+          properties={componentProps} />
       </div>
     );
   }
 
-  _onChangeProps = (properties) => {
+  _handleChangeProps = (properties) => {
     this.setState({componentProps: properties});
   };
 }
