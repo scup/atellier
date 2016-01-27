@@ -30,12 +30,12 @@ class Attelier extends React.Component {
     return (
       <div className="attelier">
         <Sidebar components={components} stagedComponent={stagedComponent} onSelect={this._handleSelectComponent} />
-        <Workspace component={stagedComponent} onCloseProperties={this._handleSelectComponent} />
+        <Workspace components={components} component={stagedComponent} onCloseProperties={this._handleSelectComponent} />
       </div>
     );
   }
 
-  _handleSelectComponent = (component) => {    
+  _handleSelectComponent = (component) => {
     this.setState({stagedComponent: component});
   };
 }

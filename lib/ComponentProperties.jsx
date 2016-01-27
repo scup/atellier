@@ -1,9 +1,9 @@
 import React, { PropTypes } from 'react';
 import FieldType from './FieldType.jsx';
-// import PropTypesInterceptor from './structural/PropTypesInterceptor.jsx';
+import PropTypesInterceptor from './structural/PropTypesInterceptor.jsx';
 
-// PropTypes.number = PropTypesInterceptor.intercept(PropTypes.number);
-// PropTypes.string = PropTypesInterceptor.intercept(PropTypes.string);
+PropTypesInterceptor.intercept(PropTypes.oneOf)
+
 
 class Properties extends React.Component {
 
@@ -45,6 +45,7 @@ class Properties extends React.Component {
   _renderPropertiesContainer() {
     if (!this._element) { return null; }
     return (
+      <div>
       <div className="properties-container">
         <a className="container-close-button" onClick={this._handleCloseProperties}>+</a>
         <h2 className="properties-component">
@@ -54,23 +55,36 @@ class Properties extends React.Component {
           {this._renderPropertiesFields()}
         </div>
       </div>
+      </div>
     );
   }
 
   _renderPropertiesFields() {
     let propsFields = [];
     let propTypes = this._element.type.propTypes;
+
     for (let prop in propTypes) {
-      propTypes[prop].type = this._getPropTypePatch(propTypes[prop]);
+      propTypes[prop].type = PropTypesInterceptor.getPropTypePatch(propTypes[prop]);
+
+
+      let options = [];
+      if (propTypes[prop].options)
+        if (propTypes[prop].options[prop])
+          options = propTypes[prop].options[prop];
+
       propsFields.push(
         <FieldType
           key={prop}
           name={prop}
+          components={this.props.components}
           type={propTypes[prop].type}
           defaultValue={this._properties[prop]}
+          options={options}
           onChange={this._handleChange} />
       );
     }
+
+
     return propsFields.length && propsFields || this._renderNoProperties();
   }
 
@@ -78,20 +92,6 @@ class Properties extends React.Component {
     return (
       <p className="no-properties">No properties</p>
     );
-  }
-
-  _getPropTypePatch(propType) {
-    if (propType === React.PropTypes.string) {
-      return 'string';
-    } else if (propType === React.PropTypes.bool) {
-      return 'bool';
-    } else if (propType === React.PropTypes.array) {
-      return 'array';
-    } else if (propType === React.PropTypes.number) {
-      return 'number';
-    } else if (propType === React.PropTypes.object) {
-      return 'object';
-    }
   }
 
   _handleChange = (propName, propValue) => {

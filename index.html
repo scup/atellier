@@ -4,8 +4,11 @@
 </head>
 <body>
   <div id="main"></div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.6/react.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.6/react-dom.min.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.6/react.js"></script> -->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.6/react-dom.min.js"></script> -->
+
+  <script src="node_modules/react/dist/react.js"></script>
+  <script src="node_modules/react-dom/dist/react-dom.min.js"></script>
   <script src="react-attelier.js"></script>
   <script>
     var props = {style: {background:'CornflowerBlue', padding: '30px', margin:'50px'}};
@@ -17,9 +20,11 @@
         propC: React.PropTypes.number,
         propD: React.PropTypes.bool,
         propE: React.PropTypes.bool,
-        // propF: React.PropTypes.array,
+        propF: React.PropTypes.array,
         propG: React.PropTypes.object,
-        color: React.PropTypes.string
+        propH: React.PropTypes.oneOf(['kjsehfsdb','adsfdsaf','adsfdas']),
+        color: React.PropTypes.oneOf(['yellow','#EE00EE','purple','black']),
+        click: React.PropTypes.func
       },
       getDefaultProps: function() {
         return {
@@ -28,11 +33,17 @@
           propC: 1,
           propD: true,
           propE: false,
-          // propF: [{ 1: 'lululu' }, { 2: 'lalala', selected: true }, { 3: 'lololo' }],
-          color: 'blue'
+          propF: [{ nome: 'lululu' }, { nome: 'lalala'}, { nome: 'lololo' }],
+          propG: {nome : 'Alberto'},
+          color: 'blue',
+          click: function(){
+            console.log('funcionou')
+          }
         }
       },
       render: function() {
+
+
         return React.DOM.ul(props,
           [
             React.DOM.li({key: 1, style: { backgroundColor: this.props.color}}, this.props.propA),
@@ -40,17 +51,31 @@
             React.DOM.li({key: 3}, this.props.propC),
             React.DOM.li({key: 4}, String(this.props.propD)),
             React.DOM.li({key: 5}, String(this.props.propE)),
-            // React.DOM.li({key: 6}, this.props.propF),
-            React.DOM.li({key: 7}, this.props.propG),
+            React.DOM.li({key: 6}, this.props.propF[0].nome),
+            React.DOM.li({key: 7}, this.props.propG.nome),
             React.DOM.li({key: 8}, this.props.color),
+            React.DOM.li({key: 10}, this.props.propH),
+            React.createElement('button',{onClick:this.props.click,key: 9},'clique aqui')
           ]
         );
       }
     });
 
     var MyComponentB = React.createClass({
+      propTypes: {
+        children: React.PropTypes.element
+      },
+      getDefaultProps : function(){
+        return {
+            children : 'teste',
+            style : {
+              boxShadow : '10px 10px 10px #FF00FF',
+              textShadow : '1px 1px 0px #FF0000'
+            }
+        }
+      },
       render: function() {
-        return React.DOM.div(props, 'MyComponentB');
+        return React.createElement('p',this.props,this.props.children);
       }
     });
 
@@ -58,7 +83,7 @@
       componentName : 'MyComponent A',
       component : MyComponentA
     },{
-      componentName : 'MyComponent B',
+      componentName : 'Pink Shadow',
       component : MyComponentB
     }];
 

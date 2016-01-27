@@ -42,7 +42,7 @@ class Stage extends React.Component {
     let className = classNames('stage-board', {'stage-board-dark': this.state.constrast});
     return (
       <div className={className}>
-        {this._element}
+        {this._instance}
       </div>
     );
   }
@@ -68,7 +68,7 @@ class Stage extends React.Component {
   _defineElement = (props) => {
     let { component, properties } = props;
     if (component && component.component) {
-      this._element = React.createElement(component.component, properties);
+      this._instance = React.createElement(component.component, properties)
     }
   };
 }

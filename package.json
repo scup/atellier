@@ -8,7 +8,7 @@
     "build": "webpack -p",
     "rename-css-bower-dependencies": "find bower_components -name '*.css' | sed -e 'p;s/.css$/.less/' | xargs -n2 mv",
     "start": "webpack-dev-server --inline --hot",
-    "postinstall": "bower install"
+    "postinstall": "npm start"
   },
   "author": "",
   "license": "BSD",
@@ -54,8 +54,11 @@
   },
   "dependencies": {
     "babel-runtime": "^6.3.19",
+    "brace": "^0.7.0",
     "classnames": "^2.2.3",
     "immutable": "^3.7.6",
-    "react": "^0.14.6"
+    "prismjs": "^1.3.0",
+    "react": "^0.14.6",
+    "react-ace": "^3.1.0"
   }
 }
