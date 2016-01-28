@@ -2,75 +2,84 @@ import React, { PropTypes } from 'react';
 import FieldType from './FieldType.jsx';
 import PropTypesInterceptor from './structural/PropTypesInterceptor.jsx';
 
+PropTypesInterceptor.intercept(PropTypes.oneOf);
+
 class PropertiesContainer extends React.Component {
 
   static defaultProps = {
-    onChangeProps: PropTypes.func,
-    onCloseProperties: PropTypes.func,
-    component: {},
-    componentProps: {}
+    // onChangeProps: PropTypes.func,
+    // onCloseProperties: PropTypes.func,
+    // component: {},
+    // componentProps: {}
   };
 
   static propTypes = {
-    onChangeProps: PropTypes.func,
-    onCloseProperties: PropTypes.func,
-    component: PropTypes.shape({
-      component: PropTypes.func,
-      componentName: PropTypes.string
-    }),
-    componentProps: PropTypes.object
+    // onChangeProps: PropTypes.func,
+    // onCloseProperties: PropTypes.func,
+    // component: PropTypes.shape({
+    //   component: PropTypes.any,
+    //   componentName: PropTypes.string
+    // }),
+    // componentProps: PropTypes.object
   };
 
   constructor(props) {
     super(props);
-    this._properties = {};
-    this._defineElement(props);
+    this._defineProperties(props);
   }
 
   componentWillReceiveProps(nextProps) {
-    this._defineElement(nextProps);
+    this._defineProperties(nextProps);
   }
 
   render() {
-    if (!this._element) { return null; }
+    let { name, element } = this.props;
+    if (element.type && typeof element.type.propTypes !== 'object') {
+      return null;
+    }
+
     return (
       <div>
       <div className="properties-container">
-        <a className="container-close-button" onClick={this._handleCloseProperties}>+</a>
-        <h2 className="properties-component">
-          {this.props.component.componentName}
-        </h2>
+        {this._renderContainerHeader(name)}
         <div className="properties-form">
-          {this._renderPropertiesFields()}
+          {this._renderPropertiesFields(element)}
         </div>
       </div>
       </div>
     );
   }
 
-  _renderPropertiesFields() {
+  _renderContainerHeader(name) {
+    return !!name && (
+      <div className="container-header">
+        <a className="container-close-button">+</a>
+        <h2 className="properties-component">{name}</h2>
+      </div>
+    );
+  }
+
+  _renderPropertiesFields(element) {
+    let propTypes = element.type.propTypes;
     let propsFields = [];
-    let propTypes = this._element.type.propTypes;
 
     for (let prop in propTypes) {
-      propTypes[prop].type = PropTypesInterceptor.getPropTypePatch(propTypes[prop]);
-
-
+      let type = PropTypesInterceptor.getPropTypePatch(propTypes[prop]);
       let options = [];
-      if (propTypes[prop].options)
-        if (propTypes[prop].options[prop])
-          options = propTypes[prop].options[prop];
+      if (propTypes[prop].options && propTypes[prop].options[prop]) {
+        options = propTypes[prop].options[prop];
+      }
 
       propsFields.push(
         <FieldType
           key={prop}
           name={prop}
-          components={this.props.components}
-          type={propTypes[prop].type}
+          type={type}
           defaultValue={this._properties[prop]}
           options={options}
+          components={this.props.components}
           onChange={this._handleChange}
-          onAddChildElement={this.props.onAddChildElement} />
+         />
       );
     }
 
@@ -92,11 +101,8 @@ class PropertiesContainer extends React.Component {
     this.props.onCloseProperties(null);
   };
 
-  _defineElement = (props) => {
-    if (props.component && props.component.component) {
-      this._element = React.createElement(props.component.component);
-      this._properties = Object.assign({}, this._element.props, props.componentProps);
-    }
+  _defineProperties = (props) => {
+    this._properties = Object.assign({}, props.element.props, props.elementProps);
   };
 
 }

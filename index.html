@@ -23,7 +23,8 @@
         propG: React.PropTypes.object,
         propH: React.PropTypes.oneOf(['kjsehfsdb','adsfdsaf','adsfdas']),
         color: React.PropTypes.oneOf(['yellow','#EE00EE','purple','black']),
-        click: React.PropTypes.func
+        click: React.PropTypes.func,
+        element: React.PropTypes.element
       },
       getDefaultProps: function() {
         return {
@@ -34,10 +35,11 @@
           propE: false,
           propF: [{ nome: 'lululu' }, { nome: 'lalala'}, { nome: 'lololo' }],
           propG: {nome : 'Alberto'},
-          color: 'blue',
+          color: 'yellow',
           click: function(){
             console.log('funcionou')
-          }
+          },
+          element: React.createElement('p', {}, 'Just another element')
         }
       },
       render: function() {
@@ -54,7 +56,8 @@
             React.DOM.li({key: 7}, this.props.propG.nome),
             React.DOM.li({key: 8}, this.props.color),
             React.DOM.li({key: 10}, this.props.propH),
-            React.createElement('button',{onClick:this.props.click,key: 9},'clique aqui')
+            React.DOM.li({key: 11}, React.createElement('button',{onClick:this.props.click,key: 9},'clique aqui')),
+            React.DOM.li({key: 12}, this.props.element)
           ]
         );
       }
@@ -63,11 +66,12 @@
     var MyComponentB = React.createClass({
       displayName : 'Pink Shadow',
       propTypes: {
+        text: React.PropTypes.string,
         children: React.PropTypes.element
       },
       getDefaultProps : function(){
         return {
-            children : React.createElement('p', {}, 'teste'),
+            children : React.createElement(MyComponentA, {}),
             style : {
               boxShadow : '10px 10px 10px #FF00FF',
               textShadow : '1px 1px 0px #FF0000'
@@ -80,11 +84,11 @@
     });
 
     var data = [{
-      componentName : 'MyComponent A',
-      component : MyComponentA
-    },{
       componentName : 'Pink Shadow',
       component : MyComponentB
+    },{
+      componentName : 'MyComponent A',
+      component : MyComponentA
     }];
 
     /* jshint undef:false */

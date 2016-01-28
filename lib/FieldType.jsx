@@ -1,5 +1,7 @@
 import React, { PropTypes } from 'react';
+import PropertiesContainer from './PropertiesContainer.jsx';
 import Toggle from './Toggle.jsx';
+
 
 import AceEditor from 'react-ace';
 import 'brace/mode/json';
@@ -10,23 +12,22 @@ import 'brace/theme/twilight';
 class FieldType extends React.Component {
 
   static propTypes = {
-    defaultValue: PropTypes.any,
-    name: PropTypes.string,
-    onChange: PropTypes.func,
-    type: PropTypes.string.isRequired,
-    options: PropTypes.any
+    // defaultValue: PropTypes.any,
+    // name: PropTypes.string,
+    // onChange: PropTypes.func,
+    // type: PropTypes.string.isRequired,
+    // options: PropTypes.any
   };
 
   static defaultProps = {
-    name: '',
-    type: 'string',
-    defaultValue: null,
-    onChange: PropTypes.func
+    // name: '',
+    // type: 'string',
+    // defaultValue: null,
+    // onChange: PropTypes.func
   };
 
   constructor(props) {
     super(props);
-
     this._renderTypeHandlers = {
       string: this._renderStringInput,
       number: this._renderNumberInput,
@@ -40,7 +41,7 @@ class FieldType extends React.Component {
   }
 
   render() {
-    let renderComponent = this._renderTypeHandlers[ this.props.type ] || this._renderText;
+    let renderComponent = (typeof this.props.type && this._renderTypeHandlers[ this.props.type ]) || this._renderText;
     return renderComponent.call(this, this.props);
   }
 
@@ -62,8 +63,8 @@ class FieldType extends React.Component {
     );
   }
 
-  _renderOneOf({ name, type, defaultValue }) {
-    let selectOptions = this.props.options.map(function(item,index){
+  _renderOneOf({ name, type, defaultValue, options }) {
+    let selectOptions = options.map(function(item,index){
       return <option key={index} value={item}>{item}</option>
     })
     return (
@@ -77,7 +78,6 @@ class FieldType extends React.Component {
   }
 
   _renderElement({ name, type, defaultValue, components }) {
-
     let selectComponents = components.map((item, index) => {
       return <option key={index} value={index}>{item.componentName}</option>
     });
@@ -88,6 +88,11 @@ class FieldType extends React.Component {
         <select className="attelier-input" onChange={this._handleElementChange} >
           {selectComponents}
         </select>
+        <PropertiesContainer          
+          element={defaultValue}
+          components={this.props.components}
+          onChangeProps={this._handleChangeProps}
+        />
       </div>
     );
   }
@@ -143,6 +148,12 @@ class FieldType extends React.Component {
       this.props.onChange(this.props.name, response);
     }
 
+  };
+
+  _handleChangeProps = (properties) => {
+    let { name, defaultValue } = this.props;
+    let element = React.cloneElement(defaultValue, properties);
+    this.props.onChange(this.props.name, element);
   };
 
   _handleElementChange = (response) => {

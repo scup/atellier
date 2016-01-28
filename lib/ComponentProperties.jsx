@@ -1,31 +1,28 @@
 import React, { PropTypes } from 'react';
-import Immutable from 'immutable';
 import PropertiesContainer from './PropertiesContainer.jsx';
+import PropTypesInterceptor from './structural/PropTypesInterceptor.jsx';
 
 class Properties extends React.Component {
 
   static defaultProps = {
-    onChangeProps: PropTypes.func,
-    onCloseProperties: PropTypes.func,
-    component: {},
-    componentProps: {}
+    // onChangeProps: PropTypes.func,
+    // onCloseProperties: PropTypes.func,
+    // component: {},
+    // componentProps: {}
   };
 
   static propTypes = {
-    onChangeProps: PropTypes.func,
-    onCloseProperties: PropTypes.func,
-    component: PropTypes.shape({
-      component: PropTypes.func,
-      componentName: PropTypes.string
-    }),
-    componentProps: PropTypes.object
+    // onChangeProps: PropTypes.func,
+    // onCloseProperties: PropTypes.func,
+    // component: PropTypes.shape({
+    //   component: PropTypes.func,
+    //   componentName: PropTypes.string
+    // }),
+    // componentProps: PropTypes.object
   };
 
   constructor(props) {
     super(props);
-    this.state = {
-      childElements: []
-    }
   }
 
   recursiva(element){
@@ -37,46 +34,40 @@ class Properties extends React.Component {
   }
 
   render() {
-
-    // this.recursiva();
-    this.propsContainer = [];
-    this._renderPropertiesContainer(this._element)
-    this.propsContainer.reverse()
+    let { component, componentProps, components } = this.props;
+    let element = React.createElement(component.component);
     return (
       <div className="component-properties">
         <PropertiesContainer
-          components={this.props.components}
-          component={this.props.component}
-          componentProps={this.props.componentProps}
-          onChangeProps={this.props.onChangeProps}
-          onAddChildElement={this._handleAddChildElement}
-          onCloseProperties={this.props.onCloseProperties} />
-        {this._renderChildElementsProperties()}
+          name={component.componentName}
+          element={element}
+          elementProps={componentProps}
+          components={components}
+          onChangeProps={this._handleChangeProps}
+        />
       </div>
     );
 
   }
 
-  _renderChildElementsProperties() {
-    return this.state.childElements.map((element, index) => {
-      return (
-        <PropertiesContainer
-          key={index}
-          components={this.props.components}
-          component={element}
-          componentProps={this.props.componentProps}
-          onChangeProps={this.props.onChangeProps}
-          onAddChildElement={this._handleAddChildElement}
-          onCloseProperties={this.props.onCloseProperties} />
-      );
-    });
-  }
-
-  _handleAddChildElement = (name, element) => {
-    let properties = Object.assign({}, this.props.componentProps);
-    properties[name] = React.createElement(element.component);
+  _handleChangeProps = (properties) => {
     this.props.onChangeProps(properties);
   };
+
+  // _handleAddChildElement = (name, element) => {
+  //   element.componentName = name;
+  //   this.state.childElements[name] = element;
+  //   this.setState({childElements: this.state.childElements});
+  //
+  //   let properties = Object.assign({}, this.props.componentProps);
+  //   properties[name] = React.createElement(element.component);
+  //   this.props.onChangeProps(properties);
+  // };
+  //
+  // _handleChangeChildElementProps = (properties, name) => {
+  //   properties[name] = React.createElement(this.state.childElements[name].component, properties);
+  //   this.props.onChangeProps(properties);
+  // };
 
 }
 
