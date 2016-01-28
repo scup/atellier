@@ -51,7 +51,7 @@ class Stage extends React.Component {
     return (
       <div className="stage-tools">
         <label>Stage color</label>
-        <select onChange={this._handleChangeConstrast}>
+        <select className="attelier-input" onChange={this._handleChangeConstrast}>
           <option value="false">Light</option>
           <option value="true">Dark</option>
         </select>

@@ -25,16 +25,8 @@ class Properties extends React.Component {
     super(props);
   }
 
-  recursiva(element){
-    if (element.props)
-    if (element.props.children){
-      console.log(element.props.children,'<<<<<');
-        return this.recursiva(element.props.children)
-    }
-  }
-
   render() {
-    let { component, componentProps, components } = this.props;
+    let { component, componentProps, components, onCloseProperties } = this.props;
     let element = React.createElement(component.component);
     return (
       <div className="component-properties">
@@ -44,30 +36,15 @@ class Properties extends React.Component {
           elementProps={componentProps}
           components={components}
           onChangeProps={this._handleChangeProps}
+          onCloseProperties={onCloseProperties}
         />
       </div>
     );
-
   }
 
   _handleChangeProps = (properties) => {
     this.props.onChangeProps(properties);
   };
-
-  // _handleAddChildElement = (name, element) => {
-  //   element.componentName = name;
-  //   this.state.childElements[name] = element;
-  //   this.setState({childElements: this.state.childElements});
-  //
-  //   let properties = Object.assign({}, this.props.componentProps);
-  //   properties[name] = React.createElement(element.component);
-  //   this.props.onChangeProps(properties);
-  // };
-  //
-  // _handleChangeChildElementProps = (properties, name) => {
-  //   properties[name] = React.createElement(this.state.childElements[name].component, properties);
-  //   this.props.onChangeProps(properties);
-  // };
 
 }
 

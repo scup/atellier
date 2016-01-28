@@ -5,6 +5,7 @@
 .stage {
   padding: 25px;
   position: relative;
+  overflow: hidden;
   .flex-item(1 1 auto);
   .flex-container(column);
 }
@@ -17,6 +18,7 @@
   background-size:20px 20px, 20px 20px;
   background-position:-1px -1px, -1px -1px;
   position: relative;
+  overflow: scroll;
   .flex-item(1 1 auto);
 
   &-dark {
@@ -32,5 +34,9 @@
     color: @color-secundary-text;
     margin-right: 10px;
     font-weight: 400;
+  }
+
+  select.attelier-input {
+    width: 200px;
   }
 }
