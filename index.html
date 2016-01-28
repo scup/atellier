@@ -7,8 +7,10 @@
 
   <script src="node_modules/react/dist/react.js"></script>
   <script src="node_modules/react-dom/dist/react-dom.min.js"></script>
+
   <script src="react-attelier.js"></script>
   <script>
+
     var props = {style: {background:'CornflowerBlue', padding: '30px', margin:'50px'}};
 
     var MyComponentA = React.createClass({
@@ -71,10 +73,11 @@
       },
       getDefaultProps : function(){
         return {
-            children : React.createElement(MyComponentA, {}),
+            children : React.createElement('div', {}, 'Pink component'),
             style : {
-              boxShadow : '10px 10px 10px #FF00FF',
-              textShadow : '1px 1px 0px #FF0000'
+              border: '2px solid #FF00FF',
+              padding: '20px',
+              margin: '20px'
             }
         }
       },
@@ -83,13 +86,22 @@
       }
     });
 
-    var data = [{
-      componentName : 'Pink Shadow',
-      component : MyComponentB
-    },{
-      componentName : 'MyComponent A',
-      component : MyComponentA
-    }];
+    var data = Object.keys(mui).filter(function(label){
+      return (mui[label].hasOwnProperty('displayName'))
+    }).map(function(label){
+      return {
+        componentName : mui[label].displayName,
+        component : mui[label]
+      }
+    })
+
+    // var data = [{
+    //   componentName : 'Pink Shadow',
+    //   component : MyComponentB
+    // },{
+    //   componentName : 'MyComponent A',
+    //   component : MyComponentA
+    // }];
 
     /* jshint undef:false */
     ReactDOM.render(React.createElement(ReactAttelier.default, {

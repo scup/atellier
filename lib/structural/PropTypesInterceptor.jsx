@@ -24,23 +24,13 @@ export default {
       return 'func';
     } else if (propType.type === 'oneOf') {
       return 'oneOf';
+    } else {
+      return 'unknown';
     }
   },
 
   intercept: (propType) => {
     switch(propType) {
-      case PropTypes.string:
-        console.log('é string');
-        break;
-      case PropTypes.number:
-        console.log('é number');
-        break;
-      case PropTypes.array:
-        console.log('é array');
-        break;
-      case PropTypes.array:
-        console.log('é array');
-
       case PropTypes.oneOf:
         React.PropTypes.oneOf_ = React.PropTypes.oneOf
         return React.PropTypes.oneOf = function(oneOfArguments){

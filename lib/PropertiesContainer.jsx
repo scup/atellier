@@ -34,10 +34,10 @@ class PropertiesContainer extends React.Component {
 
   render() {
     let { name, element } = this.props;
-    if (element.type && typeof element.type.propTypes !== 'object') {
+    if ( (element) && element.type && typeof element.type.propTypes !== 'object') {
       return null;
     }
-
+    console.log('element', name, this._renderPropertiesFields(element));
     return (
       <div>
       <div className="properties-container">
@@ -60,6 +60,9 @@ class PropertiesContainer extends React.Component {
   }
 
   _renderPropertiesFields(element) {
+
+    if ( ! element) return null;
+
     let propTypes = element.type.propTypes;
     let propsFields = [];
 
@@ -70,12 +73,19 @@ class PropertiesContainer extends React.Component {
         options = propTypes[prop].options[prop];
       }
 
+
+      let defaults = {
+        object: {},
+        string: {},
+        unknown: function(){}
+      }
+
       propsFields.push(
         <FieldType
           key={prop}
           name={prop}
           type={type}
-          defaultValue={this._properties[prop]}
+          defaultValue={this._properties[prop] || defaults[type]}
           options={options}
           components={this.props.components}
           onChange={this._handleChange}
@@ -102,7 +112,9 @@ class PropertiesContainer extends React.Component {
   };
 
   _defineProperties = (props) => {
-    this._properties = Object.assign({}, props.element.props, props.elementProps);
+    if (props.element){
+      this._properties = Object.assign({}, props.element.props, props.elementProps);
+    }
   };
 
 }

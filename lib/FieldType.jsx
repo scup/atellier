@@ -34,15 +34,26 @@ class FieldType extends React.Component {
       oneOf: this._renderOneOf,
       element: this._renderElement,
       func: this._renderFunction,
+      unknown: this._renderUnknownInput
     };
   }
 
   render() {
     let renderComponent = (typeof this.props.type && this._renderTypeHandlers[ this.props.type ]) || this._renderText;
-    return renderComponent.call(this, this.props);
+    if (!renderComponent) return null;
+    return renderComponent.call(this, this.props, this._renderText);
   }
 
   _renderStringInput({ name, type, defaultValue }) {
+    return (
+      <div className="properties-field">
+        <label>{name}</label>
+        <textarea className="attelier-input" defaultValue={defaultValue} onChange={this._handleChange} />
+      </div>
+    );
+  }
+
+  _renderUnknownInput({ name, type, defaultValue }) {
     return (
       <div className="properties-field">
         <label>{name}</label>
@@ -116,7 +127,7 @@ class FieldType extends React.Component {
     let selectComponents = components.map((item, index) => {
       return <option key={index} value={index}>{item.componentName}</option>
     });
-
+    console.log('defaultValue', name);
     return (
       <div className="properties-field">
         <label>{name}</label>

@@ -4,6 +4,10 @@ import Sidebar from './Sidebar.jsx';
 import Workspace from './Workspace.jsx';
 import './styles/attelier.less';
 
+// remover, apenas para teste
+import mui from 'material-ui';
+window.mui = mui;
+
 class Attelier extends React.Component {
 
   static defaultProps = {
