@@ -184,7 +184,7 @@ class FieldType extends React.Component {
       try {
         this.props.onChange(this.props.name, JSON.parse(response));
       } catch(e) {
-        console.log(e);
+        console.error(e);
       }
     });
   };
