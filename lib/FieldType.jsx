@@ -196,7 +196,7 @@ class FieldType extends React.Component {
   _handleFunctionChange = (response ) => {
     this.setState({defaultValue: response}, () => {
       try {
-        this.props.onChange(this.props.name, new Function(`return ${response}.call(this, arguments);`));
+        this.props.onChange(this.props.name, new Function(`return ${response};`)());
       } catch(e) {
         console.error(e);
       };
