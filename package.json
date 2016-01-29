@@ -45,6 +45,7 @@
     "karma-webpack": "~1.7.0",
     "less": "^2.5.3",
     "less-loader": "^2.2.2",
+    "perfect-scrollbar": "^0.6.10",
     "phantomjs": "^1.9.19",
     "react-addons-test-utils": "^0.14.6",
     "react-dom": "^0.14.6",

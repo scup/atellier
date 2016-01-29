@@ -1,6 +1,8 @@
 import React, { PropTypes } from 'react';
+// import ReactDom from 'react-dom';
 import FieldType from './FieldType.jsx';
 import PropTypesInterceptor from './structural/PropTypesInterceptor.jsx';
+import scrollbar from 'perfect-scrollbar';
 
 PropTypesInterceptor.intercept(PropTypes.oneOf)
 
@@ -34,6 +36,19 @@ class Properties extends React.Component {
     this._defineElement(nextProps);
   }
 
+  getContainer() {
+    // return ReactDom.findDOMNode(this.refs.propertiesContainer)
+    return document.getElementsByClassName('component-properties')[0];
+  }
+
+  componentDidMount() {
+    scrollbar.initialize(this.getContainer());
+  }
+
+  componentDidUpdate() {
+    scrollbar.update(this.getContainer());
+  }
+
   render() {
     return (
       <div className="component-properties">
@@ -46,7 +61,7 @@ class Properties extends React.Component {
     if (!this._element) { return null; }
     return (
       <div>
-      <div className="properties-container">
+      <div ref="propertiesContainer" className="properties-container">
         <a className="container-close-button" onClick={this._handleCloseProperties}>+</a>
         <h2 className="properties-component">
           {this.props.component.componentName}

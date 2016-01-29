@@ -12,3 +12,39 @@ body {
   margin: 0;
   padding: 0;
 }
+
+/* ------------------------- *\
+      PERFECT SCROLL ADAPTER
+\* ------------------------- */
+
+.ps-container {
+
+  .ps-scrollbar-y-rail {
+    position: absolute;
+    width: 8px;
+    background-color: transparent;
+    border-radius: 4px;
+
+    .ps-scrollbar-y {
+      position: relative;
+      border-radius: 4px;
+    }
+  }
+
+  &:hover {
+    .ps-scrollbar-y-rail {
+      &:hover {
+        background-color: rgba(238, 238, 238, 0.2);
+      }
+
+      .ps-scrollbar-y {
+        opacity: 0.6;
+        background-color: #999;
+
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+    }
+  }
+}

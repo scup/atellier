@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import classNames from 'classnames';
 import Immutable from 'immutable';
+import scrollbar from 'perfect-scrollbar';
 
 
 class ComponentList extends React.Component {
@@ -25,6 +26,11 @@ class ComponentList extends React.Component {
     this.state = {
       filter: ''
     };
+  }
+
+  componentDidMount() {
+    //var container = document.getElementsByClassName('component-list');
+    //scrollbar.initialize(container);
   }
 
   render() {
