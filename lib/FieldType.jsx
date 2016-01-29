@@ -153,7 +153,7 @@ class FieldType extends React.Component {
       case 'object':
         return JSON.stringify(props.defaultValue, null, 2);
       case 'func':
-        return jsbeautifier(props.defaultValue.toString().replace(/((^function.*{)|(}$))/g, ''));
+        return jsbeautifier(props.defaultValue.toString());
       default:
         return props.defaultValue;
     };
@@ -192,7 +192,7 @@ class FieldType extends React.Component {
   _handleFunctionChange = (response ) => {
     this.setState({defaultValue: response}, () => {
       try {
-        this.props.onChange(this.props.name, new Function(response));
+        this.props.onChange(this.props.name, new Function(`return ${response}.call(this, arguments);`));
       } catch(e) {
         console.error(e);
       };
