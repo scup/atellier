@@ -83,12 +83,38 @@
       }
     });
 
+    var MyComponentC = React.createClass({
+      displayName : 'Editor',
+      propTypes: {
+        onClick: React.PropTypes.func
+      },
+      getDefaultProps: function() {
+        return {
+          onClick: function() {
+
+            function hello(person) {
+              console.log('Hello ' + person);
+            }
+
+            hello('Ana Maria');
+
+          }
+        }
+      },
+      render: function() {
+        return React.createElement('button',{onClick:this.props.onClick,key: 9},'clique aqui')
+      }
+    });
+
     var data = [{
       componentName : 'Pink Shadow',
       component : MyComponentB
     },{
       componentName : 'MyComponent A',
       component : MyComponentA
+    }, {
+      componentName : 'Editor',
+      component : MyComponentC
     }];
 
     /* jshint undef:false */

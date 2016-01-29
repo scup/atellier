@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import AceEditor from 'react-ace';
+import jsbeautifier from 'js-beautify';
 import PropertiesContainer from './PropertiesContainer.jsx';
 import Toggle from './Toggle.jsx';
 import 'brace/mode/javascript';
@@ -25,6 +26,7 @@ class FieldType extends React.Component {
 
   constructor(props) {
     super(props);
+
     this._renderTypeHandlers = {
       string: this._renderStringInput,
       number: this._renderNumberInput,
@@ -34,6 +36,10 @@ class FieldType extends React.Component {
       oneOf: this._renderOneOf,
       element: this._renderElement,
       func: this._renderFunction,
+    };
+
+    this.state = {
+      defaultValue: this._getDefaultValue(props)
     };
   }
 
@@ -70,9 +76,6 @@ class FieldType extends React.Component {
   }
 
   _renderObjectInput({ name, type, defaultValue }) {
-    if (typeof defaultValue === 'object'){
-      defaultValue = JSON.stringify(defaultValue, null, 2);
-    }
     return (
       <div className="properties-field">
       <label>{name}</label>
@@ -80,9 +83,9 @@ class FieldType extends React.Component {
         className="attelier-editor"
         mode="json"
         theme="twilight"
-        value={defaultValue}
+        value={this.state.defaultValue}
         showGutter={false}
-        onChange={this._handleRaw}
+        onChange={this._handleObjectChange}
         name={(Date.now()*Math.random()/Math.random()).toString() }
         editorProps={{$blockScrolling: true, $showLineNumbers : false, showLineNumbers : false}} />
       </div>
@@ -90,10 +93,20 @@ class FieldType extends React.Component {
   };
 
   _renderFunction({ name, type, defaultValue }) {
+    let props = {
+      className: "attelier-editor",
+      mode: "javascript",
+      theme: "twilight",
+      showGutter: false,
+      onChange: this._handleFunctionChange,
+      name: (Date.now()*Math.random()/Math.random()).toString(),
+      value: this.state.defaultValue
+    };
+
     return (
       <div className="properties-field">
         <label>{name}</label>
-        <textarea className="attelier-input" defaultValue={defaultValue} onChange={this._handleFunctionChange} />
+        <AceEditor {...props} />
       </div>
     );
   }
@@ -105,7 +118,8 @@ class FieldType extends React.Component {
     return (
       <div className="properties-field">
         <label>{name}</label>
-        <select className="attelier-input" onChange={this._handleChange} >
+        <select className="attelier-input" onChange={this._handleChange} defaultValue={defaultValue}>
+          <option>Nothing selected</option>
           {selectOptions}
         </select>
       </div>
@@ -120,7 +134,8 @@ class FieldType extends React.Component {
     return (
       <div className="properties-field">
         <label>{name}</label>
-        <select className="attelier-input" onChange={this._handleElementChange} >
+        <select className="attelier-input" onChange={this._handleElementChange}>
+          <option>Nothing selected</option>
           {selectComponents}
         </select>
         <PropertiesContainer
@@ -130,6 +145,18 @@ class FieldType extends React.Component {
         />
       </div>
     );
+  }
+
+  _getDefaultValue(props) {
+    switch(props.type) {
+      case 'array':
+      case 'object':
+        return JSON.stringify(props.defaultValue, null, 2);
+      case 'func':
+        return jsbeautifier(props.defaultValue.toString().replace(/((^function.*{)|(}$))/g, ''));
+      default:
+        return props.defaultValue;
+    };
   }
 
   _handleChange = ( response ) => {
@@ -153,19 +180,23 @@ class FieldType extends React.Component {
   };
 
   _handleObjectChange = (response) => {
-    this.refs.rawjs.value = response;
+    this.setState({defaultValue: response}, () => {
+      try {
+        this.props.onChange(this.props.name, JSON.parse(response));
+      } catch(e) {
+        console.log(e);
+      }
+    });
   };
 
-  _handleRaw = (response) => {
-    try {
-      this.props.onChange(this.props.name, JSON.parse(response));
-    } catch(e) {
-      this.props.onChange(this.props.name, response);
-    }
-  };
-
-  _handleFunctionChange = ( response ) => {
-    this.props.onChange(this.props.name, (new Function('return ('+response.target.value+')(arguments)')).bind(this.props.instance) );
+  _handleFunctionChange = (response ) => {
+    this.setState({defaultValue: response}, () => {
+      try {
+        this.props.onChange(this.props.name, new Function(response));
+      } catch(e) {
+        console.error(e);
+      };
+    });
   };
 
 }
