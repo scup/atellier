@@ -76,24 +76,26 @@ class FieldType extends React.Component {
   }
 
   _renderObjectInput({ name, type, defaultValue }) {
+    let aceProps = {
+      className: "attelier-editor",
+      mode: "json",
+      theme: "twilight",
+      showGutter: false,
+      onChange: this._handleObjectChange,
+      name: (Date.now()*Math.random()/Math.random()).toString(),
+      value: this.state.defaultValue
+    };
+
     return (
       <div className="properties-field">
       <label>{name}</label>
-      <AceEditor
-        className="attelier-editor"
-        mode="json"
-        theme="twilight"
-        value={this.state.defaultValue}
-        showGutter={false}
-        onChange={this._handleObjectChange}
-        name={(Date.now()*Math.random()/Math.random()).toString() }
-        editorProps={{$blockScrolling: true, $showLineNumbers : false, showLineNumbers : false}} />
+      <AceEditor {...aceProps} />
       </div>
     );
   };
 
   _renderFunction({ name, type, defaultValue }) {
-    let props = {
+    let aceProps = {
       className: "attelier-editor",
       mode: "javascript",
       theme: "twilight",
@@ -106,7 +108,7 @@ class FieldType extends React.Component {
     return (
       <div className="properties-field">
         <label>{name}</label>
-        <AceEditor {...props} />
+        <AceEditor {...aceProps} />
       </div>
     );
   }
@@ -153,7 +155,9 @@ class FieldType extends React.Component {
       case 'object':
         return JSON.stringify(props.defaultValue, null, 2);
       case 'func':
-        return jsbeautifier(props.defaultValue.toString());
+        return jsbeautifier(
+            (props.defaultValue && props.defaultValue.toString()) || 'function() { return; }'
+          );
       default:
         return props.defaultValue;
     };
