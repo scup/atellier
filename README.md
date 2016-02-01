@@ -1,6 +1,4 @@
-<center><img src="https://raw.githubusercontent.com/scup/Atellier/development/media/atellier_icon.png" width="300"></center>
-
-
+# ![pageres](https://raw.githubusercontent.com/scup/Atellier/development/media/header_logo.png)
 
 [![Build Status](https://travis-ci.org/scup/Atellier.svg?branch=master)](https://travis-ci.org/scup/Atellier)
 [![Code Climate](https://codeclimate.com/github/scup/Atellier/badges/gpa.svg)](https://codeclimate.com/github/scup/Atellier)
