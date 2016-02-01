@@ -37,7 +37,7 @@ module.exports = function(config) {
     singleRun: true,
 
     coverageReporter: {
-      type : 'html',
+      type : 'lcov',
       dir : 'coverage/'
     }
 
