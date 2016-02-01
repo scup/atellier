@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import Immutable from 'immutable';
 import ComponentProperties from './ComponentProperties.jsx';
 import Stage from './Stage.jsx';
 
@@ -6,7 +7,8 @@ class Workspace extends React.Component {
 
   static defaultProps = {
     onCloseProperties: PropTypes.func,
-    component: {}
+    component: {},
+    components: Immutable.List([])
   };
 
   static propTypes = {
@@ -14,7 +16,8 @@ class Workspace extends React.Component {
     component: PropTypes.shape({
       component: PropTypes.func,
       componentName: PropTypes.string
-    })
+    }),
+    components: PropTypes.instanceOf(Immutable.List)
   };
 
   constructor(props) {
