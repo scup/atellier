@@ -6,7 +6,7 @@
 
 
 
-A React component that works like a preview of other components. A excellent tool to show how your component works and looks with. Easy to install and configure, you can have a router in your project with Atellier and can interact with any component.
+A React component that works like a preview of other components. An excellent tool to show how your component works and looks with. Easy to install and configure, you can have a router in your project with Atellier and can interact with any component.
 
 Imagine a universe in which you may have tools (***components***) tested in real time! This is amazing!
 
