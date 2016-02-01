@@ -1,4 +1,6 @@
-# react attelier
+<center><img src="https://raw.githubusercontent.com/scup/Atellier/development/media/atellier_icon.png" width="300"></center>
+
+
 
 [![Build Status](https://travis-ci.org/scup/Atellier.svg?branch=master)](https://travis-ci.org/scup/Atellier)
 [![Code Climate](https://codeclimate.com/github/scup/Atellier/badges/gpa.svg)](https://codeclimate.com/github/scup/Atellier)
@@ -81,6 +83,20 @@ render((
 
 
 
+
+
+## todo
+- [ ] Atellier CLI
+- [ ] Import components and live update
+- [ ] Drag components in `stage`
+- [ ] License
+
+## Team
+
+[![Guilherme de Souza](https://avatars1.githubusercontent.com/u/2624370?v=3&s=120)](https://github.com/guisouza) | [![Érica Mitsuishi](https://avatars2.githubusercontent.com/u/3091890?v=3&s=120)](https://github.com/mitsuishihidemi) | [![Bruno Agutoli](https://avatars2.githubusercontent.com/u/298845?v=3&s=120)](https://github.com/agutoli) | [![Daniel Allegretti](https://avatars1.githubusercontent.com/u/317584?v=3&s=120)](https://github.com/allegretti) | [![João Neto](https://avatars2.githubusercontent.com/u/547989?v=3&s=120)](https://github.com/allegretti)
+---|---|---|---|---
+[Guilherme de Souza](https://github.com/guisouza) | [Érica Mitsuishi](https://github.com/mitsuishihidemi) | [Bruno Agutoli](https://github.com/agutoli) | [Daniel Allegretti](https://github.com/allegretti) | [João Neto](https://github.com/joaoneto)
+
 ## Contribute
 Come with us to make an awesome *Attelier* tool to run components in live ambient.
 
@@ -92,17 +108,6 @@ We have some conventions to contribute to the *Attelier* project, see more infor
 - [issues](https://github.com/scup/Atellier/issues)
 - IRC #react-attelier on [freenode](https://freenode.net/)
 
-## todo
-- [ ] Atellier CLI
-- [ ] Import components and live update
-- [ ] Drag components in `stage`
-- [ ] License
-
-## Team
-
-[![Guilherme de Souza](https://avatars1.githubusercontent.com/u/2624370?v=3&s=120)](https://github.com/guisouza) | [![Érica Mitsuishi](https://avatars2.githubusercontent.com/u/3091890?v=3&s=120)](https://github.com/mitsuishihidemi) | [![Bruno Agutoli](https://avatars2.githubusercontent.com/u/298845?v=3&s=120)](https://github.com/agutoli)
----|---|---
-[Guilherme de Souza](https://github.com/guisouza) | [Érica Mitsuishi](https://github.com/mitsuishihidemi) | [Bruno Agutoli](https://github.com/agutoli)
 
 ## License
 
