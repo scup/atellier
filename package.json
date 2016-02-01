@@ -7,8 +7,7 @@
     "watch-test": "karma start --auto-watch --no-single-run",
     "build": "webpack -p",
     "rename-css-bower-dependencies": "find bower_components -name '*.css' | sed -e 'p;s/.css$/.less/' | xargs -n2 mv",
-    "start": "webpack-dev-server --inline --hot",
-    "postinstall": "npm start"
+    "start": "webpack-dev-server --inline --hot"    
   },
   "author": "",
   "license": "BSD",
