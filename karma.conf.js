@@ -12,7 +12,7 @@ module.exports = function(config) {
       'node_modules/react/dist/react.js',
       'node_modules/react/dist/react-with-addons.js',
 
-      'spec/index.jsx',
+      'spec/**.spec.jsx',
       { pattern: 'lib/**/*', watched: true, included: false }
     ],
 
@@ -20,7 +20,7 @@ module.exports = function(config) {
 
     preprocessors: {
       // add webpack as preprocessor
-      'spec/index.jsx': ['webpack', 'sourcemap', 'eslint']
+      'spec/**.spec.jsx': ['webpack', 'sourcemap', 'eslint']
     },
 
     webpack: loadWebpackConfig(),
@@ -54,7 +54,7 @@ function loadWebpackConfig () {
   webpackConfig.module.preLoaders = [
     {
       test: /\.jsx?$/,
-      include: path.resolve('lib/'),
+      include: path.resolve('lib'),
       loader: 'isparta'
     }
   ];
