@@ -57,7 +57,7 @@ describe('FieldType', () => {
     expect(toggle).toBeTruthy();
   });
 
-  it('should render array input', () => {
+  xit('should render array input', () => {
 
     let FieldType = renderFieldType({
       name: 'array',
@@ -71,7 +71,7 @@ describe('FieldType', () => {
     expect(TestUtils.isElement(FieldType)).toBeFalsy();
   });
 
-  it('should render object input', () => {
+  xit('should render object input', () => {
 
     let FieldType = renderFieldType({
       name: 'object',
