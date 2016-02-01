@@ -44,7 +44,7 @@ class FieldType extends React.Component {
   }
 
   render() {
-    let renderComponent = (typeof this.props.type && this._renderTypeHandlers[ this.props.type ]) || this._renderText;
+    let renderComponent = (typeof this.props.type && this._renderTypeHandlers[ this.props.type ]) || this._renderStringInput;
     return renderComponent.call(this, this.props);
   }
 

@@ -11,14 +11,14 @@ describe('Sidebar', () => {
     }
   };
 
-  let components = [
+  let componentItems = [
     {
       componentName: 'test component',
       component: TestComponent
     }
   ];
 
-  let renderSideBar = (components=components) => {
+  let renderSideBar = (components=componentItems) => {
     let componentsList = Immutable.List(components);
     return TestUtils.renderIntoDocument(
       <Sidebar components={componentsList} />

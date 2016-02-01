@@ -34,12 +34,7 @@ module.exports = function(config) {
       stopOnWarning: true
     },
 
-    singleRun: true,
-
-    coverageReporter: {
-      type : 'lcov',
-      dir : 'coverage/'
-    }
+    singleRun: true    
 
   });
 };

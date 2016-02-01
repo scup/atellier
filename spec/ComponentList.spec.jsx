@@ -11,14 +11,14 @@ describe('ComponentList', () => {
     }
   };
 
-  let components = [
+  let componentItems = [
     {
       componentName: 'test component',
       component: TestComponent
     }
   ];
 
-  let renderComponentList = (components=components) => {
+  let renderComponentList = (components=componentItems) => {
     let componentsList = Immutable.List(components);
     return TestUtils.renderIntoDocument(
       <ComponentsList components={componentsList} />
@@ -35,7 +35,7 @@ describe('ComponentList', () => {
     expect(div).toBeTruthy();
   });
 
-  xit('should filter component list', () => {
+  it('should filter component list', () => {
     let componentList = renderComponentList();
     let input = TestUtils.findRenderedDOMComponentWithClass(
       componentList, 'component-filter'
@@ -43,23 +43,21 @@ describe('ComponentList', () => {
 
     TestUtils.Simulate.change(input, { target: { value: 'test'} });
 
-    let listItems = TestUtils.findRenderedDOMComponentWithClass(
-      componentList, 'component-list'
+    let li = TestUtils.findRenderedDOMComponentWithClass(
+      componentList, 'component-list-item'
     );
 
-    console.log(listItems);
-
-
+    expect(li).toBeTruthy();
   });
 
-  //
-  // it('should handle toggle sidebar', () => {
-  //   let sidebar = renderSideBar();
-  //
-  //   expect(sidebar.state.close).toBeFalsy();
-  //
-  //   sidebar._handleToggleSidebar();
-  //   expect(sidebar.state.close).toBeTruthy();
-  // });
+  it('should select component list item', () => {
+    let componentList = renderComponentList();
 
+    let li = TestUtils.findRenderedDOMComponentWithClass(
+      componentList, 'component-list-item'
+    );
+
+    TestUtils.Simulate.click(li);
+  });
+  
 });

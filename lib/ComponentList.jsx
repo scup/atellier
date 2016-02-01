@@ -45,7 +45,7 @@ class ComponentList extends React.Component {
   _renderComponentListItems() {
     return this.props.components
       .filter(({componentName}) => {
-        return componentName.toLowerCase().includes(this.state.filter.toLowerCase());
+        return ~componentName.toLowerCase().indexOf(this.state.filter.toLowerCase());        
       })
       .map((component, key) => {
         let className = classNames('component-list-item', {
