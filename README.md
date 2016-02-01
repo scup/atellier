@@ -1,5 +1,6 @@
 # ![atellier](https://raw.githubusercontent.com/scup/Atellier/development/media/header_logo.png)
 
+[![Dependencies Status](https://david-dm.org/scup/Atellier.svg)](https://david-dm.org/scup/Atellier)
 [![Build Status](https://travis-ci.org/scup/Atellier.svg?branch=master)](https://travis-ci.org/scup/Atellier)
 [![Code Climate](https://codeclimate.com/github/scup/Atellier/badges/gpa.svg)](https://codeclimate.com/github/scup/Atellier)
 [![npm version](https://badge.fury.io/js/Attelier.svg)](https://badge.fury.io/js/Attelier)
