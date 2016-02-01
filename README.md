@@ -1,31 +1,91 @@
 # react attelier
-## intro
-> We :heart: [React](https://facebook.github.io/react/)!
-Come with us to make an awesome *Attelier* tool to run components in live ambient
 
-## why should I use it?
-### **tl;dr**
-*** Because it's awesome!***
+[![Build Status](https://travis-ci.org/scup/Atellier.svg?branch=master)](https://travis-ci.org/scup/Atellier)
+[![Code Climate](https://codeclimate.com/github/scup/Atellier/badges/gpa.svg)](https://codeclimate.com/github/scup/Atellier)
+[![npm version](https://badge.fury.io/js/Attelier.svg)](https://badge.fury.io/js/Attelier)
 
----
+
+
+A React component that works like a preview of other components. A excellent tool to show how your component works and looks with. Easy to install and configure, you can have a router in your project with Atellier and can interact with any component.
 
 Imagine a universe in which you may have tools (***components***) tested in real time! This is amazing!
 
+## Online Demos
+* [Atellier and Material UI](https://github.com/callemall/material-ui)
+* [Atellier and Bootstrap UI](https://github.com/callemall/material-ui)
 
-The community needs an environment to test [React](https://facebook.github.io/react) components and see the results at the real time
+## Install
+```shell
+npm install -g react-atellier
+```
 
-We invite you to join us to  compose this wonderful team of people who make *Attelier* possible
+## Usage
+```javascript
+import { Router, Route, Link } from 'react-router'
+import React from 'react'
+import { render } from 'react-dom'
+import { Router, Route, Link, browserHistory } from 'react-router';
+
+//*** atellier import ***
+import Atellier from 'react-atellier';
+
+const App = React.createClass({/*...*/})
+
+const User = React.createClass({
+  displayName: 'User',
+  propTypes: {
+    name: React.PropTypes.string
+  },
+  getDefaultProps: function() {
+    return {
+      name: ''
+    }
+  },
+  render: function() {
+    return (
+      <div className="user">
+        Hi, {this.props.name}
+      </div>
+    );
+  }
+});
+// etc.
+
+const componentList = [{
+  componentName : 'User',
+  component : User
+}];
+
+const AtellierWrapper = React.createClass({
+  render: function() {
+    return (
+      <Atellier components={componentList} />
+    );
+  }
+});
+
+render((
+  <Router history={browserHistory}>
+    <Route path="/" component={App}>
+      <Route path="atellier" component={AtellierWrapper}/>
+    </Route>
+  </Router>
+), document.body)
+```
+
+
+
+---
+
+
+
+
+
+## Contribute
+Come with us to make an awesome *Attelier* tool to run components in live ambient.
 
 Now, if you do not have technical knowledge and also have intend to help us, do not feel shy, [click here](https://github.com/scup/Atellier/issues) to open an issue and collaborate their ideas, the contribution may be a criticism or a compliment (why not?)
 
-## instalation and running
-```shell
-mkdir attelier && cd attelier
-npm install react-attelier
-npm start
-```
-
-## contribute
 We have some conventions to contribute to the *Attelier* project, see more information in our [CONTRIBUTING.md](CONTRIBUTING.md). So please, read this before send to us a [pull requests](https://github.com/scup/Atellier/pulls).
 
 ## want help?
@@ -37,3 +97,14 @@ We have some conventions to contribute to the *Attelier* project, see more infor
 - [ ] Import components and live update
 - [ ] Drag components in `stage`
 - [ ] License
+
+## Team
+
+[![Guilherme de Souza](https://avatars1.githubusercontent.com/u/2624370?v=3&s=120)](https://github.com/guisouza) | [![Érica Mitsuishi](https://avatars2.githubusercontent.com/u/3091890?v=3&s=120)](https://github.com/mitsuishihidemi) | [![Bruno Agutoli](https://avatars2.githubusercontent.com/u/298845?v=3&s=120)](https://github.com/agutoli)
+---|---|---
+[Guilherme de Souza](https://github.com/guisouza) | [Érica Mitsuishi](https://github.com/mitsuishihidemi) | [Bruno Agutoli](https://github.com/agutoli)
+
+## License
+
+**React Atellier** is released under the
+[MIT license](https://github.com/scup/Atellier/blob/development/LICENSE.md).
