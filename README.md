@@ -20,54 +20,47 @@ npm install -g react-atellier
 ```
 
 ## Usage
+
+
+
+**Import Atellier**
 ```javascript
-import { Router, Route, Link } from 'react-router'
-import React from 'react'
-import { render } from 'react-dom'
-import { Router, Route, Link, browserHistory } from 'react-router';
-
-//*** atellier import ***
 import Atellier from 'react-atellier';
+```
+**Import your component**
+```javascript
 
-const App = React.createClass({/*...*/})
-
-const User = React.createClass({
-  displayName: 'User',
-  propTypes: {
-    name: React.PropTypes.string
-  },
-  getDefaultProps: function() {
-    return {
-      name: ''
-    }
-  },
-  render: function() {
-    return (
-      <div className="user">
-        Hi, {this.props.name}
-      </div>
-    );
-  }
-});
-// etc.
+import myComponent from 'myComponent';
 
 const componentList = [{
-  componentName : 'User',
-  component : User
+  componentName : myComponent.displayName,
+  component : myComponent
 }];
 
-const AtellierWrapper = React.createClass({
-  render: function() {
-    return (
-      <Atellier components={componentList} />
-    );
-  }
-});
+```
+**OR your component library**
+```javascript
 
+import myComponents from 'myComponent';
+
+const componentList = myComponents.map( (comp)=> {
+    return {
+      componentName : comp.displayName,
+      component : comp
+    }
+})
+
+```
+**pass your components to Atellier over components prop.**
+```javascript
+let attelier = (<Atellier components={componentList} />);
+```
+**and then you need to render the Attelier somewhere in yout application.**
+```javascript
 render((
   <Router history={browserHistory}>
     <Route path="/" component={App}>
-      <Route path="atellier" component={AtellierWrapper}/>
+      <Route path="atellier" component={attelier}/>
     </Route>
   </Router>
 ), document.body)
