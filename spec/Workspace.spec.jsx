@@ -36,7 +36,7 @@ describe('Workspace', () => {
       }
     });
 
-    var div = TestUtils.findRenderedDOMComponentWithClass(
+    let div = TestUtils.findRenderedDOMComponentWithClass(
       workspace, 'workspace'
     );
 
@@ -52,7 +52,7 @@ describe('Workspace', () => {
       }
     });
 
-    var textarea = TestUtils.findRenderedDOMComponentWithTag(
+    let textarea = TestUtils.findRenderedDOMComponentWithTag(
       workspace, 'textarea'
     );
 

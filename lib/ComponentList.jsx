@@ -2,7 +2,6 @@ import React, { PropTypes } from 'react';
 import classNames from 'classnames';
 import Immutable from 'immutable';
 
-
 class ComponentList extends React.Component {
 
   static defaultProps = {

@@ -26,7 +26,7 @@ describe('Attelier', () => {
   it('should render attelier', () => {
     let attelier = renderAttelier();
 
-    var div = TestUtils.findRenderedDOMComponentWithClass(
+    let div = TestUtils.findRenderedDOMComponentWithClass(
       attelier, 'attelier'
     );
 

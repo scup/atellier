@@ -21,7 +21,7 @@ describe('FieldType', () => {
       type: 'string'
     });
 
-    var textarea = TestUtils.findRenderedDOMComponentWithTag(
+    let textarea = TestUtils.findRenderedDOMComponentWithTag(
       FieldType, 'textarea'
     );
 
@@ -35,7 +35,7 @@ describe('FieldType', () => {
       type: 'number'
     });
 
-    var input = TestUtils.findRenderedDOMComponentWithTag(
+    let input = TestUtils.findRenderedDOMComponentWithTag(
       FieldType, 'input'
     );
 
@@ -50,7 +50,7 @@ describe('FieldType', () => {
       defaultValue: false
     });
 
-    var toggle = TestUtils.findRenderedDOMComponentWithClass(
+    let toggle = TestUtils.findRenderedDOMComponentWithClass(
       FieldType, 'attelier-toggle'
     );
 
@@ -64,7 +64,7 @@ describe('FieldType', () => {
       type: 'array'
     });
 
-    var div = TestUtils.findRenderedDOMComponentWithClass(
+    let div = TestUtils.findRenderedDOMComponentWithClass(
       FieldType, 'properties-field'
     );
 
@@ -78,7 +78,7 @@ describe('FieldType', () => {
       type: 'object'
     });
 
-    var div = TestUtils.findRenderedDOMComponentWithClass(
+    let div = TestUtils.findRenderedDOMComponentWithClass(
       FieldType, 'properties-field'
     );
 
@@ -92,7 +92,7 @@ describe('FieldType', () => {
       type: 'string'
     });
 
-    var textarea = TestUtils.findRenderedDOMComponentWithTag(
+    let textarea = TestUtils.findRenderedDOMComponentWithTag(
       FieldType, 'textarea'
     );
 

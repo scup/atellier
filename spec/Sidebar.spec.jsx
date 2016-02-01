@@ -28,7 +28,7 @@ describe('Sidebar', () => {
   it('should render sidebar', () => {
     let sidebar = renderSideBar();
 
-    var div = TestUtils.findRenderedDOMComponentWithClass(
+    let div = TestUtils.findRenderedDOMComponentWithClass(
       sidebar, 'sidebar'
     );
 
@@ -42,6 +42,6 @@ describe('Sidebar', () => {
 
     sidebar._handleToggleSidebar();
     expect(sidebar.state.close).toBeTruthy();
-  });  
+  });
 
 });
