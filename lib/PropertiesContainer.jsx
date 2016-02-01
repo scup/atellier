@@ -1,8 +1,11 @@
 import React, { PropTypes } from 'react';
 import FieldType from './FieldType.jsx';
-import PropTypesInterceptor from './structural/PropTypesInterceptor.jsx';
+import PropTypesIdentifier from './structural/PropTypesIdentifier.jsx';
 
-PropTypesInterceptor.intercept(PropTypes.oneOf);
+PropTypesIdentifier
+  .create(PropTypes)
+  .intercept(PropTypes.oneOf)
+  .identify();
 
 class PropertiesContainer extends React.Component {
 
@@ -64,19 +67,14 @@ class PropertiesContainer extends React.Component {
     let propsFields = [];
 
     for (let prop in propTypes) {
-      let type = PropTypesInterceptor.getPropTypePatch(propTypes[prop]);
-      let options = [];
-      if (propTypes[prop].options && propTypes[prop].options[prop]) {
-        options = propTypes[prop].options[prop];
-      }
-
+      let proptype = propTypes[prop];
       propsFields.push(
         <FieldType
           key={prop}
           name={prop}
-          type={type}
+          type={proptype.type}
           defaultValue={this._properties[prop]}
-          options={options}
+          options={proptype.options}
           components={this.props.components}
           onChange={this._handleChange}
          />
