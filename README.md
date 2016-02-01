@@ -4,6 +4,7 @@
 [![Build Status](https://travis-ci.org/scup/Atellier.svg?branch=development)](https://travis-ci.org/scup/Atellier)
 [![Code Climate](https://codeclimate.com/github/scup/Atellier/badges/gpa.svg)](https://codeclimate.com/github/scup/Atellier)
 [![npm version](https://badge.fury.io/js/Attelier.svg)](https://badge.fury.io/js/Attelier)
+[![By Scup](https://img.shields.io/badge/by-Scup-orange.svg)](http://developers.scup.com)
 
 
 
