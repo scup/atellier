@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react';
 import PropertiesContainer from './PropertiesContainer.jsx';
-import PropTypesInterceptor from './structural/PropTypesInterceptor.jsx';
 
 class Properties extends React.Component {
 
