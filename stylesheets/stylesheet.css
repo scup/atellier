@@ -10,7 +10,7 @@ body {
   color: #606c71; }
 
 a {
-  color: #1e6bb8;
+  color: #987b62;
   text-decoration: none; }
   a:hover {
     text-decoration: underline; }
@@ -54,10 +54,10 @@ a {
       margin-left: 0; } }
 
 .page-header {
-  color: #fff;
+  color: #cac4bc;
   text-align: center;
-  background-color: #159957;
-  background-image: linear-gradient(120deg, #155799, #159957); }
+  border-bottom: 1px solid #2f272a;
+  background-image: linear-gradient(120deg, #494043, #494043); }
 
 @media screen and (min-width: 64em) {
   .page-header {
@@ -112,7 +112,7 @@ a {
   margin-top: 2rem;
   margin-bottom: 1rem;
   font-weight: normal;
-  color: #159957; }
+  color: #987b62; }
 .main-content p {
   margin-bottom: 1em; }
 .main-content code {
