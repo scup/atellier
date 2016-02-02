@@ -1,0 +1,99 @@
+section{
+  border: 0px!important;
+}
+
+section.intro{
+  width: 100%;
+  height: 1000px;
+  background: url(../images/bg_white.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+
+.intro-text {
+  font-family: 'Work Sans', sans-serif;
+  text-align: center;
+  font-weight: 100;
+  padding: 100px;
+  font-size: 35px;
+  text-shadow: 0px 0px 2px rgba(0,0,0,0.2);
+}
+
+section.intro .intro-text b{
+  font-family: "Sci Fly", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #967962;
+  text-shadow: none;
+  text-transform: uppercase;
+}
+
+section.intro .browser-window{
+  background: url(../images/browser-window.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  width: 1000px;
+  height: 600px;
+  margin: 0px auto;
+}
+
+
+
+.spacer{
+  height: 120px;
+  background: #FFF;
+  text-align: center;
+  padding-top: 42px;
+  font-size: 25px;
+}
+
+.spacer.first{
+    padding-top: 17px;
+}
+
+.spacer.first p.small {
+    font-size: 15px;
+    margin-top: -25px;
+}
+
+
+
+section.designers{
+  width: 100%;
+  height: 800px;
+
+  background: url(../images/designers.jpg) no-repeat;
+  background-size: cover;
+  text-align: center;
+}
+
+
+section.designers .intro-text{
+  color: black;
+}
+
+section.designers iframe{
+  margin: 0px auto;
+}
+
+
+section.footer{
+  width: 100%;
+  height: 1000px;
+
+  background: url(../images/hipster.jpg) bottom center no-repeat;
+  background-size: cover;
+}
+
+
+
+.site-footer *{
+  font-family: 'Work Sans', sans-serif!important;
+  font-weight: 100;
+  font-size: 18px;
+  color: white!important;
+}
+
+.site-footer a{
+  font-weight: bold!important;
+}
