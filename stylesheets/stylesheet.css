@@ -16,6 +16,7 @@ body {
 
 a {
   color: #987b62;
+  font-weight: 600;
   text-decoration: none; }
   a:hover {
     text-decoration: underline; }
@@ -128,10 +129,12 @@ a {
   border-top: solid 1px rgba(0,0,0,0.25);
   margin: 0; }
 .main-content h1, .main-content h2, .main-content h3, .main-content h4, .main-content h5, .main-content h6 {
-  margin-top: 2rem;
+  margin-top: 1rem;
   margin-bottom: 1rem;
   font-weight: normal;
   color: #987b62; }
+.main-content h3 {
+  font-size: 1.9rem; }
 .main-content p {
   margin-bottom: 1em; }
 .main-content code {
@@ -241,10 +244,11 @@ a {
 
 .content-box {
     position: absolute;
-    width: 32rem;
+    width: 36rem;
     background-color: rgba(255,255,255,.9);
-    margin: 11rem 5rem;
-    padding: 1rem;}
+    margin: 7rem 5rem;
+    padding: 2rem 4rem;
+    border-radius: 10px;}
 
 .image-box {
     font-size: 0; }
