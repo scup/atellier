@@ -1,23 +1,18 @@
 import React, { PropTypes } from 'react';
+import Immutable from 'immutable';
 import PropertiesContainer from './PropertiesContainer.jsx';
 
 class Properties extends React.Component {
 
-  static defaultProps = {
-    // onChangeProps: PropTypes.func,
-    // onCloseProperties: PropTypes.func,
-    // component: {},
-    // componentProps: {}
-  };
-
   static propTypes = {
-    // onChangeProps: PropTypes.func,
-    // onCloseProperties: PropTypes.func,
-    // component: PropTypes.shape({
-    //   component: PropTypes.func,
-    //   componentName: PropTypes.string
-    // }),
-    // componentProps: PropTypes.object
+    component: PropTypes.shape({
+      component: PropTypes.func,
+      componentName: PropTypes.string
+    }),
+    componentProps: PropTypes.object,
+    components: PropTypes.instanceOf(Immutable.List),
+    onChangeProps: PropTypes.func,
+    onCloseProperties: PropTypes.func
   };
 
   constructor(props) {

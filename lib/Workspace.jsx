@@ -3,13 +3,7 @@ import Immutable from 'immutable';
 import ComponentProperties from './ComponentProperties.jsx';
 import Stage from './Stage.jsx';
 
-class Workspace extends React.Component {
-
-  static defaultProps = {
-    component: {},
-    components: Immutable.List([]),
-    onCloseProperties: PropTypes.func
-  };
+class Workspace extends React.Component {  
 
   static propTypes = {
     component: PropTypes.shape({
