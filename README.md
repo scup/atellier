@@ -88,7 +88,7 @@ render((
 
 [![Guilherme de Souza](https://avatars1.githubusercontent.com/u/2624370?v=3&s=120)](https://github.com/guisouza) | [![Alberto](https://avatars1.githubusercontent.com/u/717537?v=3&s=120)](https://github.com/albertossilva) | [![Érica Mitsuishi](https://avatars2.githubusercontent.com/u/3091890?v=3&s=120)](https://github.com/mitsuishihidemi) | [![Bruno Agutoli](https://avatars2.githubusercontent.com/u/298845?v=3&s=120)](https://github.com/agutoli) | [![Daniel Allegretti](https://avatars1.githubusercontent.com/u/317584?v=3&s=120)](https://github.com/allegretti) | [![João Neto](https://avatars2.githubusercontent.com/u/547989?v=3&s=120)](https://github.com/allegretti)
 ---|---|---|---|---|---
-[Guilherme de Souza](https://github.com/guisouza) | [Alberto](https://github.com/mitsuishihidemi) | [Érica Mitsuishi](https://github.com/mitsuishihidemi) | [Bruno Agutoli](https://github.com/agutoli) | [Daniel Allegretti](https://github.com/allegretti) | [João Neto](https://github.com/joaoneto)
+[Guilherme de Souza](https://github.com/guisouza) | [Alberto](https://github.com/albertossilva) | [Érica Mitsuishi](https://github.com/mitsuishihidemi) | [Bruno Agutoli](https://github.com/agutoli) | [Daniel Allegretti](https://github.com/allegretti) | [João Neto](https://github.com/joaoneto)
 
 ## Contribute
 Come with us to make an awesome *Atellier* tool to run components in live ambient.
