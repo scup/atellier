@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import Immutable from 'immutable';
 import ComponentProperties from './ComponentProperties.jsx';
 import Stage from './Stage.jsx';
 
@@ -6,7 +7,8 @@ class Workspace extends React.Component {
 
   static defaultProps = {
     onCloseProperties: PropTypes.func,
-    component: {}
+    component: {},
+    components: Immutable.List([])
   };
 
   static propTypes = {
@@ -14,7 +16,8 @@ class Workspace extends React.Component {
     component: PropTypes.shape({
       component: PropTypes.func,
       componentName: PropTypes.string
-    })
+    }),
+    components: PropTypes.instanceOf(Immutable.List)
   };
 
   constructor(props) {
@@ -25,17 +28,24 @@ class Workspace extends React.Component {
   }
 
   render() {
-    let { component, onCloseProperties } = this.props;
+    let { components, component, onCloseProperties } = this.props;
     let { componentProps } = this.state;
-    return (
+    return !!component && (
       <div className="workspace">
-        <ComponentProperties component={component} onChangeProps={this._onChangeProps} onCloseProperties={onCloseProperties} />
-        <Stage component={component} properties={componentProps} />
+        <ComponentProperties
+          components={components}
+          component={component}
+          componentProps={componentProps}
+          onChangeProps={this._handleChangeProps}
+          onCloseProperties={onCloseProperties} />
+        <Stage
+          component={component}
+          properties={componentProps} />
       </div>
     );
   }
 
-  _onChangeProps = (properties) => {
+  _handleChangeProps = (properties) => {
     this.setState({componentProps: properties});
   };
 }

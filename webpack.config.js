@@ -1,10 +1,9 @@
 /* jshint node: true */
 var path = require('path');
 
-
 module.exports = {
   context: path.join(__dirname),
-  entry: './lib/Attelier.jsx',
+  entry: './lib/index.jsx',
 
   output: {
     path: path.join(__dirname),

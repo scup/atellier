@@ -7,8 +7,7 @@
     "watch-test": "karma start --auto-watch --no-single-run",
     "build": "webpack -p",
     "rename-css-bower-dependencies": "find bower_components -name '*.css' | sed -e 'p;s/.css$/.less/' | xargs -n2 mv",
-    "start": "webpack-dev-server --inline --hot",
-    "postinstall": "bower install"
+    "start": "webpack-dev-server --inline --hot"    
   },
   "author": "",
   "license": "BSD",
@@ -22,6 +21,7 @@
     "babel-core": "^6.4.0",
     "babel-eslint": "^4.1.6",
     "babel-loader": "^6.2.1",
+    "babel-plugin-transform-object-assign": "^6.3.13",
     "babel-preset-es2015": "^6.3.13",
     "babel-preset-react": "^6.3.13",
     "babel-preset-stage-0": "^6.3.13",
@@ -31,9 +31,12 @@
     "eslint-plugin-react": "^2.3.0",
     "file-loader": "^0.8.5",
     "immutable": "^3.7.6",
+    "isparta-loader": "^2.0.0",
     "jasmine": "~2.3.2",
     "jasmine-core": "~2.3.4",
     "karma": "~0.13.9",
+    "karma-babel-preprocessor": "^6.0.1",
+    "karma-coverage": "^0.5.3",
     "karma-eslint": "^2.0.1",
     "karma-jasmine": "~0.3.6",
     "karma-phantomjs-launcher": "~0.2.3",
@@ -50,8 +53,13 @@
   },
   "dependencies": {
     "babel-runtime": "^6.3.19",
+    "brace": "^0.7.0",
     "classnames": "^2.2.3",
     "immutable": "^3.7.6",
-    "react": "^0.14.6"
+    "js-beautify": "^1.6.0",
+    "jslint": "^0.9.6",
+    "prismjs": "^1.3.0",
+    "react": "^0.14.6",
+    "react-ace": "^3.1.0"
   }
 }

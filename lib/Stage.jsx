@@ -22,11 +22,11 @@ class Stage extends React.Component {
     this.state = {
       constrast: false
     };
+    this._defineElement(props);
   }
 
   componentWillReceiveProps(nextProps) {
-    let { component, properties } = nextProps;
-    this._element = (component && component.component) && React.createElement(component.component, properties) || null;
+    this._defineElement(nextProps);
   }
 
   render() {
@@ -42,7 +42,7 @@ class Stage extends React.Component {
     let className = classNames('stage-board', {'stage-board-dark': this.state.constrast});
     return (
       <div className={className}>
-        {this._element}
+        {this._instance}
       </div>
     );
   }
@@ -51,7 +51,7 @@ class Stage extends React.Component {
     return (
       <div className="stage-tools">
         <label>Stage color</label>
-        <select onChange={this._handleChangeConstrast}>
+        <select className="attelier-input" onChange={this._handleChangeConstrast}>
           <option value="false">Light</option>
           <option value="true">Dark</option>
         </select>
@@ -63,6 +63,13 @@ class Stage extends React.Component {
     this.setState({
       constrast: event.target.value === 'true'
     });
+  };
+
+  _defineElement = (props) => {
+    let { component, properties } = props;
+    if (component && component.component) {
+      this._instance = React.createElement(component.component, properties)
+    }
   };
 }
 

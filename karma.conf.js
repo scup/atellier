@@ -1,3 +1,5 @@
+var path = require('path');
+
 module.exports = function(config) {
   config.set({
     basePath: '.',
@@ -6,20 +8,19 @@ module.exports = function(config) {
     browsers: ['PhantomJS'],
 
     files: [
-      // shim to workaroud PhantomJS 1.x lack of `bind` support
-      // see: https://github.com/ariya/phantomjs/issues/10522
       'node_modules/es5-shim/es5-shim.js',
-
       'node_modules/react/dist/react.js',
       'node_modules/react/dist/react-with-addons.js',
 
-      'spec/**/*.spec.*',
+      'spec/**.spec.jsx',
       { pattern: 'lib/**/*', watched: true, included: false }
     ],
 
+    reporters: ['progress', 'coverage'],
+
     preprocessors: {
       // add webpack as preprocessor
-      'spec/**/*.spec.*': ['webpack', 'sourcemap', 'eslint']
+      'spec/**.spec.jsx': ['webpack', 'sourcemap', 'eslint']
     },
 
     webpack: loadWebpackConfig(),
@@ -33,7 +34,7 @@ module.exports = function(config) {
       stopOnWarning: true
     },
 
-    singleRun: true
+    singleRun: true    
 
   });
 };
@@ -45,5 +46,12 @@ module.exports = function(config) {
 function loadWebpackConfig () {
   var webpackConfig = require('./webpack.config.js');
   webpackConfig.devtool = 'inline-source-map';
+  webpackConfig.module.preLoaders = [
+    {
+      test: /\.jsx?$/,
+      include: path.resolve('lib'),
+      loader: 'isparta'
+    }
+  ];
   return webpackConfig;
 }
