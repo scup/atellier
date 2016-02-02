@@ -1,4 +1,4 @@
-# ![atellier](https://raw.githubusercontent.com/scup/Atellier/development/media/header_logo.png)
+# ![atellier](http://i.imgur.com/UvDJ8c5.jpg)
 
 [![Dependencies Status](https://david-dm.org/scup/Atellier.svg)](https://david-dm.org/scup/Atellier)
 [![Build Status](https://travis-ci.org/scup/Atellier.svg?branch=development)](https://travis-ci.org/scup/Atellier)
