@@ -52,7 +52,7 @@ class FieldType extends React.Component {
     return (
       <div className="properties-field">
         <label>{name}</label>
-        <textarea className="attelier-input" defaultValue={defaultValue} onChange={this._handleChange} />
+        <textarea className="atellier-input" defaultValue={defaultValue} onChange={this._handleChange} />
       </div>
     );
   }
@@ -61,7 +61,7 @@ class FieldType extends React.Component {
     return (
       <div className="properties-field">
         <label>{name}</label>
-        <input type="number" className="attelier-input" defaultValue={defaultValue} onChange={this._handleChange} />
+        <input type="number" className="atellier-input" defaultValue={defaultValue} onChange={this._handleChange} />
       </div>
     );
   }
@@ -77,9 +77,9 @@ class FieldType extends React.Component {
 
   _renderObjectInput({ name, type, defaultValue }) {
     let aceProps = {
-      className: "attelier-editor",
-      mode: "json",
-      theme: "twilight",
+      className: 'atellier-editor',
+      mode: 'json',
+      theme: 'twilight',
       showGutter: false,
       onChange: this._handleObjectChange,
       name: (Date.now()*Math.random()/Math.random()).toString(),
@@ -96,9 +96,9 @@ class FieldType extends React.Component {
 
   _renderFunction({ name, type, defaultValue }) {
     let aceProps = {
-      className: "attelier-editor",
-      mode: "javascript",
-      theme: "twilight",
+      className: 'atellier-editor',
+      mode: 'javascript',
+      theme: 'twilight',
       showGutter: false,
       onChange: this._handleFunctionChange,
       name: (Date.now()*Math.random()/Math.random()).toString(),
@@ -120,7 +120,7 @@ class FieldType extends React.Component {
     return (
       <div className="properties-field">
         <label>{name}</label>
-        <select className="attelier-input" onChange={this._handleChange} defaultValue={defaultValue}>
+        <select className="atellier-input" onChange={this._handleChange} defaultValue={defaultValue}>
           <option>Nothing selected</option>
           {selectOptions}
         </select>
@@ -136,7 +136,7 @@ class FieldType extends React.Component {
     return (
       <div className="properties-field">
         <label>{name}</label>
-        <select className="attelier-input" onChange={this._handleElementChange}>
+        <select className="atellier-input" onChange={this._handleElementChange}>
           <option>Nothing selected</option>
           {selectComponents}
         </select>

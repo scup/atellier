@@ -2,15 +2,15 @@
 var path = require('path');
 
 module.exports = {
-  context: path.join(__dirname),
   entry: './lib/index.jsx',
 
   output: {
-    path: path.join(__dirname),
-    filename: 'react-attelier.js',
+    filename: './react-atellier.js',
     libraryTarget: 'umd',
-    library: 'ReactAttelier'
+    library: 'ReactAtellier'
   },
+
+  // devtool: '#inline-source-map',
 
   externals: {
    'react': 'var React',

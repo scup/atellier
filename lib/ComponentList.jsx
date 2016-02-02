@@ -5,14 +5,14 @@ import Immutable from 'immutable';
 class ComponentList extends React.Component {
 
   static defaultProps = {
-    onSelect: PropTypes.func,
     components: [],
+    onSelect: PropTypes.func,
     stagedComponent: {}
   };
 
   static propTypes = {
-    onSelect: PropTypes.func,
     components: PropTypes.instanceOf(Immutable.List),
+    onSelect: PropTypes.func,
     stagedComponent: PropTypes.shape({
       component: PropTypes.func,
       componentName: PropTypes.string
@@ -31,7 +31,7 @@ class ComponentList extends React.Component {
       <div className="component-nav">
         <div className="component-tools">
           <input type="text"
-            className="component-filter attelier-input attelier-input-icon"
+            className="component-filter atellier-input atellier-input-icon"
             placeholder="Search components"
             onChange={this._handleFilterComponents} />
         </div>
@@ -45,7 +45,7 @@ class ComponentList extends React.Component {
   _renderComponentListItems() {
     return this.props.components
       .filter(({componentName}) => {
-        return ~componentName.toLowerCase().indexOf(this.state.filter.toLowerCase());        
+        return ~componentName.toLowerCase().indexOf(this.state.filter.toLowerCase());
       })
       .map((component, key) => {
         let className = classNames('component-list-item', {

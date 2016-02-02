@@ -1,13 +1,14 @@
+<!doctype html>
 <html>
 <head>
-  <title>react attelier Demo</title>
+  <title>react atellier Demo</title>
 </head>
 <body>
   <div id="main"></div>
 
   <script src="node_modules/react/dist/react.js"></script>
   <script src="node_modules/react-dom/dist/react-dom.min.js"></script>
-  <script src="react-attelier.js"></script>
+  <script src="react-atellier.js"></script>
   <script>
     var props = {style: {background:'CornflowerBlue', padding: '30px', margin:'50px'}};
 
@@ -93,19 +94,24 @@
       }
     });
 
-    var data = [{
-      componentName : 'Pink Shadow',
-      component : MyComponentB
-    },{
-      componentName : 'MyComponent A',
-      component : MyComponentA
-    }, {
-      componentName : 'Editor',
-      component : MyComponentC
-    }];
+    var data = [
+      {
+        componentName : 'Pink Shadow',
+        component : MyComponentB
+      },
+      {
+        componentName : 'MyComponent A',
+        component : MyComponentA
+      },
+      {
+        componentName : 'Editor',
+        component : MyComponentC
+      }
+    ];
+
 
     /* jshint undef:false */
-    ReactDOM.render(React.createElement(ReactAttelier, {
+    ReactDOM.render(React.createElement(ReactAtellier, {
       components: data
     }), document.getElementById('main'));
   </script>

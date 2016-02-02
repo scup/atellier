@@ -1,8 +1,8 @@
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
-import Attelier from '../lib/Attelier.jsx';
+import Atellier from '../lib/Atellier.jsx';
 
-describe('Attelier', () => {
+describe('Atellier', () => {
 
   class TestComponent extends React.Component {
     render() {
@@ -17,28 +17,28 @@ describe('Attelier', () => {
     }
   ];
 
-  let renderAttelier = (components=components) => {
+  let renderAtellier = (components=components) => {
     return TestUtils.renderIntoDocument(
-      <Attelier components={components} />
+      <Atellier components={components} />
     );
   };
 
-  it('should render attelier', () => {
-    let attelier = renderAttelier();
+  it('should render atellier', () => {
+    let atellier = renderAtellier();
 
     let div = TestUtils.findRenderedDOMComponentWithClass(
-      attelier, 'attelier'
+      atellier, 'atellier'
     );
 
     expect(div).toBeTruthy();
   });
 
   it('should set stagedComponent state', () => {
-    let attelier = renderAttelier();
+    let atellier = renderAtellier();
 
-    attelier._handleSelectComponent(components[0]);
+    atellier._handleSelectComponent(components[0]);
 
-    expect(attelier.state.stagedComponent).toBeTruthy();
+    expect(atellier.state.stagedComponent).toBeTruthy();
   });
 
 });

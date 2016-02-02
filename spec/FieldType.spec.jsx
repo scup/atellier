@@ -51,7 +51,7 @@ describe('FieldType', () => {
     });
 
     let toggle = TestUtils.findRenderedDOMComponentWithClass(
-      FieldType, 'attelier-toggle'
+      FieldType, 'atellier-toggle'
     );
 
     expect(toggle).toBeTruthy();

@@ -21,7 +21,7 @@ class Toggle extends React.Component {
   }
 
   render() {
-    let className = classNames('attelier-toggle', this.props.className, {'attelier-toggle-checked': this.state.checked});
+    let className = classNames('atellier-toggle', this.props.className, {'atellier-toggle-checked': this.state.checked});
     return (
       <div className={className} onClick={this._handleChange}></div>
     );

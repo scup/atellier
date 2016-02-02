@@ -37,9 +37,9 @@ class PropertiesContainer extends React.Component {
 
   render() {
     let { name, element } = this.props;
-    if (element.type && typeof element.type.propTypes !== 'object') {
-      return null;
-    }
+    // if (element.type && typeof element.type.propTypes !== 'object') {
+    //   return null;
+    // }
 
     return (
       <div>
@@ -54,7 +54,7 @@ class PropertiesContainer extends React.Component {
   }
 
   _renderContainerHeader(name) {
-    return !!name && (
+    return (
       <div className="container-header">
         <a className="container-close-button" onClick={this._handleCloseProperties}>+</a>
         <h2 className="properties-component">{name}</h2>

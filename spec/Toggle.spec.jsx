@@ -16,16 +16,16 @@ describe('Toggle', function () {
 
   it('should be selected if `defaultValue` property is `true`', function () {
     let domNode = renderToggle({ name: 'ToggleField', defaultValue: true });
-    let toggle = domNode.querySelector('.attelier-toggle');
+    let toggle = domNode.querySelector('.atellier-toggle');
     expect(toggle.nodeName).toEqual('DIV');
-    expect(domNode.querySelector('.attelier-toggle-checked')).toBeDefined();
+    expect(domNode.querySelector('.atellier-toggle-checked')).toBeDefined();
   });
 
   it('should be unselected if `defaultValue` is `false', function () {
     let domNode = renderToggle({ name: 'ToggleField', defaultValue: false });
-    let toggle = domNode.querySelector('.attelier-toggle');
+    let toggle = domNode.querySelector('.atellier-toggle');
     expect(toggle.nodeName).toEqual('DIV');
-    expect(domNode.querySelector('.attelier-toggle-checked')).toBeNull();
+    expect(domNode.querySelector('.atellier-toggle-checked')).toBeNull();
   });
 
   it('should the `name` property match the label value', function () {
@@ -35,12 +35,12 @@ describe('Toggle', function () {
     expect(text).toEqual('ToggleField');
   });
 
-  it('should add/remove class `.attelier-toggle-checked` when toggled', function () {
+  it('should add/remove class `.atellier-toggle-checked` when toggled', function () {
     let domNode = renderToggle({ name: 'ToggleField', defaultValue: false });
-    expect(domNode.querySelector('.attelier-toggle-checked')).toBeNull();
-    let toggle = domNode.querySelector('.attelier-toggle');
+    expect(domNode.querySelector('.atellier-toggle-checked')).toBeNull();
+    let toggle = domNode.querySelector('.atellier-toggle');
     TestUtils.Simulate.click(toggle);
-    expect(domNode.querySelector('.attelier-toggle-checked')).not.toBeNull();
+    expect(domNode.querySelector('.atellier-toggle-checked')).not.toBeNull();
   });
 
   it('should call `handleChange` callback when toggled', function () {
@@ -48,7 +48,7 @@ describe('Toggle', function () {
     let obj = { handleChange: handleChange };
     spyOn(obj, 'handleChange');
     let domNode = renderToggle({ name: 'ToggleField', defaultValue: false, handleChange: obj.handleChange });
-    let toggle = domNode.querySelector('.attelier-toggle');
+    let toggle = domNode.querySelector('.atellier-toggle');
     TestUtils.Simulate.click(toggle);
     expect(obj.handleChange.calls.count()).toBe(1);
   });

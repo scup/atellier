@@ -6,18 +6,18 @@ import Stage from './Stage.jsx';
 class Workspace extends React.Component {
 
   static defaultProps = {
-    onCloseProperties: PropTypes.func,
     component: {},
-    components: Immutable.List([])
+    components: Immutable.List([]),
+    onCloseProperties: PropTypes.func
   };
 
   static propTypes = {
-    onCloseProperties: PropTypes.func,
     component: PropTypes.shape({
       component: PropTypes.func,
       componentName: PropTypes.string
     }),
-    components: PropTypes.instanceOf(Immutable.List)
+    components: PropTypes.instanceOf(Immutable.List),
+    onCloseProperties: PropTypes.func,
   };
 
   constructor(props) {
@@ -42,7 +42,7 @@ class Workspace extends React.Component {
           component={component}
           properties={componentProps} />
       </div>
-    );
+    ) || <div className="workspace" />;
   }
 
   _handleChangeProps = (properties) => {
