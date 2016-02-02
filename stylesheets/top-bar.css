@@ -1,0 +1,31 @@
+.top-bar{
+  width: 100%;
+  height: 60px;
+  background-color: #000;
+}
+
+
+.top-bar .holder .logo{
+  font-family: "Sci Fly", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #967962;
+  font-size: 32px;
+  width: 150px;
+  float: left;
+  margin-top: 7px;
+}
+
+.top-bar .holder{
+  max-width: 1440px;
+  width: 95%;
+  margin: 0px auto;
+}
+
+a.github {
+  display: block;
+  float: right;
+  background: url(../images/github.png) no-repeat;
+  width: 40px;
+  height: 35px;
+  background-size: contain;
+  margin-top: 12px;
+}
