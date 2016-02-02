@@ -2,6 +2,7 @@
   "name": "react-atellier",
   "version": "1.0.0",
   "description": "react atellier",
+  "main": "./dist/react-atellier.min.js",
   "scripts": {
     "test": "karma start",
     "watch-test": "karma start --auto-watch --no-single-run",
@@ -48,6 +49,7 @@
     "react-addons-test-utils": "^0.14.6",
     "react-dom": "^0.14.6",
     "style-loader": "~0.12.3",
+    "url-loader": "^0.5.7",
     "webpack": "~1.11.0",
     "webpack-dev-server": "~1.10.1"
   },

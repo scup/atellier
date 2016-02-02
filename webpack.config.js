@@ -1,21 +1,22 @@
 /* jshint node: true */
 var path = require('path');
+var node_modules_dir = path.resolve(__dirname, 'node_modules');
 
 module.exports = {
-  entry: './lib/index.jsx',
+  entry: './lib/Atellier.jsx',
 
   output: {
-    filename: './react-atellier.js',
+    filename: './dist/react-atellier.min.js',
     libraryTarget: 'umd',
     library: 'ReactAtellier'
   },
 
   // devtool: '#inline-source-map',
 
-  externals: {
-   'react': 'var React',
-   'react/addons': 'var React'
-  },
+  // externals: {
+  //  'react': 'var React',
+  //  'react/addons': 'var React'
+  // },
 
   module: {
     loaders: [
@@ -30,13 +31,18 @@ module.exports = {
         loader: 'autoprefixer'
       },
       {
-        test: /\.(otf|ttf|png)$/,
-        loader: 'file'
+        test: /\.(otf|ttf)$/,
+        loader: 'url?limit=100000'
+      },
+      {
+        test: /\.(png|jpg)$/,
+        loader: 'url?limit=25000'
       },
       {
         test: /(\.jsx?)$/,
-        exclude: /node_modules/,
-        loader: 'babel'
+        exclude: [node_modules_dir],
+        loader: 'babel',
+        include: path.join(__dirname, 'lib')
       }
     ]
   }
