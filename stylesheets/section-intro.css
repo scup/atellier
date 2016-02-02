@@ -27,7 +27,7 @@ section.intro .intro-text b{
   text-transform: uppercase;
 }
 
-section.intro .intro-text p{
+.intro-text p{
   font-size: 1rem;
   font-family: "Sci Fly", "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-shadow: none;
@@ -75,7 +75,6 @@ section.designers{
 
 
 section.designers .intro-text{
-  color: black;
 }
 
 section.designers iframe{
