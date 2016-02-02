@@ -1,9 +1,11 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import Immutable from 'immutable';
 import ComponentProperties from './ComponentProperties.jsx';
 import Stage from './Stage.jsx';
 
-class Workspace extends React.Component {  
+const PropTypes = __React__.PropTypes;
+
+class Workspace extends __React__.Component {
 
   static propTypes = {
     component: PropTypes.shape({
@@ -44,4 +46,4 @@ class Workspace extends React.Component {
   };
 }
 
-export default Workspace;
+module.exports = Workspace;

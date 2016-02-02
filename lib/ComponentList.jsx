@@ -1,8 +1,10 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import Immutable from 'immutable';
 
-class ComponentList extends React.Component {
+const PropTypes = __React__.PropTypes;
+
+class ComponentList extends __React__.Component {
 
   static defaultProps = {
     components: [],

@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import AceEditor from 'react-ace';
 import jsbeautifier from 'js-beautify';
 import PropertiesContainer from './PropertiesContainer.jsx';
@@ -7,7 +7,9 @@ import 'brace/mode/javascript';
 import 'brace/mode/json';
 import 'brace/theme/twilight';
 
-class FieldType extends React.Component {
+const PropTypes = __React__.PropTypes;
+
+class FieldType extends __React__.Component {
 
   static propTypes = {
     // defaultValue: PropTypes.any,
@@ -173,13 +175,13 @@ class FieldType extends React.Component {
 
   _handleElementChange = (response) => {
     let component = this.props.components.get(response.target.value);
-    let element = React.createElement(component.component);
+    let element = __React__.createElement(component.component);
     this.props.onChange(this.props.name, element);
   };
 
   _handleElementChangeProps = (properties) => {
     let { name, defaultValue } = this.props;
-    let element = React.cloneElement(defaultValue, properties);
+    let element = __React__.cloneElement(defaultValue, properties);
     this.props.onChange(this.props.name, element);
   };
 

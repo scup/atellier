@@ -1,7 +1,9 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 
-class Stage extends React.Component {
+const PropTypes = __React__.PropTypes;
+
+class Stage extends __React__.Component {
 
   static defaultProps = {
     component: {},
@@ -29,7 +31,7 @@ class Stage extends React.Component {
     this._defineElement(nextProps);
   }
 
-  render() {    
+  render() {
     return (
       <div className="stage">
         {this._renderStageBoard()}
@@ -68,7 +70,7 @@ class Stage extends React.Component {
   _defineElement = (props) => {
     let { component, properties } = props;
     if (component && component.component) {
-      this._instance = React.createElement(component.component, properties)
+      this._instance = __React__.createElement(component.component, properties)
     }
   };
 }

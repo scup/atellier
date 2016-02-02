@@ -1,7 +1,9 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 
-class Toggle extends React.Component {
+const PropTypes = __React__.PropTypes;
+
+class Toggle extends __React__.Component {
 
   static propTypes = {
     defaultValue: PropTypes.bool,

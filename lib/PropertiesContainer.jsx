@@ -1,7 +1,9 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import FieldType from './FieldType.jsx';
 
-class PropertiesContainer extends React.Component {
+const PropTypes = __React__.PropTypes;
+
+class PropertiesContainer extends __React__.Component {
 
   static defaultProps = {
     // onChangeProps: PropTypes.func,
@@ -22,7 +24,10 @@ class PropertiesContainer extends React.Component {
 
   constructor(props) {
     super(props);
-    this._defineProperties(props);
+
+    if (props) {
+      this._defineProperties(props);
+    }
   }
 
   componentWillReceiveProps(nextProps) {
