@@ -8,7 +8,7 @@
 
   <script src="node_modules/react/dist/react.js"></script>
   <script src="node_modules/react-dom/dist/react-dom.min.js"></script>
-  <script src="react-atellier.js"></script>
+  <script src="./dist/react-atellier.min.js"></script>
   <script>
     var props = {style: {background:'CornflowerBlue', padding: '30px', margin:'50px'}};
 
@@ -109,9 +109,8 @@
       }
     ];
 
-
     /* jshint undef:false */
-    ReactDOM.render(React.createElement(ReactAtellier, {
+    ReactDOM.render(React.createElement(ReactAtellier.default, {
       components: data
     }), document.getElementById('main'));
   </script>

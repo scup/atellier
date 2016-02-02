@@ -11,13 +11,6 @@ module.exports = {
     library: 'ReactAtellier'
   },
 
-  // devtool: '#inline-source-map',
-
-  // externals: {
-  //  'react': 'var React',
-  //  'react/addons': 'var React'
-  // },
-
   module: {
     loaders: [
       {
