@@ -1,6 +1,6 @@
 {
   "name": "react-atellier",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "react atellier",
   "main": "./dist/react-atellier.min.js",
   "scripts": {
@@ -11,11 +11,18 @@
     "start": "webpack-dev-server --inline --hot"
   },
   "author": "",
-  "license": "BSD",
+  "license": "MIT",
   "keywords": [
     "react",
     "reactjs",
-    "react-component"
+    "react-component",
+    "component",
+    "components",
+    "emulator",
+    "preview",
+    "atellier",
+    "atelier",
+    "attelier"
   ],
   "devDependencies": {
     "autoprefixer-loader": "^3.2.0",
