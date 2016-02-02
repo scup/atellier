@@ -4,13 +4,11 @@ var node_modules_dir = path.resolve(__dirname, 'node_modules');
 
 module.exports = {
   entry: './lib/Atellier.jsx',
-
   output: {
     filename: './dist/react-atellier.min.js',
     libraryTarget: 'umd',
     library: 'ReactAtellier'
   },
-
   module: {
     loaders: [
       {

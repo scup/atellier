@@ -46,4 +46,7 @@ class Atellier extends React.Component {
   };
 }
 
+// commonjs2
+module.exports = Atellier;
+// umd
 export default Atellier;
