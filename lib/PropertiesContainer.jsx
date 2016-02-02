@@ -37,9 +37,9 @@ class PropertiesContainer extends React.Component {
 
   render() {
     let { name, element } = this.props;
-    // if (element.type && typeof element.type.propTypes !== 'object') {
-    //   return null;
-    // }
+    if (element.type && typeof element.type.propTypes !== 'object') {
+      return null;
+    }
 
     return (
       <div>

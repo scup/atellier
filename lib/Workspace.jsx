@@ -42,7 +42,7 @@ class Workspace extends React.Component {
           component={component}
           properties={componentProps} />
       </div>
-    ) || <div className="workspace" />;
+    );
   }
 
   _handleChangeProps = (properties) => {
