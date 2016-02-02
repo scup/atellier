@@ -10,7 +10,6 @@ section.intro{
   background-repeat: no-repeat;
 }
 
-
 .intro-text {
   font-family: 'Work Sans', sans-serif;
   text-align: center;
@@ -29,6 +28,7 @@ section.intro .intro-text b{
 
 .intro-text p{
   font-size: 1rem;
+  line-height: 1rem;
   font-family: "Sci Fly", "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-shadow: none;
 }
@@ -43,8 +43,6 @@ section.intro .browser-window{
   margin: 0px auto;
 }
 
-
-
 .spacer{
   height: 120px;
   background: #FFF;
@@ -54,43 +52,32 @@ section.intro .browser-window{
 }
 
 .spacer.first{
-    padding-top: 17px;
+  padding-top: 17px;
 }
 
 .spacer.first p.small {
-    font-size: 15px;
-    margin-top: -25px;
+  font-size: 15px;
+  margin-top: -25px;
 }
-
-
 
 section.designers{
   width: 100%;
-  height: 800px;
-
+  height: 900px;
   background: url(../images/designers.jpg) no-repeat;
   background-size: cover;
   text-align: center;
-}
-
-
-section.designers .intro-text{
 }
 
 section.designers iframe{
   margin: 0px auto;
 }
 
-
 section.footer{
   width: 100%;
-  height: 1000px;
-
+  height: 1100px;
   background: url(../images/hipster.jpg) bottom center no-repeat;
   background-size: cover;
 }
-
-
 
 .site-footer *{
   font-family: 'Work Sans', sans-serif!important;
@@ -101,4 +88,70 @@ section.footer{
 
 .site-footer a{
   font-weight: bold!important;
+}
+
+
+
+
+
+@media screen and (min-width: 42em) and (max-width: 64em) {
+
+  section.intro {
+    height: 680px;
+  }
+
+  section.intro .intro-text, section.designers .intro-text {
+    font-size: 25px;
+    padding: 50px;
+  }
+  
+  section.intro .browser-window {
+    width: 670px;
+    height: 402px;
+  }
+
+  section.designers {
+    height: 620px;
+  }
+
+  section.designers iframe {
+    width: 670px;
+    height: 367px;
+  }
+
+  section.footer {
+    height: 510px;
+  }
+
+}
+
+@media screen and (max-width: 42em) {
+
+  section.intro {
+    height: 500px;
+  }
+
+  section.intro .intro-text, section.designers .intro-text {
+    font-size: 20px;
+    padding: 25px;
+  }
+  
+  section.intro .browser-window {
+    width: 400px;
+    height: 240px;
+  }
+
+  section.designers {
+    height: 470px;
+  }
+
+  section.designers iframe {
+    width: 420px;
+    height: 230px;
+  }
+
+  section.footer {
+    height: 350px;
+  }
+
 }
