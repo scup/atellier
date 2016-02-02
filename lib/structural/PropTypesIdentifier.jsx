@@ -11,6 +11,9 @@ export default class PropTypesIdentifier {
   identify() {
     for (let proptype in this.propTypes) {
       this.propTypes[proptype].type = proptype;
+      if (this.propTypes[proptype].isRequired) {
+        this.propTypes[proptype].isRequired.type = proptype;
+      }
     }
 
     return this;

@@ -1,11 +1,5 @@
 import React, { PropTypes } from 'react';
 import FieldType from './FieldType.jsx';
-import PropTypesIdentifier from './structural/PropTypesIdentifier.jsx';
-
-PropTypesIdentifier
-  .create(PropTypes)
-  .intercept(PropTypes.oneOf)
-  .identify();
 
 class PropertiesContainer extends React.Component {
 
@@ -54,7 +48,7 @@ class PropertiesContainer extends React.Component {
   }
 
   _renderContainerHeader(name) {
-    return (
+    return !!name && (
       <div className="container-header">
         <a className="container-close-button" onClick={this._handleCloseProperties}>+</a>
         <h2 className="properties-component">{name}</h2>

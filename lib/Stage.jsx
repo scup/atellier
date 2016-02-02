@@ -29,8 +29,7 @@ class Stage extends React.Component {
     this._defineElement(nextProps);
   }
 
-  render() {
-    console.log('Sidebar render')
+  render() {    
     return (
       <div className="stage">
         {this._renderStageBoard()}
