@@ -3,7 +3,7 @@
 [![Dependencies Status](https://david-dm.org/scup/Atellier.svg)](https://david-dm.org/scup/Atellier)
 [![Build Status](https://travis-ci.org/scup/Atellier.svg?branch=development)](https://travis-ci.org/scup/Atellier)
 [![Code Climate](https://codeclimate.com/github/scup/Atellier/badges/gpa.svg)](https://codeclimate.com/github/scup/Atellier)
-[![npm version](https://badge.fury.io/js/Attelier.svg)](https://badge.fury.io/js/Attelier)
+[![npm version](https://badge.fury.io/js/Atellier.svg)](https://badge.fury.io/js/Atellier)
 [![By Scup](https://img.shields.io/badge/by-Scup-orange.svg)](http://developers.scup.com)
 
 
@@ -55,14 +55,14 @@ const componentList = myComponents.map( (comp)=> {
 ```
 **pass your components to Atellier over components prop.**
 ```javascript
-let attelier = (<Atellier components={componentList} />);
+let atellier = (<Atellier components={componentList} />);
 ```
-**and then you need to render the Attelier somewhere in yout application.**
+**and then you need to render the Atellier somewhere in your application.**
 ```javascript
 render((
   <Router history={browserHistory}>
     <Route path="/" component={App}>
-      <Route path="atellier" component={attelier}/>
+      <Route path="atellier" component={atellier}/>
     </Route>
   </Router>
 ), document.body)
@@ -78,28 +78,28 @@ render((
 
 
 
-## todo
-- [ ] Atellier CLI
+## Todo
+- [ ] Atellier CLI (wip)
 - [ ] Import components and live update
-- [ ] Drag components in `stage`
-- [ ] License
+- [ ] Move components in `stage`
+- [x] License
 
 ## Team
 
-[![Guilherme de Souza](https://avatars1.githubusercontent.com/u/2624370?v=3&s=120)](https://github.com/guisouza) | [![Érica Mitsuishi](https://avatars2.githubusercontent.com/u/3091890?v=3&s=120)](https://github.com/mitsuishihidemi) | [![Bruno Agutoli](https://avatars2.githubusercontent.com/u/298845?v=3&s=120)](https://github.com/agutoli) | [![Daniel Allegretti](https://avatars1.githubusercontent.com/u/317584?v=3&s=120)](https://github.com/allegretti) | [![João Neto](https://avatars2.githubusercontent.com/u/547989?v=3&s=120)](https://github.com/allegretti)
----|---|---|---|---
-[Guilherme de Souza](https://github.com/guisouza) | [Érica Mitsuishi](https://github.com/mitsuishihidemi) | [Bruno Agutoli](https://github.com/agutoli) | [Daniel Allegretti](https://github.com/allegretti) | [João Neto](https://github.com/joaoneto)
+[![Guilherme de Souza](https://avatars1.githubusercontent.com/u/2624370?v=3&s=120)](https://github.com/guisouza) | [![Alberto](https://avatars1.githubusercontent.com/u/717537?v=3&s=120)](https://github.com/albertossilva) | [![Érica Mitsuishi](https://avatars2.githubusercontent.com/u/3091890?v=3&s=120)](https://github.com/mitsuishihidemi) | [![Bruno Agutoli](https://avatars2.githubusercontent.com/u/298845?v=3&s=120)](https://github.com/agutoli) | [![Daniel Allegretti](https://avatars1.githubusercontent.com/u/317584?v=3&s=120)](https://github.com/allegretti) | [![João Neto](https://avatars2.githubusercontent.com/u/547989?v=3&s=120)](https://github.com/allegretti)
+---|---|---|---|---|---
+[Guilherme de Souza](https://github.com/guisouza) | [Alberto](https://github.com/albertossilva) | [Érica Mitsuishi](https://github.com/mitsuishihidemi) | [Bruno Agutoli](https://github.com/agutoli) | [Daniel Allegretti](https://github.com/allegretti) | [João Neto](https://github.com/joaoneto)
 
 ## Contribute
-Come with us to make an awesome *Attelier* tool to run components in live ambient.
+Come with us to make an awesome *Atellier* tool to run components in live ambient.
 
 Now, if you do not have technical knowledge and also have intend to help us, do not feel shy, [click here](https://github.com/scup/Atellier/issues) to open an issue and collaborate their ideas, the contribution may be a criticism or a compliment (why not?)
 
-We have some conventions to contribute to the *Attelier* project, see more information in our [CONTRIBUTING.md](CONTRIBUTING.md). So please, read this before send to us a [pull requests](https://github.com/scup/Atellier/pulls).
+We have some conventions to contribute to the *Atellier* project, see more information in our [CONTRIBUTING.md](CONTRIBUTING.md). So please, read this before send to us a [pull requests](https://github.com/scup/Atellier/pulls).
 
-## want help?
+## Want help?
 - [issues](https://github.com/scup/Atellier/issues)
-- IRC #react-attelier on [freenode](https://freenode.net/)
+- IRC #react-atellier on [freenode](https://freenode.net/)
 
 
 ## License

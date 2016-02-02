@@ -30,6 +30,7 @@ class Stage extends React.Component {
   }
 
   render() {
+    console.log('Sidebar render')
     return (
       <div className="stage">
         {this._renderStageBoard()}
@@ -51,7 +52,7 @@ class Stage extends React.Component {
     return (
       <div className="stage-tools">
         <label>Stage color</label>
-        <select className="attelier-input" onChange={this._handleChangeConstrast}>
+        <select className="atellier-input" onChange={this._handleChangeConstrast}>
           <option value="false">Light</option>
           <option value="true">Dark</option>
         </select>

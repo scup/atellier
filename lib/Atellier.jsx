@@ -2,9 +2,9 @@ import React, { PropTypes } from 'react';
 import Immutable from 'immutable';
 import Sidebar from './Sidebar.jsx';
 import Workspace from './Workspace.jsx';
-import './styles/attelier.less';
+import './styles/atellier.less';
 
-class Attelier extends React.Component {
+class Atellier extends React.Component {
 
   static defaultProps = {
     components: []
@@ -28,7 +28,7 @@ class Attelier extends React.Component {
   render() {
     let { components, stagedComponent } = this.state;
     return (
-      <div className="attelier">
+      <div className="atellier">
         <Sidebar components={components} stagedComponent={stagedComponent} onSelect={this._handleSelectComponent} />
         <Workspace components={components} component={stagedComponent} onCloseProperties={this._handleSelectComponent} />
       </div>
@@ -40,4 +40,4 @@ class Attelier extends React.Component {
   };
 }
 
-export default Attelier;
+export default Atellier;

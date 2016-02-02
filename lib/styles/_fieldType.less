@@ -17,7 +17,7 @@
     margin-bottom: 11px;
   }
 
-  .attelier-toggle {
+  .atellier-toggle {
     float: right;
 
     & + label {
@@ -25,4 +25,24 @@
       line-height: 25px;
     }
   }
+
+  &.error {
+    color: @color-error;
+
+    label {
+      color: @color-error;
+    }
+
+    input,
+    textarea,
+    select {
+      color: @color-error;
+      background-color: @color-input-error-background;
+      border-top: 1px solid @color-error;
+      border: 1px solid @color-error;
+    }
+  }
+
+
+
 }

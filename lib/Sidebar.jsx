@@ -7,14 +7,14 @@ import toggleButtonImage from './images/arrow.png';
 class Sidebar extends React.Component {
 
   static defaultProps = {
-    onSelect: PropTypes.func,
     components: [],
+    onSelect: PropTypes.func,
     stagedComponent: {}
   };
 
   static propTypes = {
-    onSelect: PropTypes.func,
     components: PropTypes.instanceOf(Immutable.List),
+    onSelect: PropTypes.func,
     stagedComponent: PropTypes.shape({
       component: PropTypes.func,
       componentName: PropTypes.string
@@ -33,7 +33,7 @@ class Sidebar extends React.Component {
     let className = classNames('sidebar', {'sidebar-close': this.state.close})
     return (
       <div className={className}>
-        <h1 className="logo">ATTELIER</h1>
+        <h1 className="logo">ATELLIER</h1>
         <span className="sidebar-toggle-button" onClick={this._handleToggleSidebar}>
           <img src={toggleButtonImage} />
         </span>

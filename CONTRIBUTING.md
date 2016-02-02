@@ -38,7 +38,7 @@ Providing the following information will increase the chances of your issue bein
 
 * **Overview of the Issue** - if an error is being thrown a non-minified stack trace helps
 * **Motivation for or Use Case** - explain why this is a bug for you
-* **Angular Version(s)** - is it a regression?
+* **Atellier Version(s)** - is it a regression?
 * **Browsers and Operating System** - is this a problem with all browsers or only IE8?
 * **Reproduce the Error** - provide a live example (using [Codepen](http://codepen.io/), [Plunker](https://plnkr.co/) or
   [JSFiddle](https://jsfiddle.net/) or an unambiguous set of steps.

@@ -2,10 +2,11 @@
       FORMS
 \* ------------------------- */
 
-.attelier-input {
+.atellier-input {
   background-color: @color-input-background;
   border-radius: @border-radius;
-  border: 0;
+  // border: 1px solid transparent;
+  border: none;
   color: @color-text;
   font-size: 16px;
   font-weight: 300;
@@ -13,6 +14,7 @@
   padding: 13px;
   width: 100%;
   resize: none;
+  box-sizing: border-box;
 
   &::-webkit-input-placeholder {
     color: @color-placeholder;
@@ -36,11 +38,11 @@
 
 }
 
-select.attelier-input{
+select.atellier-input{
   height: 44px;
 }
 
-.attelier-editor{
+.atellier-editor{
   width: 100%!important;
   height: 300px!important;
 }
