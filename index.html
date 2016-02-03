@@ -92,21 +92,12 @@
       }
     });
 
-    var data = [
-      {
-        componentName : 'Pink Shadow',
-        component : MyComponentB
-      },
-      {
-        componentName : 'MyComponent A',
-        component : MyComponentA
-      },
-      {
-        componentName : 'Editor',
-        component : MyComponentC
+    var data = Object.keys(mui).map( (key) => {
+      return {
+        componentName: key,
+        component: mui[key]
       }
-    ];
-
+    });
     /* jshint undef:false */
     ReactDOM.render(React.createElement(ReactAtellier(React), {
       components: data

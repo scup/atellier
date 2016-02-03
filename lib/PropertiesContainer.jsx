@@ -6,25 +6,25 @@ const PropTypes = __React__.PropTypes;
 class PropertiesContainer extends __React__.Component {
 
   static defaultProps = {
-    // onChangeProps: PropTypes.func,
-    // onCloseProperties: PropTypes.func,
-    // component: {},
-    // componentProps: {}
+    type: () => {},
+    propTypes: {},
+    defaultProps:{}
   };
 
   static propTypes = {
     // onChangeProps: PropTypes.func,
     // onCloseProperties: PropTypes.func,
-    // component: PropTypes.shape({
-    //   component: PropTypes.any,
-    //   componentName: PropTypes.string
-    // }),
+    element: PropTypes.shape({
+      type: PropTypes.func,
+      propTypes: PropTypes.object,
+      defaultProps: PropTypes.object
+    }),
     // componentProps: PropTypes.object
   };
 
   constructor(props) {
     super(props);
-
+    console.log('props: ', props);
     if (props) {
       this._defineProperties(props);
     }
@@ -100,16 +100,14 @@ class PropertiesContainer extends __React__.Component {
   };
 
   _defineProperties = (props) => {
-    let element = props.element || {},
-        type = element.type || {};
-    if ( element.type ) {
-      Object.keys(type.propTypes || {}).filter( function(prop) {
-        if ( !element.type.defaultProps[prop] ) {
-          element.type.defaultProps[prop] = null;
+    if ( props.element.type ) {
+      Object.keys(props.element.type.propTypes).filter( function(prop) {
+        if ( (props.element.type.defaultProps) && !props.element.type.defaultProps[prop] ) {
+          props.element.type.defaultProps[prop] = null;
         }
       });
     }
-    this._properties = Object.assign({}, element.props, props.elementProps);
+    this._properties = Object.assign({}, props.element.props, props.elementProps);
   };
 
 }
