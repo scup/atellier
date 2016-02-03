@@ -13,8 +13,7 @@ A React component that works like a preview of other components. An excellent to
 Imagine a universe in which you may have tools (***components***) tested in real time! This is amazing!
 
 ## Online Demos
-* [Atellier and Material UI](https://github.com/callemall/material-ui)
-* [Atellier and Bootstrap UI](https://github.com/callemall/material-ui)
+* [Atellier and Material UI](http://scup.github.io/atellier/material-ui-atellier/)
 
 ## Install
 ```shell
