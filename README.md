@@ -27,7 +27,8 @@ npm install -g react-atellier
 
 **Import Atellier**
 ```javascript
-import Atellier from 'react-atellier';
+...
+var Atellier = require('react-atellier')( React );
 ```
 **Import your component**
 ```javascript
