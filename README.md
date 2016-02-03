@@ -55,14 +55,20 @@ const componentList = myComponents.map( (comp)=> {
 ```
 **pass your components to Atellier over components prop.**
 ```javascript
-let atellier = (<Atellier components={componentList} />);
+var AtellierWrapper = React.createClass({
+  render: function() {
+    return (
+      <ReactAtellier components={componentList} />
+    );
+  }
+});
 ```
 **and then you need to render the Atellier somewhere in your application.**
 ```javascript
 render((
   <Router history={browserHistory}>
     <Route path="/" component={App}>
-      <Route path="atellier" component={atellier}/>
+      <Route path="atellier" component={AtellierWrapper}/>
     </Route>
   </Router>
 ), document.body)
