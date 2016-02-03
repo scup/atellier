@@ -12,6 +12,7 @@ module.exports = {
   // externals: {
   //   'react': 'React'
   // },
+  devtool: 'source-map',
   module: {
     loaders: [
       {

@@ -36,7 +36,8 @@ class PropertiesContainer extends __React__.Component {
 
   render() {
     let { name, element } = this.props;
-    if (element.type && typeof element.type.propTypes !== 'object') {
+
+    if ( (element) && element.type && typeof element.type.propTypes !== 'object') {
       return null;
     }
 
@@ -62,7 +63,7 @@ class PropertiesContainer extends __React__.Component {
   }
 
   _renderPropertiesFields(element) {
-    let propTypes = element.type.propTypes;
+    let propTypes = element && element.type.propTypes;
     let propsFields = [];
 
     for (let prop in propTypes) {
@@ -99,7 +100,16 @@ class PropertiesContainer extends __React__.Component {
   };
 
   _defineProperties = (props) => {
-    this._properties = Object.assign({}, props.element.props, props.elementProps);
+    let element = props.element || {},
+        type = element.type || {};
+    if ( element.type ) {
+      Object.keys(type.propTypes || {}).filter( function(prop) {
+        if ( !element.type.defaultProps[prop] ) {
+          element.type.defaultProps[prop] = null;
+        }
+      });
+    }
+    this._properties = Object.assign({}, element.props, props.elementProps);
   };
 
 }

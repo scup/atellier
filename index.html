@@ -29,23 +29,21 @@
       },
       getDefaultProps: function() {
         return {
-          propA: 'valueA',
-          propB: 'valueB',
-          propC: 1,
-          propD: true,
-          propE: false,
-          propF: [{ nome: 'lululu' }, { nome: 'lalala'}, { nome: 'lololo' }],
+      //     propA: 'valueA',
+      //     propB: 'valueB',
+      //     propC: 1,
+      //     propD: true,
+      //     propE: false,
+      //     propF: [{ nome: 'lululu' }, { nome: 'lalala'}, { nome: 'lololo' }],
           propG: {nome : 'Alberto'},
-          color: 'purple',
-          click: function(){
-            console.log('funcionou')
-          },
-          element: React.createElement('p', {}, 'Just another element')
+      //     color: 'purple',
+      //     click: function(){
+      //       console.log('funcionou')
+      //     },
+      //     element: React.createElement('p', {}, 'Just another element')
         }
       },
       render: function() {
-
-
         return React.DOM.ul(props,
           [
             React.DOM.li({key: 1, style: { backgroundColor: this.props.color}}, this.props.propA),
@@ -53,7 +51,7 @@
             React.DOM.li({key: 3}, this.props.propC),
             React.DOM.li({key: 4}, String(this.props.propD)),
             React.DOM.li({key: 5}, String(this.props.propE)),
-            React.DOM.li({key: 6}, this.props.propF[0].nome),
+            // React.DOM.li({key: 6}, this.props.propF[0].nome),
             React.DOM.li({key: 7}, this.props.propG.nome),
             React.DOM.li({key: 8}, this.props.color),
             React.DOM.li({key: 10}, this.props.propH),
@@ -65,30 +63,30 @@
     });
 
     var MyComponentB = React.createClass({
-      displayName : 'Pink Shadow',
-      propTypes: {
-        propA: React.PropTypes.string,
-        children: React.PropTypes.element
-      },
-      getDefaultProps : function(){
-        return {
-            children : React.createElement(MyComponentA, {}),
-            style : {
-              boxShadow : '10px 10px 10px #FF00FF',
-              textShadow : '1px 1px 0px #FF0000'
-            }
-        }
-      },
+      // displayName : 'Pink Shadow',
+      // propTypes: {
+      //   propA: React.PropTypes.string,
+      //   children: React.PropTypes.element
+      // },
+      // getDefaultProps : function(){
+      //   return {
+      //       children : React.createElement(MyComponentA, {}),
+      //       style : {
+      //         boxShadow : '10px 10px 10px #FF00FF',
+      //         textShadow : '1px 1px 0px #FF0000'
+      //       }
+      //   }
+      // },
       render: function() {
         return React.createElement('div', this.props);
       }
     });
 
     var MyComponentC = React.createClass({
-      displayName : 'Editor',
-      propTypes: {
-        onClick: React.PropTypes.func
-      },
+      // displayName : 'Editor',
+      // propTypes: {
+      //   onClick: React.PropTypes.func
+      // },
       render: function() {
         return React.createElement('button',{onClick:this.props.onClick,key: 9},'clique aqui')
       }
