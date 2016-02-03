@@ -1,6 +1,6 @@
 {
   "name": "react-atellier",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "react atellier",
   "main": "./dist/react-atellier.min.js",
   "scripts": {
