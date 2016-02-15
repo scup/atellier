@@ -1,6 +1,6 @@
 {
   "name": "react-atellier",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "The smartest way to share interactive components with your team",
   "main": "./dist/react-atellier.min.js",
   "scripts": {
