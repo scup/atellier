@@ -49,7 +49,8 @@ function defineComponent() {
       );
     }
 
-    _handleSelectComponent = (component) => {
+    _handleSelectComponent = (component, key) => {
+      component.indexKey = key;
       this.setState({stagedComponent: component});
     };
   }

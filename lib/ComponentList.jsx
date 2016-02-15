@@ -44,6 +44,18 @@ class ComponentList extends __React__.Component {
     );
   }
 
+  _getInvalidComponents(){
+    return JSON.parse(localStorage.getItem('invalidComponents')) || [];
+  }
+
+  _isInvalidComponent(component, indexKey){
+    let invalidComponents = this._getInvalidComponents();
+    let exists = invalidComponents.find( (item) => {
+      return (item.componentName === component.componentName && item.indexKey === indexKey);
+    });
+    return !!exists;
+  }
+
   _renderComponentListItems() {
     return this.props.components
       .filter(({componentName}) => {
@@ -51,19 +63,21 @@ class ComponentList extends __React__.Component {
       })
       .map((component, key) => {
         let className = classNames('component-list-item', {
+          'component-list-item-error': this._isInvalidComponent(component, key),
           'component-list-item-selected': Immutable.is(component, this.props.stagedComponent)
         });
+
         return (
-          <li key={key} className={className} onClick={this._handleSelectComponentItem(component)}>
+          <li key={key} className={className} onClick={this._handleSelectComponentItem(component, key)}>
             {component.componentName}
           </li>
         );
       });
   }
 
-  _handleSelectComponentItem = (component) => {
+  _handleSelectComponentItem = (component, key) => {
     return () => {
-      this.props.onSelect(component);
+      this.props.onSelect(component, key);
     };
   };
 
