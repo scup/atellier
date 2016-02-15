@@ -9,10 +9,20 @@ module.exports = {
     libraryTarget: 'umd',
     library: 'ReactAtellier'
   },
-  // externals: {
-  //   'react': 'React'
-  // },
+  externals: {
+   'react': 'React',
+   'react-dom': 'ReactDOM'
+  },
   devtool: 'source-map',
+  resolve: {
+    fallback: [path.join(__dirname, 'node_modules')],
+    alias: {
+      'react': path.join(__dirname, 'node_modules', 'react')
+    },
+  },
+  resolveLoader: {
+    fallback: [path.join(__dirname, 'node_modules')]
+  },
   module: {
     loaders: [
       {

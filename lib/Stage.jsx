@@ -1,5 +1,5 @@
 import React from 'react';
-import ReacDOM from 'react-dom';
+import ReactDOM from 'react-dom';
 import classNames from 'classnames';
 
 const PropTypes = __React__.PropTypes;
@@ -23,7 +23,6 @@ class Stage extends __React__.Component {
     super(props);
     this.state = {
       constrast: false,
-      renderError: false,
       componentError: null,
       reloadNeeded: false
     };
@@ -36,22 +35,25 @@ class Stage extends __React__.Component {
 
   _renderComponent(){
     let { component, properties } = this.props;
+    let targetRender = document.getElementById('__stage_render__');
     try {
-      ReacDOM.render(
+      console.log('component: ', component);
+      ReactDOM.render(
         <div className="stage">
-          {this._renderErrorAlert()}
           {this._renderStageBoard()},
           {this._renderStageTools()}
-        </div>
-        ,
-        document.getElementById('__stage_render__')
+        </div>,
+        targetRender
       );
     } catch(e) {
-      console.log(e);
-      this.setState({
-        renderError: true,
-        componentError: this.state.componentError || component.componentName
-      });
+      console.log('e: ', e);
+      targetRender.innerHTML = '';
+      ReactDOM.render(
+        <div className="stage">
+          {this._renderErrorAlert()}
+        </div>,
+        targetRender
+      );
     }
   }
 
@@ -83,19 +85,14 @@ class Stage extends __React__.Component {
   };
 
   _renderErrorAlert() {
-    if ( this.state.renderError ) {
-      this._setInvalidComponent( this.props.component );
-      return (
-        <div className="stage-render-error">
-         <button onClick={this.onReloadAtellier} className="reload">Reload</button>
-          <span className="stage-error-text">
-            React component <b>{this.state.componentError} </b> has crashed!
-          </span>
-        </div>
-      );
-    }
+    this._setInvalidComponent( this.props.component );
     return (
-      <div />
+      <div className="stage-render-error">
+       <button onClick={this.onReloadAtellier} className="reload">Reload</button>
+        <span className="stage-error-text">
+          React component <b>{this.state.componentError} </b> crashed!
+        </span>
+      </div>
     );
   }
 
@@ -147,7 +144,7 @@ class Stage extends __React__.Component {
   _defineElement = (props) => {
     let { component, properties } = props;
     if (component && component.component) {
-      this._instance = __React__.createElement(component.component, properties)
+      this._instance = __React__.cloneElement(__React__.createElement(component.component, properties))
     }
   };
 }
