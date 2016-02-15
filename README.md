@@ -6,7 +6,8 @@
 [![npm version](https://badge.fury.io/js/react-atellier.svg)](https://badge.fury.io/js/react-atellier)
 [![By Scup](https://img.shields.io/badge/by-Scup-orange.svg)](http://developers.scup.com)
 
-
+## (unstable) Release
+This package is still experimental and is constantly developing.
 
 A React component that works like a preview of other components. An excellent tool to show how your component works and looks with. Easy to install and configure, you can have a router in your project with Atellier and can interact with any component.
 
