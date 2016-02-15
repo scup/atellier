@@ -10,8 +10,7 @@ module.exports = {
     library: 'ReactAtellier'
   },
   externals: {
-   'react': 'React',
-   'react-dom': 'ReactDOM'
+   'react': 'React'
   },
   devtool: 'source-map',
   resolve: {

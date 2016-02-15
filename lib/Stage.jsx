@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import reactdom from 'react-dom';
 import classNames from 'classnames';
 
 const PropTypes = __React__.PropTypes;
@@ -37,20 +37,18 @@ class Stage extends __React__.Component {
     let { component, properties } = this.props;
     let targetRender = document.getElementById('__stage_render__');
     try {
-      console.log('component: ', component);
-      ReactDOM.render(
+      reactdom.render(
         <div className="stage">
           {this._renderStageBoard()},
           {this._renderStageTools()}
         </div>,
         targetRender
       );
-    } catch(e) {
-      console.log('e: ', e);
+    } catch(error) {
       targetRender.innerHTML = '';
-      ReactDOM.render(
+      reactdom.render(
         <div className="stage">
-          {this._renderErrorAlert()}
+          {this._renderErrorAlert(error)}
         </div>,
         targetRender
       );
@@ -84,7 +82,7 @@ class Stage extends __React__.Component {
     window.location.reload();
   };
 
-  _renderErrorAlert() {
+  _renderErrorAlert(error) {
     this._setInvalidComponent( this.props.component );
     return (
       <div className="stage-render-error">
@@ -92,6 +90,7 @@ class Stage extends __React__.Component {
         <span className="stage-error-text">
           React component <b>{this.state.componentError} </b> crashed!
         </span>
+        <div className="stage-error-message">{error.message}</div>
       </div>
     );
   }

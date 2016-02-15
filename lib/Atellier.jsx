@@ -2,8 +2,6 @@ import React from 'react';
 import Immutable from 'immutable';
 import PropTypesIdentifier from './structural/PropTypesIdentifier.jsx';
 import './styles/atellier.less';
-import mui from 'material-ui';
-window.mui = mui;
 
 function defineComponent() {
 
