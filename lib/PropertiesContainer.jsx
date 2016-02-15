@@ -24,7 +24,6 @@ class PropertiesContainer extends __React__.Component {
 
   constructor(props) {
     super(props);
-    console.log('props: ', props);
     if (props) {
       this._defineProperties(props);
     }

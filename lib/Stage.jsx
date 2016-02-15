@@ -47,6 +47,7 @@ class Stage extends __React__.Component {
         document.getElementById('__stage_render__')
       );
     } catch(e) {
+      console.log(e);
       this.setState({
         renderError: true,
         componentError: this.state.componentError || component.componentName

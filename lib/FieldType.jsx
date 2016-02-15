@@ -131,10 +131,20 @@ class FieldType extends __React__.Component {
   }
 
   _renderElement({ name, type, defaultValue, components }) {
+    let containerProps;
     let selectComponents = components.map((item, index) => {
       return <option key={index} value={index}>{item.componentName}</option>
     });
 
+    if ( defaultValue ) {
+      containerProps = (
+        <PropertiesContainer
+          element={defaultValue}
+          components={this.props.components}
+          onChangeProps={this._handleElementChangeProps}
+        />
+      );
+    }
     return (
       <div className="properties-field">
         <label>{name}</label>
@@ -142,11 +152,7 @@ class FieldType extends __React__.Component {
           <option>Nothing selected</option>
           {selectComponents}
         </select>
-        <PropertiesContainer
-          element={defaultValue}
-          components={this.props.components}
-          onChangeProps={this._handleElementChangeProps}
-        />
+        {containerProps}
       </div>
     );
   }
