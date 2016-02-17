@@ -1,8 +1,8 @@
 # ![atellier](http://i.imgur.com/UvDJ8c5.jpg)
 
-[![Dependencies Status](https://david-dm.org/scup/Atellier.svg)](https://david-dm.org/scup/Atellier)
-[![Build Status](https://travis-ci.org/scup/Atellier.svg?branch=development)](https://travis-ci.org/scup/Atellier)
-[![Code Climate](https://codeclimate.com/github/scup/Atellier/badges/gpa.svg)](https://codeclimate.com/github/scup/Atellier)
+[![Dependencies Status](https://david-dm.org/scup/atellier.svg)](https://david-dm.org/scup/Atellier)
+[![Build Status](https://travis-ci.org/scup/atellier.svg?branch=development)](https://travis-ci.org/scup/Atellier)
+[![Code Climate](https://codeclimate.com/github/scup/atellier/badges/gpa.svg)](https://codeclimate.com/github/scup/Atellier)
 [![npm version](https://badge.fury.io/js/react-atellier.svg)](https://badge.fury.io/js/react-atellier)
 [![By Scup](https://img.shields.io/badge/by-Scup-orange.svg)](http://developers.scup.com)
 
@@ -109,4 +109,4 @@ We have some conventions to contribute to the *Atellier* project, see more infor
 ## License
 
 **React Atellier** is released under the
-[MIT license](https://github.com/scup/Atellier/blob/development/LICENSE.md).
+[MIT license](https://github.com/scup/atellier/blob/development/LICENSE.md).
