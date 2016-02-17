@@ -4,7 +4,7 @@
 [![Build Status](https://travis-ci.org/scup/atellier.svg?branch=development)](https://travis-ci.org/scup/Atellier)
 [![Code Climate](https://codeclimate.com/github/scup/Atellier/badges/gpa.svg)](https://codeclimate.com/github/scup/Atellier)
 [![npm version](https://badge.fury.io/js/react-atellier.svg)](https://badge.fury.io/js/react-atellier)
-[![By Scup](https://img.shields.io/badge/by-Scup-orange.svg)](http://developers.scup.com)
+[![By Sprinklr](https://img.shields.io/badge/by-Sprinklr-orange.svg)](http://developers.scup.com)
 
 A React component that works like a preview of other components. An excellent tool to show how your component works and looks with. Easy to install and configure, you can have a router in your project with Atellier and can interact with any component.
 
