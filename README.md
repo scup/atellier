@@ -1,7 +1,7 @@
 # ![atellier](http://i.imgur.com/UvDJ8c5.jpg)
 
 [![Dependencies Status](https://david-dm.org/scup/atellier.svg)](https://david-dm.org/scup/Atellier)
-[![Build Status](https://travis-ci.org/scup/atellier.svg?branch=development)](https://travis-ci.org/scup/Atellier)
+[![Build Status](https://travis-ci.org/scup/atellier.svg?branch=development)](https://travis-ci.org/scup/atellier)
 [![Code Climate](https://codeclimate.com/github/scup/Atellier/badges/gpa.svg)](https://codeclimate.com/github/scup/Atellier)
 [![npm version](https://badge.fury.io/js/react-atellier.svg)](https://badge.fury.io/js/react-atellier)
 [![By Sprinklr](https://img.shields.io/badge/by-Sprinklr-orange.svg)](http://developers.scup.com)
