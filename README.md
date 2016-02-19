@@ -86,7 +86,6 @@ render((
 - [ ] Atellier CLI (wip)
 - [ ] Import components and live update
 - [ ] Move components in `stage`
-- [x] License
 
 ## Team
 
@@ -103,7 +102,7 @@ We have some conventions to contribute to the *Atellier* project, see more infor
 
 ## Want help?
 - [issues](https://github.com/scup/Atellier/issues)
-- IRC #react-atellier on [freenode](https://freenode.net/)
+- ~~~IRC #react-atellier on [freenode](https://freenode.net/)~~~
 
 
 ## License
