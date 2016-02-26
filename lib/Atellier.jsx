@@ -57,4 +57,4 @@ function defineComponent() {
 module.exports = function(_react){
   window.__React__ = _react;// global
   return defineComponent();
-}
+};

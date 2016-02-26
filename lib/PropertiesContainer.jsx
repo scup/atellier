@@ -14,11 +14,11 @@ class PropertiesContainer extends __React__.Component {
   static propTypes = {
     // onChangeProps: PropTypes.func,
     // onCloseProperties: PropTypes.func,
-    element: PropTypes.shape({
-      type: PropTypes.func,
-      propTypes: PropTypes.object,
-      defaultProps: PropTypes.object
-    }),
+    // element: PropTypes.shape({
+    //   type: PropTypes.func,
+    //   propTypes: PropTypes.object,
+    //   defaultProps: PropTypes.object
+    // }),
     // componentProps: PropTypes.object
   };
 

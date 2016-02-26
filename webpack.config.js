@@ -23,6 +23,13 @@ module.exports = {
     fallback: [path.join(__dirname, 'node_modules')]
   },
   module: {
+    preLoaders: [
+      {
+        test: /(\.jsx?)$/,
+        exclude: /node_modules/,
+        loader: 'babel'
+      }
+    ],
     loaders: [
       {
         test: /\.less$/,
@@ -41,12 +48,6 @@ module.exports = {
       {
         test: /\.(png|jpg)$/,
         loader: 'url?limit=25000'
-      },
-      {
-        test: /(\.jsx?)$/,
-        exclude: [node_modules_dir],
-        loader: 'babel',
-        include: path.join(__dirname, 'lib')
       }
     ]
   }

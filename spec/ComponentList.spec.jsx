@@ -59,5 +59,5 @@ describe('ComponentList', () => {
 
     TestUtils.Simulate.click(li);
   });
-  
+
 });

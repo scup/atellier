@@ -12,7 +12,7 @@ module.exports = function(config) {
       'node_modules/react/dist/react.js',
       'node_modules/react/dist/react-with-addons.js',
 
-      'spec/**.spec.jsx',
+      'spec/Atellier.spec.jsx',
       { pattern: 'lib/**/*', watched: true, included: false }
     ],
 
@@ -20,7 +20,7 @@ module.exports = function(config) {
 
     preprocessors: {
       // add webpack as preprocessor
-      'spec/**.spec.jsx': ['webpack', 'sourcemap', 'eslint']
+      'spec/Atellier.spec.jsx': ['webpack', 'sourcemap', 'eslint']
     },
 
     webpack: loadWebpackConfig(),
@@ -34,7 +34,7 @@ module.exports = function(config) {
       stopOnWarning: true
     },
 
-    singleRun: true    
+    singleRun: true
 
   });
 };
@@ -46,12 +46,12 @@ module.exports = function(config) {
 function loadWebpackConfig () {
   var webpackConfig = require('./webpack.config.js');
   webpackConfig.devtool = 'inline-source-map';
-  webpackConfig.module.preLoaders = [
+  webpackConfig.module.preLoaders.push(
     {
       test: /\.jsx?$/,
       include: path.resolve('lib'),
       loader: 'isparta'
     }
-  ];
+  );
   return webpackConfig;
 }

@@ -137,14 +137,20 @@ class FieldType extends __React__.Component {
     });
 
     if ( defaultValue ) {
+      console.log(defaultValue);
+      let object = {};
+      let func = () => {};
       containerProps = (
         <PropertiesContainer
           element={defaultValue}
+          elementProps={object}
           components={this.props.components}
           onChangeProps={this._handleElementChangeProps}
+          onCloseProperties={func}
         />
       );
     }
+
     return (
       <div className="properties-field">
         <label>{name}</label>
