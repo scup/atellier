@@ -12,7 +12,7 @@ module.exports = function(config) {
       'node_modules/react/dist/react.js',
       'node_modules/react/dist/react-with-addons.js',
       'spec/polyfills/**/*.jsx',
-      'spec/Sidebar.spec.jsx',
+      'spec/**/*.spec.jsx',
       { pattern: 'lib/**/*', watched: true, included: false }
     ],
 
@@ -20,7 +20,7 @@ module.exports = function(config) {
 
     preprocessors: {
       // add webpack as preprocessor
-      'spec/Sidebar.spec.jsx': ['webpack', 'sourcemap', 'eslint']
+      'spec/**/*.spec.jsx': ['webpack', 'sourcemap', 'eslint']
     },
 
     webpack: loadWebpackConfig(),

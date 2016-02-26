@@ -1,47 +1,50 @@
-import React from 'react';
 import Immutable from 'immutable';
 import PropertiesContainer from './PropertiesContainer.jsx';
 
-const PropTypes = __React__.PropTypes;
+export default ((__React__) => {
 
-class Properties extends __React__.Component {
+    const PropTypes = __React__.PropTypes;
 
-  static propTypes = {
-    component: PropTypes.shape({
-      component: PropTypes.func,
-      componentName: PropTypes.string
-    }),
-    componentProps: PropTypes.object,
-    components: PropTypes.instanceOf(Immutable.List),
-    onChangeProps: PropTypes.func,
-    onCloseProperties: PropTypes.func
-  };
+    class Properties extends __React__.Component {
 
-  constructor(props) {
-    super(props);
-  }
+      static propTypes = {
+        component: PropTypes.shape({
+          component: PropTypes.func,
+          componentName: PropTypes.string
+        }),
+        componentProps: PropTypes.object,
+        components: PropTypes.instanceOf(Immutable.List),
+        onChangeProps: PropTypes.func,
+        onCloseProperties: PropTypes.func
+      };
 
-  render() {
-    let { component, componentProps, components, onCloseProperties } = this.props;
-    let element = __React__.createElement(component.component);
-    return (
-      <div className="component-properties">
-        <PropertiesContainer
-          name={component.componentName}
-          element={element}
-          elementProps={componentProps}
-          components={components}
-          onChangeProps={this._handleChangeProps}
-          onCloseProperties={onCloseProperties}
-        />
-      </div>
-    );
-  }
+      constructor(props) {
+        super(props);
+      }
 
-  _handleChangeProps = (properties) => {
-    this.props.onChangeProps(properties);
-  };
+      render() {
+        let { component, componentProps, components, onCloseProperties } = this.props;
+        let element = __React__.createElement(component.component);
+        return (
+          <div className="component-properties">
+            <PropertiesContainer
+              name={component.componentName}
+              element={element}
+              elementProps={componentProps}
+              components={components}
+              onChangeProps={this._handleChangeProps}
+              onCloseProperties={onCloseProperties}
+            />
+          </div>
+        );
+      }
 
-}
+      _handleChangeProps = (properties) => {
+        this.props.onChangeProps(properties);
+      };
 
-export default Properties;
+    }
+
+    return Properties;
+
+  })(React);

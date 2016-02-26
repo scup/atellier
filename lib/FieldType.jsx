@@ -1,4 +1,3 @@
-import React from 'react';
 import AceEditor from 'react-ace';
 import jsbeautifier from 'js-beautify';
 import PropertiesContainer from './PropertiesContainer.jsx';
@@ -7,215 +6,218 @@ import 'brace/mode/javascript';
 import 'brace/mode/json';
 import 'brace/theme/twilight';
 
-const PropTypes = __React__.PropTypes;
+export default ((__React__) => {
 
-class FieldType extends __React__.Component {
+  const PropTypes = __React__.PropTypes;
 
-  static propTypes = {
-    // defaultValue: PropTypes.any,
-    // name: PropTypes.string,
-    // onChange: PropTypes.func,
-    // type: PropTypes.string.isRequired,
-    // options: PropTypes.any
-  };
+  class FieldType extends __React__.Component {
 
-  static defaultProps = {
-    // name: '',
-    // type: 'string',
-    // defaultValue: null,
-    // onChange: PropTypes.func
-  };
-
-  constructor(props) {
-    super(props);
-
-    this._renderTypeHandlers = {
-      string: this._renderStringInput,
-      number: this._renderNumberInput,
-      bool: this._renderBoolInput,
-      array: this._renderObjectInput,
-      object: this._renderObjectInput,
-      oneOf: this._renderOneOf,
-      element: this._renderElement,
-      func: this._renderFunction,
+    static propTypes = {
+      // defaultValue: PropTypes.any,
+      // name: PropTypes.string,
+      // onChange: PropTypes.func,
+      // type: PropTypes.string.isRequired,
+      // options: PropTypes.any
     };
 
-    this.state = {
-      defaultValue: this._getDefaultValue(props)
-    };
-  }
-
-  render() {
-    let renderComponent = (typeof this.props.type && this._renderTypeHandlers[ this.props.type ]) || this._renderStringInput;
-    return renderComponent.call(this, this.props);
-  }
-
-  _renderStringInput({ name, type, defaultValue }) {
-    return (
-      <div className="properties-field">
-        <label>{name}</label>
-        <textarea className="atellier-input" defaultValue={defaultValue} onChange={this._handleChange} />
-      </div>
-    );
-  }
-
-  _renderNumberInput({ name, type, defaultValue }) {
-    return (
-      <div className="properties-field">
-        <label>{name}</label>
-        <input type="number" className="atellier-input" defaultValue={defaultValue} onChange={this._handleChange} />
-      </div>
-    );
-  }
-
-  _renderBoolInput({ name, type, defaultValue }) {
-    return (
-      <div className="properties-field">
-        <Toggle defaultValue={defaultValue} onChange={this._handleChange} />
-        <label>{name}</label>
-      </div>
-    );
-  }
-
-  _renderObjectInput({ name, type, defaultValue }) {
-    let aceProps = {
-      className: 'atellier-editor',
-      mode: 'json',
-      theme: 'twilight',
-      showGutter: false,
-      onChange: this._handleObjectChange,
-      name: (Date.now()*Math.random()/Math.random()).toString(),
-      value: this.state.defaultValue
+    static defaultProps = {
+      // name: '',
+      // type: 'string',
+      // defaultValue: null,
+      // onChange: PropTypes.func
     };
 
-    return (
-      <div className="properties-field">
-      <label>{name}</label>
-      <AceEditor {...aceProps} />
-      </div>
-    );
-  };
+    constructor(props) {
+      super(props);
 
-  _renderFunction({ name, type, defaultValue }) {
-    let aceProps = {
-      className: 'atellier-editor',
-      mode: 'javascript',
-      theme: 'twilight',
-      showGutter: false,
-      onChange: this._handleFunctionChange,
-      name: (Date.now()*Math.random()/Math.random()).toString(),
-      value: this.state.defaultValue
-    };
+      this._renderTypeHandlers = {
+        string: this._renderStringInput,
+        number: this._renderNumberInput,
+        bool: this._renderBoolInput,
+        array: this._renderObjectInput,
+        object: this._renderObjectInput,
+        oneOf: this._renderOneOf,
+        element: this._renderElement,
+        func: this._renderFunction,
+      };
 
-    return (
-      <div className="properties-field">
-        <label>{name}</label>
-        <AceEditor {...aceProps} />
-      </div>
-    );
-  }
+      this.state = {
+        defaultValue: this._getDefaultValue(props)
+      };
+    }
 
-  _renderOneOf({ name, type, defaultValue, options }) {
-    let selectOptions = options.map((item, index) => {
-      return (<option key={index} value={item}>{item}</option>);
-    });
-    return (
-      <div className="properties-field">
-        <label>{name}</label>
-        <select className="atellier-input" onChange={this._handleChange} defaultValue={defaultValue}>
-          <option>Nothing selected</option>
-          {selectOptions}
-        </select>
-      </div>
-    );
-  }
+    render() {
+      let renderComponent = (typeof this.props.type && this._renderTypeHandlers[ this.props.type ]) || this._renderStringInput;
+      return renderComponent.call(this, this.props);
+    }
 
-  _renderElement({ name, type, defaultValue, components }) {
-    let containerProps;
-    let selectComponents = components.map((item, index) => {
-      return <option key={index} value={index}>{item.componentName}</option>
-    });
-
-    if ( defaultValue ) {      
-      let object = {};
-      let func = () => {};
-      containerProps = (
-        <PropertiesContainer
-          element={defaultValue}
-          elementProps={object}
-          components={this.props.components}
-          onChangeProps={this._handleElementChangeProps}
-          onCloseProperties={func}
-        />
+    _renderStringInput({ name, type, defaultValue }) {
+      return (
+        <div className="properties-field">
+          <label>{name}</label>
+          <textarea className="atellier-input" defaultValue={defaultValue} onChange={this._handleChange} />
+        </div>
       );
     }
 
-    return (
-      <div className="properties-field">
-        <label>{name}</label>
-        <select className="atellier-input" onChange={this._handleElementChange}>
-          <option>Nothing selected</option>
-          {selectComponents}
-        </select>
-        {containerProps}
-      </div>
-    );
-  }
+    _renderNumberInput({ name, type, defaultValue }) {
+      return (
+        <div className="properties-field">
+          <label>{name}</label>
+          <input type="number" className="atellier-input" defaultValue={defaultValue} onChange={this._handleChange} />
+        </div>
+      );
+    }
 
-  _getDefaultValue(props) {
-    switch(props.type) {
-      case 'array':
-      case 'object':
+    _renderBoolInput({ name, type, defaultValue }) {
+      return (
+        <div className="properties-field">
+          <Toggle defaultValue={defaultValue} onChange={this._handleChange} />
+          <label>{name}</label>
+        </div>
+      );
+    }
+
+    _renderObjectInput({ name, type, defaultValue }) {
+      let aceProps = {
+        className: 'atellier-editor',
+        mode: 'json',
+        theme: 'twilight',
+        showGutter: false,
+        onChange: this._handleObjectChange,
+        name: (Date.now()*Math.random()/Math.random()).toString(),
+        value: this.state.defaultValue
+      };
+
+      return (
+        <div className="properties-field">
+          <label>{name}</label>
+          <AceEditor {...aceProps} />
+        </div>
+      );
+    };
+
+    _renderFunction({ name, type, defaultValue }) {
+      let aceProps = {
+        className: 'atellier-editor',
+        mode: 'javascript',
+        theme: 'twilight',
+        showGutter: false,
+        onChange: this._handleFunctionChange,
+        name: (Date.now()*Math.random()/Math.random()).toString(),
+        value: this.state.defaultValue
+      };
+
+      return (
+        <div className="properties-field">
+          <label>{name}</label>
+          <AceEditor {...aceProps} />
+        </div>
+      );
+    }
+
+    _renderOneOf({ name, type, defaultValue, options }) {
+      let selectOptions = options.map((item, index) => {
+        return (<option key={index} value={item}>{item}</option>);
+      });
+      return (
+        <div className="properties-field">
+          <label>{name}</label>
+          <select className="atellier-input" onChange={this._handleChange} defaultValue={defaultValue}>
+            <option>Nothing selected</option>
+            {selectOptions}
+          </select>
+        </div>
+      );
+    }
+
+    _renderElement({ name, type, defaultValue, components }) {
+      let containerProps;
+      let selectComponents = components.map((item, index) => {
+        return <option key={index} value={index}>{item.componentName}</option>
+      });
+
+      if ( defaultValue ) {
+        let object = {};
+        let func = () => {};
+        containerProps = (
+          <PropertiesContainer
+            element={defaultValue}
+            elementProps={object}
+            components={this.props.components}
+            onChangeProps={this._handleElementChangeProps}
+            onCloseProperties={func}
+            />
+        );
+      }
+
+      return (
+        <div className="properties-field">
+          <label>{name}</label>
+          <select className="atellier-input" onChange={this._handleElementChange}>
+            <option>Nothing selected</option>
+            {selectComponents}
+          </select>
+          {containerProps}
+        </div>
+      );
+    }
+
+    _getDefaultValue(props) {
+      switch(props.type) {
+        case 'array':
+        case 'object':
         return JSON.stringify(props.defaultValue, null, 2);
-      case 'func':
+        case 'func':
         return jsbeautifier(
-            (props.defaultValue && props.defaultValue.toString()) || 'function() { return; }'
-          );
-      default:
+          (props.defaultValue && props.defaultValue.toString()) || 'function() { return; }'
+        );
+        default:
         return props.defaultValue;
+      };
+    }
+
+    _handleChange = ( response ) => {
+      let value = response;
+      if (response.target) {
+        value = response.target.type === 'number' && +response.target.value || response.target.value;
+      }
+      this.props.onChange(this.props.name, value);
+    };
+
+    _handleElementChange = (response) => {
+      let component = this.props.components.get(response.target.value);
+      let element = __React__.createElement(component.component);
+      this.props.onChange(this.props.name, element);
+    };
+
+    _handleElementChangeProps = (properties) => {
+      let { name, defaultValue } = this.props;
+      let element = __React__.cloneElement(defaultValue, properties);
+      this.props.onChange(this.props.name, element);
+    };
+
+    _handleObjectChange = (response) => {
+      this.setState({defaultValue: response}, () => {
+        try {
+          this.props.onChange(this.props.name, JSON.parse(response));
+        } catch(e) {
+          console.error(e);
+        }
+      });
+    };
+
+    _handleFunctionChange = (response ) => {
+      this.setState({defaultValue: response}, () => {
+        try {
+          this.props.onChange(this.props.name, new Function(`return ${response};`)());
+        } catch(e) {
+          console.error(e);
+        };
+      });
     };
   }
 
-  _handleChange = ( response ) => {
-    let value = response;
-    if (response.target) {
-      value = response.target.type === 'number' && +response.target.value || response.target.value;
-    }
-    this.props.onChange(this.props.name, value);
-  };
+  return FieldType;
 
-  _handleElementChange = (response) => {
-    let component = this.props.components.get(response.target.value);
-    let element = __React__.createElement(component.component);
-    this.props.onChange(this.props.name, element);
-  };
-
-  _handleElementChangeProps = (properties) => {
-    let { name, defaultValue } = this.props;
-    let element = __React__.cloneElement(defaultValue, properties);
-    this.props.onChange(this.props.name, element);
-  };
-
-  _handleObjectChange = (response) => {
-    this.setState({defaultValue: response}, () => {
-      try {
-        this.props.onChange(this.props.name, JSON.parse(response));
-      } catch(e) {
-        console.error(e);
-      }
-    });
-  };
-
-  _handleFunctionChange = (response ) => {
-    this.setState({defaultValue: response}, () => {
-      try {
-        this.props.onChange(this.props.name, new Function(`return ${response};`)());
-      } catch(e) {
-        console.error(e);
-      };
-    });
-  };
-
-}
-
-export default FieldType;
+})(React);

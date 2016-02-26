@@ -1,39 +1,42 @@
-import React from 'react';
 import classNames from 'classnames';
 
-const PropTypes = __React__.PropTypes;
+export default ((__React__) => {
 
-class Toggle extends __React__.Component {
+  const PropTypes = __React__.PropTypes;
 
-  static propTypes = {
-    defaultValue: PropTypes.bool,
-    onChange: PropTypes.func
-  };
+  class Toggle extends __React__.Component {
 
-  static defaultProps = {
-    defaultValue: false,
-    onChange: PropTypes.func
-  };
+    static propTypes = {
+      defaultValue: PropTypes.bool,
+      onChange: PropTypes.func
+    };
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      checked: this.props.defaultValue
+    static defaultProps = {
+      defaultValue: false,
+      onChange: PropTypes.func
+    };
+
+    constructor(props) {
+      super(props);
+      this.state = {
+        checked: this.props.defaultValue
+      };
+    }
+
+    render() {
+      let className = classNames('atellier-toggle', this.props.className, {'atellier-toggle-checked': this.state.checked});
+      return (
+        <div className={className} onClick={this._handleChange}></div>
+      );
+    }
+
+    _handleChange = () => {
+      this.setState({checked: !this.state.checked}, () => {
+        this.props.onChange(this.state.checked);
+      });
     };
   }
 
-  render() {
-    let className = classNames('atellier-toggle', this.props.className, {'atellier-toggle-checked': this.state.checked});
-    return (
-      <div className={className} onClick={this._handleChange}></div>
-    );
-  }
+  return Toggle;
 
-  _handleChange = () => {
-    this.setState({checked: !this.state.checked}, () => {
-      this.props.onChange(this.state.checked);
-    });
-  };
-}
-
-export default Toggle;
+})(React);
