@@ -136,8 +136,7 @@ class FieldType extends __React__.Component {
       return <option key={index} value={index}>{item.componentName}</option>
     });
 
-    if ( defaultValue ) {
-      console.log(defaultValue);
+    if ( defaultValue ) {      
       let object = {};
       let func = () => {};
       containerProps = (
