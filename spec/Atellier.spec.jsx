@@ -1,6 +1,6 @@
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
-require('../lib/Atellier.jsx');
+// require('../lib/Atellier.jsx');
 // var Atellier = require('../lib/Atellier.jsx');
 
 describe('Atellier', () => {

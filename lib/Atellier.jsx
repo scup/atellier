@@ -1,11 +1,11 @@
 import React from 'react';
 import Immutable from 'immutable';
 import PropTypesIdentifier from './structural/PropTypesIdentifier.jsx';
+import Sidebar from './Sidebar.jsx';
 import './styles/atellier.less';
 
 function defineComponent() {
 
-  const Sidebar = require('./Sidebar.jsx');
   const Workspace = require('./Workspace.jsx');
 
   let PropTypes = __React__.PropTypes;

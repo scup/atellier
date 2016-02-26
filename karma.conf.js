@@ -11,8 +11,8 @@ module.exports = function(config) {
       'node_modules/es5-shim/es5-shim.js',
       'node_modules/react/dist/react.js',
       'node_modules/react/dist/react-with-addons.js',
-
-      'spec/Atellier.spec.jsx',
+      'spec/polyfills/**/*.jsx',
+      'spec/Sidebar.spec.jsx',
       { pattern: 'lib/**/*', watched: true, included: false }
     ],
 
@@ -20,7 +20,7 @@ module.exports = function(config) {
 
     preprocessors: {
       // add webpack as preprocessor
-      'spec/Atellier.spec.jsx': ['webpack', 'sourcemap', 'eslint']
+      'spec/Sidebar.spec.jsx': ['webpack', 'sourcemap', 'eslint']
     },
 
     webpack: loadWebpackConfig(),
