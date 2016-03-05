@@ -11,6 +11,10 @@
     "start": "webpack-dev-server --inline --hot"
   },
   "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scup/atellier.git"
+  },
   "license": "MIT",
   "keywords": [
     "react",
