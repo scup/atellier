@@ -1,5 +1,7 @@
 # ![atellier](http://i.imgur.com/UvDJ8c5.jpg)
 
+[![Join the chat at https://gitter.im/scup/atellier](https://badges.gitter.im/scup/atellier.svg)](https://gitter.im/scup/atellier?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 [![Dependencies Status](https://david-dm.org/scup/atellier.svg)](https://david-dm.org/scup/Atellier)
 [![Build Status](https://travis-ci.org/scup/atellier.svg?branch=development)](https://travis-ci.org/scup/atellier)
 [![Code Climate](https://codeclimate.com/github/scup/Atellier/badges/gpa.svg)](https://codeclimate.com/github/scup/Atellier)
