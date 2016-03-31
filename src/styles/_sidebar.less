@@ -1,0 +1,61 @@
+/* ------------------------- *\
+      SIDEBAR
+\* ------------------------- */
+
+.sidebar {
+  background-color: @color-primary;
+  border-right: 1px solid @color-border;
+  height: 100%;
+  position: relative;
+  margin-left: 0;
+  margin-right: 0;
+  transition: margin-left 0.5s, margin-right 0.5s;
+  .flex-item(0 0 315px);
+  .flex-container(column);
+
+  &-close {
+    margin-left: -315px;
+    margin-right: 50px;
+
+    .sidebar-toggle-button {
+      background-color: @color-primary;
+      right: -51px;
+
+      img {
+        transform: rotate(0deg);
+      }
+    }
+  }
+}
+
+.sidebar-toggle-button {
+  background-color: @color-sidebar-toggle-button;
+  color: @color-sidebar-toggle-button-arrow;
+  cursor: pointer;
+  display: block;
+  font-weight: 400;
+  height: 25px;
+  line-height: 25px;
+  position: absolute;
+  right: 12px;
+  text-align: center;
+  top: 25px;
+  transition: right 0.5s, color 0.5s;
+  width: 25px;
+
+  img {
+    padding: 8px 0;
+    transform: rotate(180deg);
+    transition: transform 0.5s;
+  }
+}
+
+.logo {
+  color: @color-accent;
+  font: 23.33px @font-family-logo;
+  letter-spacing: 3px;
+  margin: 25px 0 18px 0;
+  text-align: center;
+  text-transform: uppercase;
+  .flex-item(0 0 25px);
+}

@@ -1,0 +1,48 @@
+/* ------------------------- *\
+      TOGGLE
+\* ------------------------- */
+
+.atellier-toggle {
+  border-radius: 25px;
+  cursor: pointer;
+  display: block;
+  height: 25px;
+  outline: none;
+  position: relative;
+  user-select: none;
+  width: 49px;
+
+  &:before,
+  &:after {
+    bottom: 1px;
+    content: "";
+    display: block;
+    left: 1px;
+    position: absolute;
+    top: 1px;
+  }
+
+  &:before {
+    background-color: @color-toggle-off-background;
+    border-radius: 25px;
+    right: 1px;
+    transition: background 0.4s;
+  }
+
+  &:after {
+    width: 23px;
+    border: 1px solid @color-border;
+    background-color: @color-primary;
+    border-radius: 100%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    transition: margin 0.4s;
+  }
+
+  &-checked:before {
+    background-color: @color-toggle-on-background;
+  }
+
+  &-checked:after {
+    margin-left: 25px;
+  }
+}
