@@ -4,23 +4,21 @@ var webpack = require('webpack');
 module.exports = {
   debug: false,
   entry: './src/index.js',
-
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'react-atellier.js',
     library: 'ReactAtellier',
     libraryTarget: 'umd',
   },
-  externals: {
-      // Use external version of React
-      "react": "React"
-  },
+  // externals: {
+  //     // Use external version of React
+  //     "react": "React"
+  // },
   plugins: [
-    new webpack.DefinePlugin({ 'process.env.NODE_ENV': '"production"' }),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-          warnings: false
-      }
+    new webpack.DefinePlugin({
+      "process.env": {
+         NODE_ENV: JSON.stringify("production")
+       }
     })
   ],
   module: {
@@ -50,12 +48,5 @@ module.exports = {
         include: path.join(__dirname, 'src')
       },
     ],
-  },
-
-  devServer: {
-    contentBase: './example',
-    host: 'localhost',
-    inline: true,
-    info: false,
-  },
+  }
 };
