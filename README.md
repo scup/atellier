@@ -23,13 +23,21 @@ npm install -g react-atellier
 
 ## Usage
 
-
-
 **Import Atellier**
+
+For releases: `> v0.1.0` (NEWER)
+```javascript
+...
+import ReactAtellier from 'react-atellier';
+```
+
+For releases: `<= v0.0.14`
 ```javascript
 ...
 var ReactAtellier = require('react-atellier')( React );
+
 ```
+
 **Import your component**
 ```javascript
 
