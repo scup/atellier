@@ -1,12 +1,10 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import Immutable from 'immutable';
 import classNames from 'classnames';
-import ComponentList from './ComponentList.jsx';
+import ComponentList from './ComponentList';
 import toggleButtonImage from './images/arrow.png';
 
-const PropTypes = __React__.PropTypes;
-
-class Sidebar extends __React__.Component {
+class Sidebar extends React.Component {
 
   static defaultProps = {
     components: [],
@@ -50,4 +48,4 @@ class Sidebar extends __React__.Component {
 
 }
 
-module.exports = Sidebar;
+export default Sidebar;

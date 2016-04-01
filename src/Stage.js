@@ -1,10 +1,8 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import reactdom from 'react-dom';
 import classNames from 'classnames';
 
-const PropTypes = __React__.PropTypes;
-
-class Stage extends __React__.Component {
+class Stage extends React.Component {
 
   static defaultProps = {
     component: {},
@@ -143,7 +141,7 @@ class Stage extends __React__.Component {
   _defineElement = (props) => {
     let { component, properties } = props;
     if (component && component.component) {
-      this._instance = __React__.cloneElement(__React__.createElement(component.component, properties))
+      this._instance = React.cloneElement(React.createElement(component.component, properties))
     }
   };
 }
