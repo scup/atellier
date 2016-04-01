@@ -1,6 +1,30 @@
 import React, { PropTypes } from 'react';
 import FieldType from './FieldType';
 
+class SimpleElement extends React.Component {
+  render(){
+    return (<span />);
+  }
+}
+
+function getPropTypeName(validate) {
+  const types = {
+    array: [],
+    string: '',
+    number: 0,
+    bool: true,
+    func: () => {},
+    object: {},
+    element: (<SimpleElement />)
+  }
+  for (let typeName in types) {
+    if ( !validate({name: types[typeName]}, "name") ) {
+      return typeName;
+    }
+  }
+  return 'unknown';
+}
+
 class PropertiesContainer extends React.Component {
 
   static defaultProps = {
@@ -62,14 +86,14 @@ class PropertiesContainer extends React.Component {
   _renderPropertiesFields(element) {
     let propTypes = element && element.type.propTypes;
     let propsFields = [];
-
     for (let prop in propTypes) {
       let proptype = propTypes[prop];
+      const propTypeName = getPropTypeName(proptype);
       propsFields.push(
         <FieldType
           key={prop}
           name={prop}
-          type={proptype.type}
+          type={propTypeName}
           defaultValue={this._properties[prop]}
           options={proptype.options}
           components={this.props.components}

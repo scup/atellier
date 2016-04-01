@@ -1,14 +1,8 @@
 import React, { PropTypes } from 'react';
 import Immutable from 'immutable';
-import PropTypesIdentifier from './structural/PropTypesIdentifier';
 import './styles/atellier.less';
 import Sidebar from './Sidebar';
 import Workspace from './Workspace';
-
-PropTypesIdentifier
-  .create(PropTypes)
-  .intercept(PropTypes.oneOf)
-  .identify();
 
 class Atellier extends React.Component {
   constructor(props) {

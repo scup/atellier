@@ -10,7 +10,10 @@ module.exports = {
     library: 'ReactAtellier',
     libraryTarget: 'umd',
   },
-
+  externals: {
+      // Use external version of React
+      "react": "React"
+  },
   module: {
     loaders: [
       {
