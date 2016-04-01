@@ -1,9 +1,56 @@
-import React from 'react';
-import FieldType from './FieldType.jsx';
+import React, { PropTypes } from 'react';
+import FieldType from './FieldType';
 
-const PropTypes = __React__.PropTypes;
+class SimpleElement extends React.Component {
+  render(){
+    return (<span />);
+  }
+}
 
-class PropertiesContainer extends __React__.Component {
+function getPropTypeName(validate) {
+
+  const types = {
+    array: [],
+    string: '',
+    number: 0,
+    bool: true,
+    func: () => {},
+    object: {},
+    element: (<SimpleElement />),
+    oneOf: "____"
+  }
+
+  for (let typeName in types) {
+    const errors = validate({"name": types[typeName]}, "name");
+
+    if ( !errors ) {
+      return {
+        "name": typeName,
+        "values": typeName=='element'? undefined:types[typeName]
+      };
+    }
+
+    switch(true) {
+      case /one of/.test(errors):
+        let oneOfArray = /expected one of (\[.*\])/.exec(errors);
+
+        if (oneOfArray && oneOfArray[1]) {
+          return {
+            name: 'oneOf',
+            options: JSON.parse(oneOfArray[1]) || []
+          };
+        }
+        break;
+    }
+  }
+
+  return {
+    "name": 'unknown',
+    "values": undefined
+  }
+}
+
+class PropertiesContainer extends React.Component {
 
   static defaultProps = {
     type: () => {},
@@ -64,16 +111,18 @@ class PropertiesContainer extends __React__.Component {
   _renderPropertiesFields(element) {
     let propTypes = element && element.type.propTypes;
     let propsFields = [];
-
     for (let prop in propTypes) {
       let proptype = propTypes[prop];
+      const { name, values, options } = getPropTypeName(proptype);
+      const defaultProps = this._properties[prop] || values;
+      const propOptions = proptype.options || options;
       propsFields.push(
         <FieldType
           key={prop}
           name={prop}
-          type={proptype.type}
-          defaultValue={this._properties[prop]}
-          options={proptype.options}
+          type={name}
+          defaultValue={defaultProps}
+          options={propOptions}
           components={this.props.components}
           onChange={this._handleChange}
          />
@@ -100,11 +149,15 @@ class PropertiesContainer extends __React__.Component {
 
   _defineProperties = (props) => {
     if ( props.element.type ) {
-      Object.keys(props.element.type.propTypes).filter( function(prop) {
-        if ( (props.element.type.defaultProps) && !props.element.type.defaultProps[prop] ) {
-          props.element.type.defaultProps[prop] = null;
-        }
-      });
+      try{
+        Object.keys(props.element.type.propTypes).filter( function(prop) {
+          if ( (props.element.type.defaultProps) && !props.element.type.defaultProps[prop] ) {
+            props.element.type.defaultProps[prop] = null;
+          }
+        });
+      } catch(e) {
+        this._properties = {};
+      }
     }
     this._properties = Object.assign({}, props.element.props, props.elementProps);
   };

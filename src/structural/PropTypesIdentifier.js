@@ -1,3 +1,4 @@
+
 export default class PropTypesIdentifier {
 
   constructor(propTypes) {
@@ -15,7 +16,6 @@ export default class PropTypesIdentifier {
         this.propTypes[proptype].isRequired.type = proptype;
       }
     }
-
     return this;
   }
 

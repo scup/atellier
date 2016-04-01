@@ -1,13 +1,13 @@
 # ![atellier](http://i.imgur.com/UvDJ8c5.jpg)
 
-[![Dependencies Status](https://david-dm.org/scup/Atellier.svg)](https://david-dm.org/scup/Atellier)
-[![Build Status](https://travis-ci.org/scup/Atellier.svg?branch=development)](https://travis-ci.org/scup/Atellier)
+[![Join the chat at https://gitter.im/scup/atellier](https://badges.gitter.im/scup/atellier.svg)](https://gitter.im/scup/atellier?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
+[![Dependencies Status](https://david-dm.org/scup/atellier.svg)](https://david-dm.org/scup/Atellier)
+[![Build Status](https://travis-ci.org/scup/atellier.svg?branch=development)](https://travis-ci.org/scup/atellier)
 [![Code Climate](https://codeclimate.com/github/scup/Atellier/badges/gpa.svg)](https://codeclimate.com/github/scup/Atellier)
 [![npm version](https://badge.fury.io/js/react-atellier.svg)](https://badge.fury.io/js/react-atellier)
-[![By Scup](https://img.shields.io/badge/by-Scup-orange.svg)](http://developers.scup.com)
-
-## (unstable) Release
-`Note: ` This package is still experimental and is constantly developing.
+[![By Sprinklr](https://img.shields.io/badge/by-Sprinklr-orange.svg)](http://developers.scup.com)
+[![Gitter](https://badges.gitter.im/scup/atellier.svg)](https://gitter.im/scup/atellier?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 A React component that works like a preview of other components. An excellent tool to show how your component works and looks with. Easy to install and configure, you can have a router in your project with Atellier and can interact with any component.
 
@@ -23,13 +23,21 @@ npm install -g react-atellier
 
 ## Usage
 
-
-
 **Import Atellier**
+
+For releases: `> v0.1.0` (NEWER)
+```javascript
+...
+import ReactAtellier from 'react-atellier';
+```
+
+For releases: `<= v0.0.14`
 ```javascript
 ...
 var ReactAtellier = require('react-atellier')( React );
+
 ```
+
 **Import your component**
 ```javascript
 
@@ -89,13 +97,12 @@ render((
 - [ ] Atellier CLI (wip)
 - [ ] Import components and live update
 - [ ] Move components in `stage`
-- [x] License
 
 ## Team
 
-[![Guilherme de Souza](https://avatars1.githubusercontent.com/u/2624370?v=3&s=120)](https://github.com/guisouza) | [![Alberto](https://avatars1.githubusercontent.com/u/717537?v=3&s=120)](https://github.com/albertossilva) | [![Érica Mitsuishi](https://avatars2.githubusercontent.com/u/3091890?v=3&s=120)](https://github.com/mitsuishihidemi) | [![Bruno Agutoli](https://avatars2.githubusercontent.com/u/298845?v=3&s=120)](https://github.com/agutoli) | [![Daniel Allegretti](https://avatars1.githubusercontent.com/u/317584?v=3&s=120)](https://github.com/allegretti) | [![João Neto](https://avatars2.githubusercontent.com/u/547989?v=3&s=120)](https://github.com/allegretti)
----|---|---|---|---|---
-[Guilherme de Souza](https://github.com/guisouza) | [Alberto](https://github.com/albertossilva) | [Érica Mitsuishi](https://github.com/mitsuishihidemi) | [Bruno Agutoli](https://github.com/agutoli) | [Daniel Allegretti](https://github.com/allegretti) | [João Neto](https://github.com/joaoneto)
+[![Guilherme de Souza](https://avatars1.githubusercontent.com/u/2624370?v=3&s=100)](https://github.com/guisouza) | [![Alberto](https://avatars1.githubusercontent.com/u/717537?v=3&s=100)](https://github.com/albertossilva) | [![Érica Mitsuishi](https://avatars2.githubusercontent.com/u/3091890?v=3&s=100)](https://github.com/mitsuishihidemi) | [![Bruno Agutoli](https://avatars2.githubusercontent.com/u/298845?v=3&s=100)](https://github.com/agutoli) | [![Daniel Allegretti](https://avatars1.githubusercontent.com/u/317584?v=3&s=100)](https://github.com/allegretti) | [![João Neto](https://avatars2.githubusercontent.com/u/547989?v=3&s=100)](https://github.com/allegretti) | [![Geison](https://avatars0.githubusercontent.com/u/4429874?v=3&s=100)](https://github.com/ojeison)
+---|---|---|---|---|---|---|
+[Guilherme de Souza](https://github.com/guisouza) | [Alberto](https://github.com/albertossilva) | [Érica Mitsuishi](https://github.com/mitsuishihidemi) | [Bruno Agutoli](https://github.com/agutoli) | [Daniel Allegretti](https://github.com/allegretti) | [João Neto](https://github.com/joaoneto) | [Geison](https://github.com/ogeison)
 
 ## Contribute
 Come with us to make an awesome *Atellier* tool to run components in live ambient.
@@ -106,10 +113,10 @@ We have some conventions to contribute to the *Atellier* project, see more infor
 
 ## Want help?
 - [issues](https://github.com/scup/Atellier/issues)
-- IRC #react-atellier on [freenode](https://freenode.net/)
-
+- ~~IRC #react-atellier on [freenode](https://freenode.net/)~~
+- [Gitter](https://gitter.im/scup/atellier?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 ## License
 
 **React Atellier** is released under the
-[MIT license](https://github.com/scup/Atellier/blob/development/LICENSE.md).
+[MIT license](https://github.com/scup/atellier/blob/development/LICENSE.md).

@@ -1,34 +1,26 @@
-/* jshint node: true */
 var path = require('path');
-var node_modules_dir = path.resolve(__dirname, 'node_modules');
 
 module.exports = {
-  entry: './lib/Atellier.jsx',
+
+  entry: './src/index.js',
+
   output: {
-    filename: './dist/react-atellier.min.js',
+    path: path.join(__dirname, 'dist'),
+    filename: 'react-atellier.js',
+    library: 'ReactAtellier',
     libraryTarget: 'umd',
-    library: 'ReactAtellier'
   },
   externals: {
-   'react': 'React'
-  },
-  devtool: 'source-map',
-  resolve: {
-    fallback: [path.join(__dirname, 'node_modules')],
-    alias: {
-      'react': path.join(__dirname, 'node_modules', 'react')
-    },
-  },
-  resolveLoader: {
-    fallback: [path.join(__dirname, 'node_modules')]
+      // Use external version of React
+      "react": "React"
   },
   module: {
     loaders: [
       {
-        test: /\.less$/,
-        loader: 'style!css!less?outputStyle=expanded&' +
-          'includePaths[]=' + (path.resolve(__dirname, './bower_components')) + '&' +
-          'includePaths[]=' + (path.resolve(__dirname, './node_modules'))
+       test: /\.less$/,
+       loader: 'style!css!less?outputStyle=expanded&' +
+         'includePaths[]=' + (path.resolve(__dirname, './bower_components')) + '&' +
+         'includePaths[]=' + (path.resolve(__dirname, './node_modules'))
       },
       {
         test: /\.less$/,
@@ -40,14 +32,21 @@ module.exports = {
       },
       {
         test: /\.(png|jpg)$/,
-        loader: 'url?limit=25000'
+        loader: 'url?limit=45000'
       },
       {
-        test: /(\.jsx?)$/,
-        exclude: [node_modules_dir],
+        test: /(\.js)$/,
+        exclude: [path.resolve(__dirname, 'node_modules')],
         loader: 'babel',
-        include: path.join(__dirname, 'lib')
-      }
-    ]
-  }
+        include: path.join(__dirname, 'src')
+      },
+    ],
+  },
+
+  devServer: {
+    contentBase: './example',
+    host: 'localhost',
+    inline: true,
+    info: false,
+  },
 };

@@ -1,10 +1,8 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import Immutable from 'immutable';
-import PropertiesContainer from './PropertiesContainer.jsx';
+import PropertiesContainer from './PropertiesContainer';
 
-const PropTypes = __React__.PropTypes;
-
-class Properties extends __React__.Component {
+class Properties extends React.Component {
 
   static propTypes = {
     component: PropTypes.shape({
@@ -23,7 +21,7 @@ class Properties extends __React__.Component {
 
   render() {
     let { component, componentProps, components, onCloseProperties } = this.props;
-    let element = __React__.createElement(component.component);
+    let element = React.createElement(component.component);
     return (
       <div className="component-properties">
         <PropertiesContainer
