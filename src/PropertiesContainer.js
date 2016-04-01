@@ -149,11 +149,15 @@ class PropertiesContainer extends React.Component {
 
   _defineProperties = (props) => {
     if ( props.element.type ) {
-      Object.keys(props.element.type.propTypes).filter( function(prop) {
-        if ( (props.element.type.defaultProps) && !props.element.type.defaultProps[prop] ) {
-          props.element.type.defaultProps[prop] = null;
-        }
-      });
+      try{
+        Object.keys(props.element.type.propTypes).filter( function(prop) {
+          if ( (props.element.type.defaultProps) && !props.element.type.defaultProps[prop] ) {
+            props.element.type.defaultProps[prop] = null;
+          }
+        });
+      } catch(e) {
+        this._properties = {};
+      }
     }
     this._properties = Object.assign({}, props.element.props, props.elementProps);
   };
