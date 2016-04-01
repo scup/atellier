@@ -1,10 +1,23 @@
 import React, { PropTypes } from 'react';
 import Immutable from 'immutable';
-import './styles/atellier.less';
 import Sidebar from './Sidebar';
 import Workspace from './Workspace';
 
+import './styles/atellier.less';
+
 class Atellier extends React.Component {
+
+  static defaultProps = {
+    components: []
+  };
+
+  static propTypes = {
+    components: PropTypes.arrayOf(PropTypes.shape({
+      component: PropTypes.func,
+      componentName: PropTypes.string
+    }))
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -28,18 +41,6 @@ class Atellier extends React.Component {
     this.setState({stagedComponent: component});
   };
 }
-
-Atellier.defaultProps = {
-  components: []
-};
-
-Atellier.propTypes = {
-  components: PropTypes.arrayOf(PropTypes.shape({
-    component: PropTypes.func,
-    componentName: PropTypes.string
-  }))
-};
-
 
 // commonjs2
 export default Atellier;

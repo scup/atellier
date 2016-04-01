@@ -114,7 +114,7 @@ class FieldType extends React.Component {
   }
 
   _renderOneOf({ name, type, defaultValue, options }) {
-    let selectOptions = options.map((item, index) => {
+    let selectOptions = (options||[]).map((item, index) => {
       return (<option key={index} value={item}>{item}</option>);
     });
     return (

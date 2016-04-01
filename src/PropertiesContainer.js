@@ -8,6 +8,7 @@ class SimpleElement extends React.Component {
 }
 
 function getPropTypeName(validate) {
+
   const types = {
     array: [],
     string: '',
@@ -15,14 +16,38 @@ function getPropTypeName(validate) {
     bool: true,
     func: () => {},
     object: {},
-    element: (<SimpleElement />)
+    element: (<SimpleElement />),
+    oneOf: "____"
   }
+
   for (let typeName in types) {
-    if ( !validate({name: types[typeName]}, "name") ) {
-      return typeName;
+    const errors = validate({"name": types[typeName]}, "name");
+
+    if ( !errors ) {
+      return {
+        "name": typeName,
+        "values": typeName=='element'? undefined:types[typeName]
+      };
+    }
+
+    switch(true) {
+      case /one of/.test(errors):
+        let oneOfArray = /expected one of (\[.*\])/.exec(errors);
+
+        if (oneOfArray && oneOfArray[1]) {
+          return {
+            name: 'oneOf',
+            options: JSON.parse(oneOfArray[1]) || []
+          };
+        }
+        break;
     }
   }
-  return 'unknown';
+
+  return {
+    "name": 'unknown',
+    "values": undefined
+  }
 }
 
 class PropertiesContainer extends React.Component {
@@ -88,14 +113,16 @@ class PropertiesContainer extends React.Component {
     let propsFields = [];
     for (let prop in propTypes) {
       let proptype = propTypes[prop];
-      const propTypeName = getPropTypeName(proptype);
+      const { name, values, options } = getPropTypeName(proptype);
+      const defaultProps = this._properties[prop] || values;
+      const propOptions = proptype.options || options;
       propsFields.push(
         <FieldType
           key={prop}
           name={prop}
-          type={propTypeName}
-          defaultValue={this._properties[prop]}
-          options={proptype.options}
+          type={name}
+          defaultValue={defaultProps}
+          options={propOptions}
           components={this.props.components}
           onChange={this._handleChange}
          />
