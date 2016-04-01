@@ -1,6 +1,6 @@
 {
   "name": "react-atellier",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Scup/Sprinklr Team <developer@scup.com.br>",
   "description": "The smartest way to share interactive components with your team",
   "main": "./dist/react-atellier.js",
@@ -8,6 +8,10 @@
     "build": "webpack --colors --progress -p -d",
     "dev": "webpack --watch --port 8080",
     "lint": "eslint src example/src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scup/atellier.git"
   },
   "keywords": [
     "react",
@@ -21,10 +25,6 @@
     "atelier",
     "attelier"
   ],
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/balloob/react-sidebar.git"
-  },
   "license": "MIT",
   "peerDependencies": {
     "react": ">=0.14.0",
