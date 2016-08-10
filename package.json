@@ -27,8 +27,8 @@
   ],
   "license": "MIT",
   "peerDependencies": {
-    "react": ">=0.14.0",
-    "react-dom": ">=0.14.0"
+    "react": "^0.14.0 || ^15.0.0-0",
+    "react-dom": "^0.14.0 || ^15.0.0-0"
   },
   "devDependencies": {
     "autoprefixer-loader": "^3.2.0",
