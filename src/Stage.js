@@ -35,7 +35,8 @@ class Stage extends React.Component {
     let { component, properties } = this.props;
     let targetRender = document.getElementById('__stage_render__');
     try {
-      reactdom.render(
+      reactdom.unstable_renderSubtreeIntoContainer(
+        this,
         <div className="stage">
           {this._renderStageBoard()},
           {this._renderStageTools()}
@@ -44,7 +45,8 @@ class Stage extends React.Component {
       );
     } catch(error) {
       targetRender.innerHTML = '';
-      reactdom.render(
+      reactdom.unstable_renderSubtreeIntoContainer(
+        this,
         <div className="stage">
           {this._renderErrorAlert(error)}
         </div>,
