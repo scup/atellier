@@ -12,7 +12,8 @@ module.exports = {
   },
   externals: {
       // Use external version of React
-      "react": "React"
+      'react': 'react',
+      'react-dom': 'react-dom'
   },
   module: {
     loaders: [
