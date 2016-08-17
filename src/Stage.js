@@ -37,7 +37,7 @@ class Stage extends React.Component {
     try {
       reactdom.render(
         <div className="stage">
-          {this._renderStageBoard()},
+          {this._renderStageBoard()}
           {this._renderStageTools()}
         </div>,
         targetRender
