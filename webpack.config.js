@@ -1,9 +1,9 @@
 var path = require('path');
+var webpack = require('webpack');
 
 module.exports = {
-
+  debug: false,
   entry: './src/index.js',
-
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'react-atellier.js',
@@ -42,12 +42,5 @@ module.exports = {
         include: path.join(__dirname, 'src')
       },
     ],
-  },
-
-  devServer: {
-    contentBase: './example',
-    host: 'localhost',
-    inline: true,
-    info: false,
-  },
+  }
 };
