@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import reactdom from 'react-dom';
+import ReactDOM from 'react-dom';
 import classNames from 'classnames';
 
 class Stage extends React.Component {
@@ -35,7 +35,8 @@ class Stage extends React.Component {
     let { component, properties } = this.props;
     let targetRender = document.getElementById('__stage_render__');
     try {
-      reactdom.render(
+      ReactDOM.unstable_renderSubtreeIntoContainer(
+        this,
         <div className="stage">
           {this._renderStageBoard()}
           {this._renderStageTools()}
@@ -44,7 +45,8 @@ class Stage extends React.Component {
       );
     } catch(error) {
       targetRender.innerHTML = '';
-      reactdom.render(
+      ReactDOM.unstable_renderSubtreeIntoContainer(
+        this,
         <div className="stage">
           {this._renderErrorAlert(error)}
         </div>,
