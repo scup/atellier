@@ -10,17 +10,11 @@ module.exports = {
     library: 'ReactAtellier',
     libraryTarget: 'umd',
   },
-  // externals: {
-  //     // Use external version of React
-  //     "react": "React"
-  // },
-  plugins: [
-    new webpack.DefinePlugin({
-      "process.env": {
-         NODE_ENV: JSON.stringify("production")
-       }
-    })
-  ],
+  externals: {
+      // Use external version of React
+      'react': 'react',
+      'react-dom': 'react-dom'
+  },
   module: {
     loaders: [
       {

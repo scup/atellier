@@ -1,6 +1,6 @@
 {
   "name": "react-atellier",
-  "version": "0.1.9",
+  "version": "0.1.11",
   "author": "Scup/Sprinklr Team <developer@scup.com.br>",
   "description": "The smartest way to share interactive components with your team",
   "main": "./dist/react-atellier.js",
@@ -27,8 +27,8 @@
   ],
   "license": "MIT",
   "peerDependencies": {
-    "react": ">=0.14.0",
-    "react-dom": ">=0.14.0"
+    "react": "^0.14.0 || ^15.0.0-0",
+    "react-dom": "^0.14.0 || ^15.0.0-0"
   },
   "devDependencies": {
     "autoprefixer-loader": "^3.2.0",
