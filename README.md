@@ -105,9 +105,8 @@ render((
 - [Érica Mitsuishi](https://github.com/mitsuishihidemi)
 - [Bruno Agutoli](https://github.com/agutoli)
 - [Daniel Allegretti](https://github.com/allegretti)
-- [João Neto](https://github.com/allegretti)
 - [João Neto](https://github.com/joaoneto)
-- [Geison](https://github.com/ojeison)
+- [Geison](https://github.com/ogeison)
 
 # Contributors
 
