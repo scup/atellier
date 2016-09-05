@@ -100,25 +100,18 @@ render((
 
 ## Team
 
-[Guilherme de Souza](https://github.com/guisouza)
-
-[Alberto](https://github.com/albertossilva)
-
-[Érica Mitsuishi](https://github.com/mitsuishihidemi)
-
-[Bruno Agutoli](https://github.com/agutoli)
-
-[Daniel Allegretti](https://github.com/allegretti)
-
-[João Neto](https://github.com/allegretti)
-
-[João Neto](https://github.com/joaoneto)
-
-[Geison](https://github.com/ojeison)
+- [Guilherme de Souza](https://github.com/guisouza)
+- [Alberto](https://github.com/albertossilva)
+- [Érica Mitsuishi](https://github.com/mitsuishihidemi)
+- [Bruno Agutoli](https://github.com/agutoli)
+- [Daniel Allegretti](https://github.com/allegretti)
+- [João Neto](https://github.com/allegretti)
+- [João Neto](https://github.com/joaoneto)
+- [Geison](https://github.com/ojeison)
 
 # Contributors
 
-[John Babak](https://github.com/sompylasar)
+- [John Babak](https://github.com/sompylasar)
 
 ## Contribute
 Come with us to make an awesome *Atellier* tool to run components in live ambient.
